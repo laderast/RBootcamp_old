@@ -2,7 +2,7 @@
 title       : Factors 
 description : Manipulating Factor Data
 
---- type:MultipleChoiceExercise lang:r xp:100 skills:1
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:ed1136a474
 ## Some Basics about Data Frames
 First things first. Let's look at a dataset in R. 
 
