@@ -43,7 +43,7 @@ weightSet
 ```
 *** =sct
 ```{r}
-test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
+test_output_contains("weight[boolVec]", incorrect_msg="Use boolVec as an index to weights.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1
@@ -65,13 +65,17 @@ Now that we know how to use boolean vectors, how can we generate them? We can ge
 ```{r}
 #make a vector of weights
 weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-#assign to weightSet variable
 
-#show length of weightSet
+#define smallAnimals as a boolean vector
+smallAnimals <- 
 
-#show weightSet itself
+#subset weight vector, assign to smallAnimalWeights
+smallAnimalWeights <- 
+
+#show length of smallAnimalWeights
+
+#show smallAnimalWeights itself
+
 
 ```
 
@@ -79,17 +83,23 @@ boolVec <- c(TRUE, TRUE, FALSE, FALSE)
 ```{r}
 #make a vector of weights
 weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-weightSet <- weight[boolVec]
-#show length of weightSet
-length(weightSet)
-#show weightSet itself
-weightSet
+
+#define smallAnimals as a boolean vector
+smallAnimals <- weight < 30
+
+#subset weight vector, assign to smallAnimalWeights
+smallAnimalWeights <- weight[smallAnimals]
+
+#show length of smallAnimalWeights
+length(smallAnimalWeights)
+
+#show smallAnimalWeights itself
+smallAnimalWeights
 ```
 *** =sct
 ```{r}
-test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
+test_output_contains("weight[smallAnimals]", incorrect_msg="Use smallAnimals to subset the weight vector.")
+test_output_contains("length(smallAnimalWeights)", incorrect_msg="show the length of smallAnimalWeights")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1
@@ -125,7 +135,7 @@ Since the boolean vector is just a vector of TRUE/FALSE values, we can
 ```{r}
 # The pre exercise code runs code to initialize the user's workspace.
 # You can use it to load packages, initialize datasets and draw a plot in the viewer
-load("module2.RData")
+load("datasets/module2.RData")
 ```
 
 ## dplyr::filter()
