@@ -8,6 +8,7 @@ The first thing we are going to is think about how we represent variables in a p
 
 Take a look at this graph. What variable is mapped to y, and what is mapped to x?
 
+=pre_exercise_code
 ```{r}
 library(gapminder)
 library(ggplot2)
