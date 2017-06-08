@@ -2,7 +2,7 @@
 title       : Introduction to Subsetting
 description : Learning about the `vector` and `data.frame` data types
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
 ## Subsetting Using TRUE/FALSE:
 
 Subsetting using TRUE/FALSE vectors is one of the most important concepts to grasp in R. In this exercise, we'll investigate what happens when we use a Boolean (TRUE/FALSE) vector to subset another vector.
@@ -46,7 +46,7 @@ weightSet
 test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
 ## Generating Boolean Vectors using <, ==, >:
 
 Now that we know how to use boolean vectors, how can we generate them? We can generate them using the comparison operators: `<`, `>`, `==`, and `!=`.
@@ -92,7 +92,7 @@ weightSet
 test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
 ```
 
---- type:MultipleChoiceExercise lang:r xp:100 skills:1
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:25bf06fe6e
 ## Quick Review of Boolean Subsetting:
 Given the following code, how many values do we expect?
 
@@ -116,7 +116,7 @@ msg2 = "Correct! We don't include 100 in our returned set, so there are three va
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg1))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:d992e61f9f
 ## Using Criteria on One Variable to Subset the Other
 
 Since the boolean vector is just a vector of TRUE/FALSE values, we can 
@@ -176,13 +176,13 @@ Values in a vector can also be retrieved by name:
 ```{r}
 weights["M15"]
 ```
---- type:NormalExercise lang:r xp:100 skills:1,3
+--- type:NormalExercise lang:r xp:100 skills:1,3 key:ec51833009
 **QUESTION 1-1**: How would we get the last 5 weights?
 ```{r}
 # Space for your answer here
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1,3
+--- type:NormalExercise lang:r xp:100 skills:1,3 key:7aaf63aa0b
 **QUESTION 1-2**: How would we get the first 5 weights in reverse order?
 ```{r}
 # Space for your answer here
@@ -217,12 +217,12 @@ of squares.
 ```{r}
 resids <- weights - meanWeight
 ```
---- type:MultipleChoiceExercise lang:r xp:100 skills:1,3
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1,3 key:fc3efc69a6
 **QUESTION 1-3**: What happened here? Why can we subtract a scalar from a vector?
 ```{r}
 # Space for your answer here
 ```
---- type:NormalExercise lang:r xp:100 skills:1,3
+--- type:NormalExercise lang:r xp:100 skills:1,3 key:20d81ff8ed
 **QUESTION 1-4**: What happens when you try to subtract two vectors of unequal
 lengths? I.e. `weights[1:5] - weights[1:2]`
 ```{r}
@@ -256,14 +256,14 @@ vec2 <- c(vec,5,5)
 vec2
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1,3
+--- type:NormalExercise lang:r xp:100 skills:1,3 key:a37cc5436e
 **QUESTION 1-5**: What happens when you try to mix characters and numbers? What
 does this tell you about vectors? I.e. `c("This is character data", 1:5)`
 ```{r}
 # Space for your answer here
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1,3
+--- type:NormalExercise lang:r xp:100 skills:1,3 key:c00b5cb852
 **QUESTION 1-6**: How might you combine `c()` and a series of names to pull out
 only the "M1", "M5", and "M10" weights? This is another kind of subsetting
 operation, and we'll cover it more in detail later.
