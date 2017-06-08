@@ -1,9 +1,8 @@
 ---
 title       : Factors 
 description : Manipulating Factor Data
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
 
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1
 ## Some Basics about Data Frames
 First things first. Let's look at a dataset in R. 
 
