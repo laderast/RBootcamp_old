@@ -1,116 +1,392 @@
 ---
-title       : Insert the chapter title here
-description : Insert the chapter description here
-attachments :
-  slides_link : https://s3.amazonaws.com/assets.datacamp.com/course/teach/slides_example.pdf
+title       : Introduction to Subsetting
+description : Learning about the `vector` and `data.frame` data types
 
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:487afcab15
-## A really bad movie
+--- type:NormalExercise lang:r xp:100 skills:1
+## Subsetting Using TRUE/FALSE:
 
-Have a look at the plot that showed up in the viewer to the right. Which type of movie has the worst rating assigned to it?
+Subsetting using TRUE/FALSE vectors is one of the most important concepts to grasp in R. In this exercise, we'll investigate what happens when we use a Boolean (TRUE/FALSE) vector to subset another vector.
 
 *** =instructions
-- Adventure
-- Action
-- Animation
-- Comedy
-
-*** =hint
-Have a look at the plot. Which color does the point with the lowest rating have?
+- Given the vector `weights`, try subsetting using `boolVec`. Assign it to `weightSet`. Find the length of `weightSet` and show the new weightSet variable contents.
 
 *** =pre_exercise_code
 ```{r}
-# The pre exercise code runs code to initialize the user's workspace.
-# You can use it to load packages, initialize datasets and draw a plot in the viewer
 
-movies <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/course/introduction_to_r/movies.csv")
-
-library(ggplot2)
-
-ggplot(movies, aes(x = runtime, y = rating, col = genre)) + geom_point()
-```
-
-*** =sct
-```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-msg_bad <- "That is not correct!"
-msg_success <- "Exactly! There seems to be a very bad action movie in the dataset."
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:e5a4aa1d30
-## More movies
-
-In the previous exercise, you saw a dataset about movies. In this exercise, we'll have a look at yet another dataset about movies!
-
-A dataset with a selection of movies, `movie_selection`, is available in the workspace.
-
-*** =instructions
-- Check out the structure of `movie_selection`.
-- Select movies with a rating of 5 or higher. Assign the result to `good_movies`.
-- Use `plot()` to  plot `good_movies$Run` on the x-axis, `good_movies$Rating` on the y-axis and set `col` to `good_movies$Genre`.
-
-*** =hint
-- Use `str()` for the first instruction.
-- For the second instruction, you should use `...[movie_selection$Rating >= 5, ]`.
-- For the plot, use `plot(x = ..., y = ..., col = ...)`.
-
-*** =pre_exercise_code
-```{r}
-# You can also prepare your dataset in a specific way in the pre exercise code
-
-library(MindOnStats)
-data(Movies)
-movie_selection <- Movies[Movies$Genre %in% c("action", "animated", "comedy"),c("Genre", "Rating", "Run")]
-
-# Clean up the environment
-rm(Movies)
 ```
 
 *** =sample_code
 ```{r}
-# movie_selection is available in your workspace
+#make a vector of weights
+weight <- c(10, 20, 50, 30)
+boolVec <- c(TRUE, TRUE, FALSE, FALSE)
+#subset weight with boolVec here
+#assign to weightSet variable
 
-# Check out the structure of movie_selection
+#show length of weightSet
 
+#show weightSet itself
+weightSet
+```
 
-# Select movies that have a rating of 5 or higher: good_movies
+*** =solution
+```{r}
+#make a vector of weights
+weight <- c(10, 20, 50, 30)
+boolVec <- c(TRUE, TRUE, FALSE, FALSE)
+#subset weight with boolVec here
+weightSet <- weight[boolVec]
+#show length of weightSet
+length(weightSet)
+#show weightSet itself
+weightSet
+```
+*** =sct
+```{r}
+test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
+```
 
+--- type:NormalExercise lang:r xp:100 skills:1
+## Generating Boolean Vectors using <, ==, >:
 
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
+Now that we know how to use boolean vectors, how can we generate them? We can generate them using the comparison operators: `<`, `>`, `==`, and `!=`.
+
+*** =instructions
+- Given the vector `weights`, generate a boolean vector to pick those values that are less than 30. Assign this vector to `smallAnimals`.
+- Use `smallAnimals` to subset weights. Assign to `smallAnimalWeights`
+- Print out `smallAnimals`.
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+#make a vector of weights
+weight <- c(10, 20, 50, 30)
+boolVec <- c(TRUE, TRUE, FALSE, FALSE)
+#subset weight with boolVec here
+#assign to weightSet variable
+
+#show length of weightSet
+
+#show weightSet itself
 
 ```
 
 *** =solution
 ```{r}
-# movie_selection is available in your workspace
-
-# Check out the structure of movie_selection
-str(movie_selection)
-
-# Select movies that have a rating of 5 or higher: good_movies
-good_movies <- movie_selection[movie_selection$Rating >= 5, ]
-
-# Plot Run (i.e. run time) on the x axis, Rating on the y axis, and set the color using Genre
-plot(good_movies$Run, good_movies$Rating, col = good_movies$Genre)
+#make a vector of weights
+weight <- c(10, 20, 50, 30)
+boolVec <- c(TRUE, TRUE, FALSE, FALSE)
+#subset weight with boolVec here
+weightSet <- weight[boolVec]
+#show length of weightSet
+length(weightSet)
+#show weightSet itself
+weightSet
 ```
+*** =sct
+```{r}
+test_output_contains("weight[boolvec]", incorrect_msg="Use boolvec as an index to weights.")
+```
+
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1
+## Quick Review of Boolean Subsetting:
+Given the following code, how many values do we expect?
+
+```{r}
+heights <- c(100, 104, 106, 96, 85, 103)
+heights[heights > 100]
+```
+
+*** =instructions
+- 2
+- 3
+- 4
+
+*** =hint
+Remember that `>` is non-inclusive. 
 
 *** =sct
 ```{r}
-# SCT written with testwhat: https://github.com/datacamp/testwhat/wiki
-
-test_function("str", args = "object",
-              not_called_msg = "You didn't call `str()`!",
-              incorrect_msg = "You didn't call `str(object = ...)` with the correct argument, `object`.")
-
-test_object("good_movies")
-
-test_function("plot", args = "x")
-test_function("plot", args = "y")
-test_function("plot", args = "col")
-
-test_error()
-
-success_msg("Good work!")
+msg1 = "Try again!"
+msg2 = "Correct! We don't include 100 in our returned set, so there are three values: 104, 106, and 103"
+test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg1))
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1
+## Using Criteria on One Variable to Subset the Other
+
+Since the boolean vector is just a vector of TRUE/FALSE values, we can 
+
+*** =pre_exercise_code
+```{r}
+# The pre exercise code runs code to initialize the user's workspace.
+# You can use it to load packages, initialize datasets and draw a plot in the viewer
+load("module2.RData")
+```
+
+## dplyr::filter()
+
+Now that we understand how basic subsetting works, we can understand how `filter` works. 
+
+
+## Part 1: Vectors
+
+Let's look at a vector in the workspace.
+
+```{r}
+weights
+```
+
+Note that each slot in a vector can have a unique name.
+
+```{r}
+names(weights)
+```
+
+Length is one of the properties a vector has.
+
+```{r}
+# A vector has a length
+length(weights)
+```
+
+The `weights` vector can be subsetted. Let's get the very first weight.
+
+```{r}
+weights[1]
+```
+
+If we pass a sequence to the vector, we can subset. Here we want to grab the
+first 5 weights, so we pass a sequence from 1 to 5.
+
+```{r}
+# A sequence is actually a vector
+1:5
+
+# Get the first 5 weights
+weights[1:5]
+```
+
+Values in a vector can also be retrieved by name:
+
+```{r}
+weights["M15"]
+```
+--- type:NormalExercise lang:r xp:100 skills:1,3
+**QUESTION 1-1**: How would we get the last 5 weights?
+```{r}
+# Space for your answer here
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1,3
+**QUESTION 1-2**: How would we get the first 5 weights in reverse order?
+```{r}
+# Space for your answer here
+```
+
+### Assignment in Vectors
+
+In general, assignment is done by using the `<-` operator. Here we assign the
+first 5 elements of the weights vector to `b`.
+
+```{r}
+b <- weights[1:5]
+b
+```
+
+### Operations on Vectors
+
+In general, if you can do an operation on a vector all at once, try to do it (as R is optimized for this).
+
+```{r}
+# Run the mean on a vector
+meanWeight <- mean(weights)
+```
+
+Missing numeric values tend to be coded as `NA`s. Not all functions will handle
+`NA`s the same. In module 3, we will talk about the `na.omit()` function.
+
+### Vector Operations
+Some operations output a vector of the same length. Let's get the residual sum
+of squares.
+
+```{r}
+resids <- weights - meanWeight
+```
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1,3
+**QUESTION 1-3**: What happened here? Why can we subtract a scalar from a vector?
+```{r}
+# Space for your answer here
+```
+--- type:NormalExercise lang:r xp:100 skills:1,3
+**QUESTION 1-4**: What happens when you try to subtract two vectors of unequal
+lengths? I.e. `weights[1:5] - weights[1:2]`
+```{r}
+# Space for your answer here
+```
+
+Here's another example of vector operations:
+```{r}
+# Look at resids
+resids
+
+# Square the residuals
+sqResids <- resids^2
+
+# Produce residual sum of squares
+sum(sqResids)
+```
+
+#### Making vectors
+In general, you can use the `c()` (concatenate) command to make vectors.
+
+```{r}
+vec <- c(1,2,3:5)
+vec
+```
+
+You can also concatenate a vector to another vector.
+
+```{r}
+vec2 <- c(vec,5,5)
+vec2
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1,3
+**QUESTION 1-5**: What happens when you try to mix characters and numbers? What
+does this tell you about vectors? I.e. `c("This is character data", 1:5)`
+```{r}
+# Space for your answer here
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1,3
+**QUESTION 1-6**: How might you combine `c()` and a series of names to pull out
+only the "M1", "M5", and "M10" weights? This is another kind of subsetting
+operation, and we'll cover it more in detail later.
+```{r}
+# Space for your answer here
+```
+
+### Descriptive Statistics and Exploratory Data Analysis
+
+You can run operations on a single vector.
+```{r}
+# Show mean and quantiles
+summary(weights)
+
+# Show a histogram
+hist(weights)
+```
+
+**QUESTION 1-7**: What can you say about the distribution of weights? i.e., are
+they distributed normally?
+```{r}
+# Space for your answer here
+```
+
+### Vector Datatypes and Casting
+
+There are four useful vector datatypes to keep in mind: 
+
+- numeric, 
+- character,
+- boolean, and
+- factor.
+
+#### Numeric
+
+We've already seen numeric vectors:
+```{r}
+c(1,2,3,5)
+```
+
+Another useful way to initialize a vector is by using a sequence:
+```{r}
+c(1:10)
+```
+
+#### Character
+
+Characters can also be put into vectors:
+```{r}
+c("foo", "bar", "baz")
+```
+
+#### Boolean
+
+Boolean vectors are simply `TRUE`/`FALSE`:
+```{r}
+c(TRUE,TRUE,TRUE,FALSE)
+```
+
+To some extent, we can convert between vector types using `as.numeric()` and
+`as.character()`.
+```{r}
+as.character(c(1,2,3,5))
+```
+
+#### Factors
+
+Factor vectors can be ordered (by specifying the level argument) or unordered
+(by not specifying the level argument). The ordering impacts properties such as
+the order the factors are plotted, the order in which factors are reported in
+table(), and the way other functions treat them. 
+
+Note that levels have to contain all factors.
+```{r}
+testVecFac <- factor(c("D", "D", "E"), levels=c("D", "E"))
+```
+
+Character and factor vectors are for the most part interchangable for tables.
+```{r}
+testVecChar <- c("A", "B", "C","C", "D")
+testVecFac <- factor(c("A", "B", "C","C", "D"))
+
+table(testVecChar)
+table(testVecFac)
+```
+
+However, when we use numbers as factors, be aware that `as.numeric()` doesn't
+work. This is due to the internal representation of factors as integers.
+```{r}
+testVecFac <- factor(c(1,5,5,56), levels=c(1,5,56))
+as.numeric(testVecFac)
+```
+
+Instead, we must first cast the vector to character, and then numeric:
+```{r}
+as.numeric(as.character(testVecFac))
+```
+
+A final note: you may notice that `read.table()` will treat any strings as
+factors when loading. You can override this behavior by setting the argument
+`stringsAsFactors` to `FALSE` (refer to `?read.table` for more information.)
+whether you will want your strings represented as characters or factors is
+dependent on the application.  
+
+```{r}
+testTable <- read.table("mouseData.txt", header=TRUE)
+summary(testTable)
+
+# You can always cast a factor as a string, remember
+testTable$Strain <- as.character(testTable$Strain)
+summary(testTable)
+```
+
+Let's try to read the table as characters.
+```{r}
+testTable2 <- read.table("mouseData.txt", stringsAsFactors=FALSE, header=TRUE)
+
+# Note the numeric property of `Weight` is preserved.
+summary(testTable2)
+```
+
+
+## Some Basics about Data Frames
+First things first. Let's look at a dataset in R. 
+
+

@@ -3,5 +3,5 @@ instructors      :
  - laderast@ohsu.edu
 description      : Self-directed bootcamp for learning R-programming basics. 
 university       : Oregon Health & Science University
-difficulty_level : 2
-time_needed      : 5 hours
+difficulty_level : 1
+time_needed      : 10 hours
