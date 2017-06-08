@@ -1,49 +1,37 @@
 ---
-title       : Introduction to Subsetting
-description : Learning about the `vector` and `data.frame` data types
+title       : The magic of `ggplot2`
+description : How ggplot turns variables into graphs
 
---- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
-## Subsetting Using TRUE/FALSE:
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1
+## Thinking about aesthetics
+The first thing we are going to is think about how we represent variables in a plot. We need to figure out what 
 
-Subsetting using TRUE/FALSE vectors is one of the most important concepts to grasp in R. In this exercise, we'll investigate what happens when we use a Boolean (TRUE/FALSE) vector to subset another vector.
+Take a look at this graph. What variable is mapped to y, and what is mapped to x?
+
+```{r}
+library(gapminder)
+library(ggplot2)
+gap1992 <- gapminder %>% filter(year == 1992)
+
+#Space for your answer here.
+ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent)) +
+  geom_point()
+```
 
 *** =instructions
-- Given the vector `weights`, try subsetting using `boolVec`. Assign it to `weightSet`. Find the length of `weightSet` and show the new weightSet variable contents.
+- y = lifeExp, x = log(gdpPercap)
+- x = gdpPercap, y = log(lifeExp)
+- x= continent, y = year
 
-*** =pre_exercise_code
-```{r}
+*** =hint
+Look at the y-axis.
 
-```
-
-*** =sample_code
-```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-#assign to weightSet variable
-
-#show length of weightSet
-
-#show weightSet itself
-weightSet
-```
-
-*** =solution
-```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-weightSet <- weight[boolVec]
-#show length of weightSet
-length(weightSet)
-#show weightSet itself
-weightSet
-```
 *** =sct
 ```{r}
-test_output_contains("weight[boolVec]", incorrect_msg="Use boolVec as an index to weights.")
+msg1 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) as our x variable"
+msg2 = "You have things reversed, and you're taking the wrong log"
+msg3 = "Wrong variables. Go back and look"
+test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
