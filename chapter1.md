@@ -10,6 +10,7 @@ Take a look at this graph. What variable is mapped to y, and what is mapped to x
 
 ***=pre_exercise_code
 ```{r}
+library(dplyr)
 library(gapminder)
 library(ggplot2)
 gap1992 <- gapminder %>% filter(year == 1992)
