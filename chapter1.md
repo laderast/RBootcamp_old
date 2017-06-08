@@ -6,7 +6,7 @@ description : How ggplot turns variables into graphs
 ## Thinking about aesthetics
 The first thing we are going to is think about how we represent variables in a plot. We need to figure out what 
 
-Take a look at this graph. What variable is mapped to y, and what is mapped to x?
+Take a look at this graph. What variable is mapped to y, and what is mapped to x, and what is mapped to color?
 
 ***=pre_exercise_code
 ```{r}
@@ -15,15 +15,17 @@ library(gapminder)
 library(ggplot2)
 gap1992 <- gapminder %>% filter(year == 1992)
 
-#Space for your answer here.
+#show first columns of dataset
+head(gap1992)
+
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent)) +
-  geom_point()
+  geom_point() + ggtitle("Gapminder for 1992")
 ```
 
 *** =instructions
-- y = lifeExp, x = log(gdpPercap)
-- x = gdpPercap, y = log(lifeExp)
-- x= continent, y = year
+- y = lifeExp, x = log(gdpPercap), color = continent
+- x = gdpPercap, y = log(lifeExp), color = continent
+- x= continent, y = year, color = pop
 
 *** =hint
 Look at the y-axis.
@@ -31,65 +33,74 @@ Look at the y-axis.
 *** =sct
 ```{r}
 msg1 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) as our x variable"
-msg2 = "You have things reversed, and you're taking the wrong log"
+msg2 = "You have things reversed, and you're taking the log of the wrong variable"
 msg3 = "Wrong variables. Go back and look"
 test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
-## Generating Boolean Vectors using <, ==, >:
+## Mapping variables through an aesthetic function to produce geometric plots.
 
-Now that we know how to use boolean vectors, how can we generate them? We can generate them using the comparison operators: `<`, `>`, `==`, and `!=`.
+A statistical graphic consists of:
 
-*** =instructions
-- Given the vector `weights`, generate a boolean vector to pick those values that are less than 30. Assign this vector to `smallAnimals`.
-- Use `smallAnimals` to subset weights. Assign to `smallAnimalWeights`
-- Print out `smallAnimals`.
++ A `mapping` of variables in `data` to
++ `aes()`thetic attributes of
++ `geom_`etric objects.
 
-*** =pre_exercise_code
+In code, this is translated as:
+
+```{r}
+ggplot(data = gap1992, mapping = aes(x = log(gdpPercap), y=log(pop))) +
+  geom_point()
+```
+
+A ggplot always starts with the `ggplot()` function. In this function, we need two things:
+
+1) `data` - in this case, `gap1992`.
+2) `mapping` - An aesthetic mapping, using the `aes()` function. 
+
+In order to map our variables to aesthetic properties, we will need to use `aes()`.
+
+Finally, we can superimpose our geometry on the plot.
 ```{r}
 
 ```
 
+*** =instructions
+Map the appropriate variables to the x, y, and color aesthetics.
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(gapminder)
+library(ggplot2)
+gap1992 <- gapminder %>% filter(year == 1992)
+
+#show first columns of dataset
+head(gap1992)
+
+ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent)) +
+  geom_point() + ggtitle("Gapminder for 1992")
+```
+
 *** =sample_code
 ```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-
-#define smallAnimals as a boolean vector
-smallAnimals <- 
-
-#subset weight vector, assign to smallAnimalWeights
-smallAnimalWeights <- 
-
-#show length of smallAnimalWeights
-
-#show smallAnimalWeights itself
-
+ggplot(data = gap1992, mapping=aes(x = , y = , color = )) + 
+    geom_point()
 
 ```
 
 *** =solution
 ```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-
-#define smallAnimals as a boolean vector
-smallAnimals <- weight < 30
-
-#subset weight vector, assign to smallAnimalWeights
-smallAnimalWeights <- weight[smallAnimals]
-
-#show length of smallAnimalWeights
-length(smallAnimalWeights)
-
-#show smallAnimalWeights itself
-smallAnimalWeights
+ggplot(data=gap1992, mapping=aes(x = log(gdpPercap), 
+    y = lifeExp, color = continent)) + geom_point()
 ```
+
 *** =sct
 ```{r}
-test_output_contains("weight[smallAnimals]", incorrect_msg="Use smallAnimals to subset the weight vector.")
-test_output_contains("length(smallAnimalWeights)", incorrect_msg="show the length of smallAnimalWeights")
+test_output_contains("log(gdpPercap)", incorrect_msg="You need to log transform one of the variables.")
+test_output_contains("lifeExp", incorrect_msg="you need to map lifeExp to something")
+test_output_contains("continent", incorrect_msg="you need to map continent to something. What could that be?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:25bf06fe6e
