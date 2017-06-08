@@ -2,7 +2,7 @@
 title       : The magic of `ggplot2`
 description : How ggplot turns variables into graphs
 
---- type:MultipleChoiceExercise lang:r xp:100 skills:1
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
 The first thing we are going to is think about how we represent variables in a plot. We need to figure out what 
 
