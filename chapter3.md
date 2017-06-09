@@ -2,6 +2,14 @@
 title       : Introduction to Subsetting
 description : Learning about the `vector` and `data.frame` data types
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:e0b4f34c19
+## Introduction to dplyr
+
+We've been looking at datasets that fit the `ggplot2` paradigm nicely; however, most data we encounter is really messy (missing values), or is a completely different format. In this unit, we'll look at one of the most powerful tools in the `tidyverse`: `dplyr`, which lets you manipulate data frames.
+
+In particular, we're going to look at five fundamental verbs.
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
 ## Subsetting Using TRUE/FALSE:
 

@@ -169,6 +169,38 @@ test_function("geom_line", incorrect_msg="you need to change the geom")
 test_function("geom_point", incorrect_msg="you need to change the geom")
 ```
 
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:349a622cb7
+## Quick review about ggplot2
+
+What does the `+` in a `ggplot` statement do?
+
+```{r}
+ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
+  geom_line() + geom_point()
+```
+
+*** =instructions
+- adds one `data.frame` to another `data.frame` 
+- allows you to chain data and geoms together
+- allows you to add variables together in a `data.frame`
+
+*** =hint
+`+` combines things, but doesn't add them together
+
+*** =sct
+```{r}
+msg1 = "This is not the case. Go back and look at the ggplot code"
+msg2 = "Correct! This is how we can add data and layer geoms together"
+msg3 = "Look at the ggplot code and see if we are manipulating data or not"
+test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6e0ba88ae9
+## "gg" is for *G*rammar of *G*raphics
+
+When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](http://www.springer.com/us/book/9780387245447) in mind. In this book, Wilkinson et. al. decomposed 
+
+
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
 ## Final Challenge
 
