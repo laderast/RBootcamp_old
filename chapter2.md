@@ -21,7 +21,7 @@ Using the console, look at the `pets` dataset. For the `factor` and `ordered` va
 
 *** =pre_exercise_code
 ```{r}
-load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.rda")
+read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
 *** =sample_code
@@ -53,7 +53,7 @@ Try mapping another variable to `fill` (try both `weight` and `animal`). Are the
 
 *** =pre_exercise_code
 ```{r}
-load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.rda")
+read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
 *** =sample_code
