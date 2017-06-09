@@ -76,6 +76,7 @@ ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=
 ##show a barplot and count by name and fill by animal
 ##theme() allows us to angle the text labels so that we can read them
 ggplot(pets, aes(x=name, fill=  )) + geom_bar() + 
+    ## we make the x axis x angled for better legibility
     theme(axis.text.x = element_text(angle=45))
 ```
 
@@ -83,6 +84,7 @@ ggplot(pets, aes(x=name, fill=  )) + geom_bar() +
 ```{r}
 ##show a barplot and count by name and fill by animal
 ggplot(pets, aes(x=name, fill=animal)) + geom_bar() + 
+    ## we make the x axis x angled for better legibility
     theme(axis.text.x = element_text(angle=45))
 
 ```
@@ -117,6 +119,36 @@ ggplot(pets, aes(x=name)) + geom_bar() +
   facet_wrap(facets=~shotsCurrent, scale="free_x") +
   theme(axis.text.x = element_text(angle=45))
 ```
+
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
+## Super Quick Review
+
+Faceting a graph allows us to
+
+```{r}
+ggplot(pets, aes(x=name)) + geom_bar() + 
+  facet_wrap(facets=~shotsCurrent, scale="free_x") +
+  theme(axis.text.x = element_text(angle=45))
+```
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+
+ggplot(pets, aes(x=name)) + geom_bar() + 
+  facet_wrap(facets=~shotsCurrent, scale="free_x") +
+  theme(axis.text.x = element_text(angle=45))
+```
+
+*** =instructions
+- see ourselves in the graph
+- stratify our graph by another category
+- add another set of categories to the x-axis
+
+
+
+
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
 ## Stacked Bars
