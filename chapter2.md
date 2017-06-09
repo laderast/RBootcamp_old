@@ -73,3 +73,113 @@ ggplot2(pets, aes(x=name, fill=animal)) + geom_bar()
 
 ```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:3a6ee29fbc
+## Faceting a graph
+
+Say you have another `factor` variable and you want to stratify the plots based on that. 
+You can do that by supplying the name of that variable as a facet. Here, we facet our barplot by `shotsCurrent`.
+
+```{r}
+ggplot(data=pets, mapping=aes(x=name)) + geom_bar() + 
+  ## have to specify facets using notation
+  ## try out facets=~ageCategory!
+  facet_wrap(facets=~shotsCurrent) + 
+  ## we make the x axis x angled for better legibility
+  theme(axis.text.x = element_text(angle=45))
+```
+
+You might notice that there are blank spots for the categories in each facet. We can restrict the factors in each by using `scale="free_x"` argument in `facet_wrap()`.
+
+How many animals named "Morris" did not receive shots?
+
+What happens when you replace the `scale` argument with "free_y"?
+
+```{r}
+ggplot(pets, aes(x=name)) + geom_bar() + 
+  facet_wrap(facets=~shotsCurrent, scale="free_x") +
+  theme(axis.text.x = element_text(angle=45))
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
+## Stacked Bars
+
+Let's see how many of each animal got shots. We can do this by mapping `shotsCurrent` to `fill`.
+
+```{r}
+#we map color (the outline of the plot) to black to make it look prettier
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
+## Proportional Barchart
+
+We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions.
+
+What percent of dogs did not receive shots?
+
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position = "fill", color = "black")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3784f57df1
+## Dodge those bars!
+
+Instead of stacking, we can also dodge the bars (move the bars so they're beside each other).
+
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position="dodge", color="black")
+```
+
+--- type:NormalExercise lang:r xp:300 skills:1 key:2a9c3e204e
+## Your Task: Bar Charts
+
+Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the age category counts by animal type. Is the proportion of animals receiving shots the same across each age category?
+
+Hints: think about what to map to `x`, and what to map to `fill`.
+
+Intermediate Folks: facet this plot by `shotsCurrent`. 
+
+```{r}
+#Space for your answer here.
+
+```
+
+```{r}
+#Space for your answer here.
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a1efb868f1
+## Boxplots
+
+Boxplots allow us to assess distributions of a continuous variable conditioned on categorical variables.
+
+What does this tell us? 
+
+```{r}
+ggplot(pets, aes(x=shotsCurrent, y=weight)) + geom_boxplot()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:76115fda96
+## Violin Plots
+
+Violin plots are another useful way to visualize the data. They provide a more nuanced look at the data. They're a density plot that's mirrored around the y-axis.
+
+```{r}
+ggplot(pets, aes(x=ageCategory, y=weight, fill=ageCategory)) + geom_violin()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:374d642704
+## Your task: How heavy are our pets?
+
+Visualize `weight` by `animal` type as both a boxplot and a violin plot. What do you conclude? Which kind of animal weighs more on average than the other?
+
+Intermediate challenge: How would we plot both boxplots and a violin plot on the same graph?
+
+```{r}
+##Space for your answer here
+
+```
