@@ -17,7 +17,7 @@ We'll manipulate our barplots and add more information using factors.
 Here's the simple dataset we'll use to investigate how to work with factors in `ggplot`.
 
 *** =instructions
-Using the console, look at the `pets` dataset. For the `factor` and `ordered` variables in `pets`, show the categories for each using `levels()`.
+Using the console, look at the `pets` dataset. Show the categories for `shotsCurrent` and `ageCategory` using `levels()`. Remember, you'll need to use the `$` operator to access the variables in the `data.frame` (example: `pets$animal`).
 
 *** =pre_exercise_code
 ```{r}
@@ -26,23 +26,36 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =sample_code
 ```{r}
-##show pets data
-pets
+##show categories for shotsCurrent
+levels()
+
+##show categories for ageCategory
+levels()
+
 ```
 
 *** =solution
 ```{r}
-##show pets data
-pets
+##show categories for shotsCurrent
+levels(pets$shotsCurrent)
+
+##show categories for ageCategory
+levels(pets$ageCategory)
 ```
 *** =sct
 ```{r}
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8102f92bcd
 ## A Basic Barplot using `geom_bar()`
 
 Now that we understand our the categories in our data, we can begin to visualize them using barplots generated with the `geom_bar()` geom.
+
+```{r}
+##show a barplot and count by name and fill by animal
+ggplot2(pets, aes(x=name) + geom_bar()
+```
 
 The `geom_bar()` default is to count the number of values with each factor level. Note that you don't map to a y-aesthetic here, because the y values are the counts.
 
@@ -54,6 +67,7 @@ Map the `animal` variable to `fill`. Are the results what you expected?
 *** =pre_exercise_code
 ```{r}
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+ggplot2(pets, aes(x=name) + geom_bar()
 ```
 
 *** =sample_code

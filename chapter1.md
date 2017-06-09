@@ -214,7 +214,7 @@ When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](
 
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
-## Final Challenge: Recreate Gapminder
+## Final Challenge: Recreate this Gapminder Plot
 
 Your final challenge is to completely recreate this graph using the `gap1992` data.
 
