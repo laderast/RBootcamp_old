@@ -1,14 +1,25 @@
 ---
-title       : Introduction to Subsetting
-description : Learning about the `vector` and `data.frame` data types
+title       : ggplot2 and categorical data
+description : More on plotting using ggplot2
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
-## Subsetting Using TRUE/FALSE:
+## Review of factors
 
-Subsetting using TRUE/FALSE vectors is one of the most important concepts to grasp in R. In this exercise, we'll investigate what happens when we use a Boolean (TRUE/FALSE) vector to subset another vector.
+Factors are how R represents categorical data.
+
+There are two kinds of factors: 
+
++ `factor` - used for *nominal* data ("Ducks","Cats","Dogs")
++ `ordered`- used for *ordinal* data ("10-30","31-40","41-60")
+
+We'll manipulate our barplot and add more information using factors.
+
+Here's the simple dataset we'll use to investigate how to work with factors in `ggplot`.
+
+For the `factor` and `ordered` variables, find the categories for each using `levels()`.
 
 *** =instructions
-- Given the vector `weights`, try subsetting using `boolVec`. Assign it to `weightSet`. Find the length of `weightSet` and show the new weightSet variable contents.
+- Look at the `pets` dataset.
 
 *** =pre_exercise_code
 ```{r}
