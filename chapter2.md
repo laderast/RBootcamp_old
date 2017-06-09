@@ -152,9 +152,17 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 - add another set of categories to the x-axis
 
 
+*** =hint
+Look at the y-axis.
 
+*** =sct
+```{r}
+msg1 = "Not that kind of facet!"
+msg2 = "Yes! faceting is a way of stratifying"
+msg3 = "Not right."
 
-
+test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
 ## Stacked Bars
@@ -170,7 +178,7 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 --- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
 ## Proportional Barchart
 
-We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions.
+We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, we can show proportions rather than counts. 
 
 What percent of dogs did not receive shots?
 
@@ -192,30 +200,45 @@ ggplot(pets, aes(x=animal,fill=shotsCurrent)) +
 --- type:NormalExercise lang:r xp:300 skills:1 key:2a9c3e204e
 ## Your Task: Bar Charts
 
-Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the age category counts by animal type. Is the proportion of animals receiving shots the same across each age category?
+Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the `ageCategory` counts by `animal` type. Facet this plot by `shotsCurrent`. 
 
-Hints: think about what to map to `x`, and what to map to `fill`.
+Is the proportion of animals receiving shots the same across each age category?
 
-Intermediate Folks: facet this plot by `shotsCurrent`. 
-
+*** =pre_exercise_code
 ```{r}
-#Space for your answer here.
-
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
+*** =hint
+Think about what to map to `x`, and what to map to `fill`, and what `position` argument you need for `geom_bar()`. Finally, think about how to facet the variable.
+
+*** =sample_code
+```{r}
+ggplot(pets, aes(x=ageCategory)) +
+```
+
+*** =solution
 ```{r}
 #Space for your answer here.
-
+ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(postion="fill") +
+    facet_wrap(facets=~shotsCurrent, scale="free_x")
 ```
+
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a1efb868f1
 ## Boxplots
 
-Boxplots allow us to assess distributions of a continuous variable conditioned on categorical variables.
+Boxplots allow us to assess distributions of a continuous variable (here, `weight`) conditioned on categorical variables.
 
 What does this tell us? 
 
+*** =pre_exercise_code
 ```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+
 ggplot(pets, aes(x=shotsCurrent, y=weight)) + geom_boxplot()
 ```
 
@@ -239,3 +262,11 @@ Intermediate challenge: How would we plot both boxplots and a violin plot on the
 ##Space for your answer here
 
 ```
+
+--- type:NormalExercise lang:r xp:0 skills:1 key:df82fb7252
+## What you learned in this chapter
+
+- Three more types of plots: `geom_bar`, `geom_boxplot` and `geom_violin`
+- aesthetics that can be mapped to `geom
+- Options for `geom_bar`: position = "fill" (proportional) and position = "dodge" (dodged bars)
+- How to stratify your graphs using `facet_wrap()`
