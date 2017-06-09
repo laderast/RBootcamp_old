@@ -101,8 +101,7 @@ You can do that by supplying the name of that variable as a facet. Here, we face
 
 ```{r}
 ggplot(data=pets, mapping=aes(x=name)) + geom_bar() + 
-  ## have to specify facets using notation
-  ## try out facets=~ageCategory!
+  ## have to specify facets using "~" notation
   facet_wrap(facets=~shotsCurrent) + 
   ## we make the x axis x angled for better legibility
   theme(axis.text.x = element_text(angle=45))
@@ -111,7 +110,7 @@ ggplot(data=pets, mapping=aes(x=name)) + geom_bar() +
 You might notice that there are blank spots for the categories in each facet. We can restrict the factors in each by using `scale="free_x"` argument in `facet_wrap()`.
 
 *** =instructions
-How many animals named "Morris" did not receive shots? Map 
+How many animals named "Morris" did not receive shots? Add `free_x` to the scale argument.
 
 *** =sample_code
 ```{r}
