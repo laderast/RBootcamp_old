@@ -2,8 +2,54 @@
 title       : The Magic of `ggplot2`
 description : How ggplot turns variables into statistical graphics
 
+--- type:NormalExercise lang:r xp:100 skills:1
+## Quick Data Frame Review
+
+Remember that a `data.frame` is basically a table like format which
+
+- Columns can each have multiple types (`numeric`, `character`, `boolean`, `factor`)
+- Columns are called "variables"
+- Rows correspond to a single observation (ideally)
+- Can be subset or filtered based on criteria
+
+Individual variables within a `data.frame` can be accessed with the `$` operator. We won't use this very often, as the `tidyverse` lets us access the names directly, as you'll see.
+
+*** =instructions
+Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the `length()` of the `pop` column is equal to the `lifeExp` column.
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(gapminder)
+library(ggplot2)
+gap1992 <- gapminder %>% filter(year == 1992)
+```
+
+*** =sample_code
+```{r}
+head(gap1992)
+
+##check if pop column is same length as lifeExp column
+length() == length()
+```
+
+*** =solution
+```{r}
+head(gap1992)
+
+##check if pop column is same length as lifeExp column
+length(gap1992$pop) == length(gap1992$lifeExp)
+```
+
+*** =sct
+```{r}
+
+```
+
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
+Now that we have basic knowledge of data frames, we can get to the fun part: making graphs.
+
 The first thing we are going to is think about how we represent variables in a plot. 
 
 We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
