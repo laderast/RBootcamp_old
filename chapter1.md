@@ -30,7 +30,10 @@ gap1992 <- gapminder %>% filter(year == 1992)
 head(gap1992)
 
 ##check if pop column is same length as lifeExp column
-length() == length()
+##show the length of the pop column
+length() 
+##show the length of the lifeExp column
+length()
 ```
 
 *** =solution
@@ -38,17 +41,21 @@ length() == length()
 head(gap1992)
 
 ##check if pop column is same length as lifeExp column
-length(gap1992$pop) == length(gap1992$lifeExp)
+##show the length of the pop column
+length(gap1992$pop) 
+##show the length of the lifeExp column
+length(gap1992$lifeExp)
 ```
 
 *** =sct
 ```{r}
-
+test_function("length", args="x", index=1, incorrect_msg="use gap1992$pop")
+test_function("length", args="x", index=2, incorrect_msg-"use gap1992$lifeExp")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-Now that we have basic knowledge of data frames, we can get to the fun part: making graphs.
+Now that we remember stuff about data frames, we can get to the fun part: making graphs.
 
 The first thing we are going to is think about how we represent variables in a plot. 
 
@@ -110,7 +117,7 @@ In order to map our variables to aesthetic properties, we will need to use `aes(
 Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
 *** =instructions
-Based on the graph, map the appropriate variables to the x, y, and color aesthetics.
+Based on the graph, map the appropriate variables to the x, y, and color aesthetics. Run your plot.
 
 *** =pre_exercise_code
 ```{r}
