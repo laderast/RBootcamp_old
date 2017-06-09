@@ -305,7 +305,8 @@ Visualize `weight` by `animal` type as both a boxplot and a violin plot. What do
 --- type:NormalExercise lang:r xp:0 skills:1 key:df82fb7252
 ## What you learned in this chapter
 
-- Three more types of plots: `geom_bar`, `geom_boxplot` and `geom_violin`
-- aesthetics that can be mapped to `geom
-- Options for `geom_bar`: position = "fill" (proportional) and position = "dodge" (dodged bars)
+- Three more types of plots: `geom_bar()`, `geom_boxplot()` and `geom_violin()`
+- Aesthetics that can be mapped to these geoms (fill, x, y)
+- Options for `geom_bar`: position = "fill" (proportional bars) and position = "dodge" (dodged bars)
 - How to stratify your graphs using `facet_wrap()`
+- More about how to put together a ggplot
