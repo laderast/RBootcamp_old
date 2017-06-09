@@ -288,15 +288,14 @@ Think about what variables map to what aesthetics.
 Violin plots are another useful way to visualize the data. They provide a more nuanced look at the data. They're a density plot that's mirrored around the y-axis.
 
 ```{r}
-ggplot(pets, aes(x=ageCategory, y=weight, fill=ageCategory)) + geom_violin()
+ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:374d642704
 ## Your task: How heavy are our pets?
 
-Visualize `weight` by `animal` type as both a boxplot and a violin plot. What do you conclude? Which kind of animal weighs more on average than the other?
-
-Intermediate challenge: How would we plot both boxplots and a violin plot on the same graph?
+***=instructions
+Visualize `weight` by `animal` type as both a boxplot and a violin plot. What do you conclude? Which kind of animal weighs more on average than the other? Plot both boxplots and a violin plot on the same graph.
 
 ```{r}
 ##Space for your answer here
