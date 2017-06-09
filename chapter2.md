@@ -227,12 +227,17 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(postion="fill") +
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:a1efb868f1
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:a1efb868f1
 ## Boxplots
 
-Boxplots allow us to assess distributions of a continuous variable (here, `weight`) conditioned on categorical variables.
+Boxplots allow us to assess distributions of a continuous variable (`weight`) conditioned on categorical variables (`shotsCurrent`).
 
-What does this tell us? 
+What does this tell us? Is there a difference in weight between those animals who recieved shots or not?
+
+*** =instructions
+- there is a small difference in means, but the difference doesn't look significant
+- there is no difference in means
+- there is a large difference in means and the difference is probably statistically significant
 
 *** =pre_exercise_code
 ```{r}
@@ -241,6 +246,41 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 ggplot(pets, aes(x=shotsCurrent, y=weight)) + geom_boxplot()
 ```
+
+*** =sct
+```{r}
+msg1 = "Yes, this appears to be the case. The interquartile ranges are overlapping, so it's probably not significant"
+msg2 = "This is a judgement call, but there is a small difference in means between the groups"
+msg3 = "Probably not true. The interquartile ranges are overlapping, so it's probably not significant"
+
+test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:46aedf28cb
+## Try out geom_boxplot yourself
+
+*** =instructions
+Plot a boxplot of `weight` conditioned on `animal`. Is there a difference in weights between animal types?
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
+
+*** =hint
+Think about what variables map to what aesthetics. 
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+
+
+*** =sct
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:76115fda96
 ## Violin Plots
