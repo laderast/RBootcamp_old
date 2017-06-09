@@ -23,19 +23,19 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 ```
 
 *** =instructions
-- y = lifeExp, x = log(gdpPercap), color = continent
 - x = gdpPercap, y = log(lifeExp), color = continent
-- x= continent, y = year, color = pop
+- x = continent, y = year, color = pop
+- y = lifeExp, x = log(gdpPercap), color = continent
 
 *** =hint
 Look at the y-axis.
 
 *** =sct
 ```{r}
-msg1 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) as our x variable"
-msg2 = "You have things reversed, and you're taking the log of the wrong variable"
-msg3 = "Wrong variables. Go back and look"
-test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
+msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) as our x variable"
+msg1 = "You have things reversed, and you're taking the log of the wrong variable"
+msg2 = "Wrong variables. Go back and look"
+test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
