@@ -110,7 +110,7 @@ test_output_contains("continent", incorrect_msg="you need to map continent to so
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
 
-The great thing about `ggplot2` is that it's easy to swap representations.
+The great thing about `ggplot2` is that it's easy to swap representations. We can 
 
 *** =instructions
 Change the `geom_point()` in the following graph to `geom_line()`. What happened?

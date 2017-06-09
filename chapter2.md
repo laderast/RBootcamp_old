@@ -12,45 +12,29 @@ There are two kinds of factors:
 + `factor` - used for *nominal* data ("Ducks","Cats","Dogs")
 + `ordered`- used for *ordinal* data ("10-30","31-40","41-60")
 
-We'll manipulate our barplot and add more information using factors.
+We'll manipulate our barplots and add more information using factors.
 
 Here's the simple dataset we'll use to investigate how to work with factors in `ggplot`.
 
-For the `factor` and `ordered` variables, find the categories for each using `levels()`.
-
 *** =instructions
-- Look at the `pets` dataset.
+For the `factor` and `ordered` variables in `pets`, show the categories for each using `levels()`.
 
 *** =pre_exercise_code
 ```{r}
-
+load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.rda")
+pets
 ```
 
 *** =sample_code
 ```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-#assign to weightSet variable
-
-#show length of weightSet
-
-#show weightSet itself
-weightSet
+##show pets data
+pets
 ```
 
 *** =solution
 ```{r}
-#make a vector of weights
-weight <- c(10, 20, 50, 30)
-boolVec <- c(TRUE, TRUE, FALSE, FALSE)
-#subset weight with boolVec here
-weightSet <- weight[boolVec]
-#show length of weightSet
-length(weightSet)
-#show weightSet itself
-weightSet
+##show pets data
+pets
 ```
 *** =sct
 ```{r}
