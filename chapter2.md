@@ -54,7 +54,7 @@ Now that we understand our the categories in our data, we can begin to visualize
 
 ```{r}
 ##show a barplot and count by name and fill by animal
-ggplot2(pets, aes(x=name) + geom_bar()
+ggplot(pets, aes(x=name)) + geom_bar()
 ```
 
 The `geom_bar()` default is to count the number of values with each factor level. Note that you don't map to a y-aesthetic here, because the y values are the counts.
@@ -66,20 +66,24 @@ Map the `animal` variable to `fill`. Are the results what you expected?
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
-ggplot2(pets, aes(x=name) + geom_bar()
+ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=45))
 ```
 
 *** =sample_code
 ```{r}
 ##show a barplot and count by name and fill by animal
-ggplot2(pets, aes(x=name, fill=  )) + geom_bar()
+##theme() allows us to angle the text labels so that we can read them
+ggplot(pets, aes(x=name, fill=  )) + geom_bar() + 
+    theme(axis.text.x = element_text(angle=45))
 ```
 
 *** =solution
 ```{r}
 ##show a barplot and count by name and fill by animal
-ggplot2(pets, aes(x=name, fill=animal)) + geom_bar()
+ggplot(pets, aes(x=name, fill=animal)) + geom_bar() + 
+    theme(axis.text.x = element_text(angle=45))
 
 ```
 *** =sct
