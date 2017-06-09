@@ -1,5 +1,5 @@
 ---
-title       : The magic of `ggplot2`
+title       : The Magic of `ggplot2`
 description : How ggplot turns variables into statistical graphics
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
@@ -214,7 +214,7 @@ When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](
 
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
-## Final Challenge
+## Final Challenge: Recreate Gapminder
 
 Your final challenge is to completely recreate this graph using the `gap1992` data.
 
@@ -231,14 +231,15 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 
 *** =instructions
 - If you need to remember variable names, you can always call `head(gap1992)` in the console.
+- Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console.
 
 *** =sample_code
 ```{r}
 ggplot(gap1992, aes(x = , 
     y = , 
-    color =,
+    color = ,
     size =
-    )) +
+    )) + ggtitle("Gapminder for 1992") +
 ```
 
 *** =solution
@@ -247,7 +248,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     y = lifeExp, 
     color = continent,
     size = pop
-    )) +
-
+    )) + ggtitle("Gapminder for 1992") + 
+    geom_point()
 ```
 
