@@ -1,14 +1,36 @@
 ---
-title       : Introduction to Subsetting
-description : Learning about the `vector` and `data.frame` data types
+title       : Introduction to dplyr
+description : Learn how to manipulate data into a ggplot2 friendly format
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e0b4f34c19
 ## Introduction to dplyr
 
-We've been looking at datasets that fit the `ggplot2` paradigm nicely; however, most data we encounter is really messy (missing values), or is a completely different format. In this unit, we'll look at one of the most powerful tools in the `tidyverse`: `dplyr`, which lets you manipulate data frames.
+We've been looking at datasets that fit the `ggplot2` paradigm nicely; however, most data we encounter is really messy (missing values), or is a completely different format. In this chapter, we'll look at one of the most powerful tools in the `tidyverse`: `dplyr`, which lets you manipulate data frames.
 
-In particular, we're going to look at five fundamental verbs.
+In particular, we're going to look at six fundamental verbs/actions in dplyr:
 
+- `filter()`
+- `mutate()`
+- `group_by()`/`summarize()`
+- `arrange()`
+- `select()`
+
+Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time.
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
+## dplyr::filter()
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
+## The pipe character: `%>%`
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4df8d2ca44
+## dplyr::mutate()
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:68bc51fbf1
+## dplyr::group_by()/dplyr::summarize()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
 ## Subsetting Using TRUE/FALSE:
@@ -195,13 +217,13 @@ Values in a vector can also be retrieved by name:
 weights["M15"]
 ```
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:ec51833009
-**QUESTION 1-1**: How would we get the last 5 weights?
+## **QUESTION 1-1**: How would we get the last 5 weights?
 ```{r}
 # Space for your answer here
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:7aaf63aa0b
-**QUESTION 1-2**: How would we get the first 5 weights in reverse order?
+## **QUESTION 1-2**: How would we get the first 5 weights in reverse order?
 ```{r}
 # Space for your answer here
 ```
@@ -236,12 +258,12 @@ of squares.
 resids <- weights - meanWeight
 ```
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1,3 key:fc3efc69a6
-**QUESTION 1-3**: What happened here? Why can we subtract a scalar from a vector?
+## **QUESTION 1-3**: What happened here? Why can we subtract a scalar from a vector?
 ```{r}
 # Space for your answer here
 ```
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:20d81ff8ed
-**QUESTION 1-4**: What happens when you try to subtract two vectors of unequal
+## **QUESTION 1-4**: What happens when you try to subtract two vectors of unequal
 lengths? I.e. `weights[1:5] - weights[1:2]`
 ```{r}
 # Space for your answer here
@@ -275,14 +297,14 @@ vec2
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:a37cc5436e
-**QUESTION 1-5**: What happens when you try to mix characters and numbers? What
+## **QUESTION 1-5**: What happens when you try to mix characters and numbers? What
 does this tell you about vectors? I.e. `c("This is character data", 1:5)`
 ```{r}
 # Space for your answer here
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:c00b5cb852
-**QUESTION 1-6**: How might you combine `c()` and a series of names to pull out
+## **QUESTION 1-6**: How might you combine `c()` and a series of names to pull out
 only the "M1", "M5", and "M10" weights? This is another kind of subsetting
 operation, and we'll cover it more in detail later.
 ```{r}
