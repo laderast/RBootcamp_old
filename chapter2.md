@@ -54,7 +54,6 @@ Map the `animal` variable to `fill`. Are the results what you expected?
 *** =pre_exercise_code
 ```{r}
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
-ggplot2(pets, aes(x=name)) + geom_bar()
 ```
 
 *** =sample_code

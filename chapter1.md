@@ -4,7 +4,7 @@ description : How ggplot turns variables into statistical graphics
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-The first thing we are going to is think about how we represent variables in a plot. We need to figure out what 
+The first thing we are going to is think about how we represent variables in a plot. We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
 
 Take a look at this graph. What variable is mapped to y, and what is mapped to x, and what is mapped to color?
 
@@ -14,9 +14,6 @@ library(dplyr)
 library(gapminder)
 library(ggplot2)
 gap1992 <- gapminder %>% filter(year == 1992)
-
-#show first columns of dataset
-head(gap1992)
 
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent)) +
   geom_point() + ggtitle("Gapminder for 1992")
