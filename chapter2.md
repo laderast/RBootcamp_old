@@ -110,10 +110,17 @@ ggplot(data=pets, mapping=aes(x=name)) + geom_bar() +
 
 You might notice that there are blank spots for the categories in each facet. We can restrict the factors in each by using `scale="free_x"` argument in `facet_wrap()`.
 
-How many animals named "Morris" did not receive shots?
+*** =instructions
+How many animals named "Morris" did not receive shots? Map 
 
-What happens when you replace the `scale` argument with "free_y"?
+*** =sample_code
+```{r}
+ggplot(pets, aes(x=name)) + geom_bar() + 
+  facet_wrap(facets=~shotsCurrent, scale=    ) +
+  theme(axis.text.x = element_text(angle=45))
+```
 
+*** =solution
 ```{r}
 ggplot(pets, aes(x=name)) + geom_bar() + 
   facet_wrap(facets=~shotsCurrent, scale="free_x") +

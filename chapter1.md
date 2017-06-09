@@ -4,7 +4,9 @@ description : How ggplot turns variables into statistical graphics
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-The first thing we are going to is think about how we represent variables in a plot. We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
+The first thing we are going to is think about how we represent variables in a plot. 
+
+We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
 
 Take a look at this graph. What variable is mapped to y, and what is mapped to x, and what is mapped to color?
 
@@ -52,7 +54,7 @@ ggplot(data = gap1992, mapping = aes(x = log(gdpPercap), y=log(pop))) +
   geom_point()
 ```
 
-A ggplot always starts with the `ggplot()` function. In this function, we need two things:
+Let's take the code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
 
 1. `data` - in this case, `gap1992`.
 2. `mapping` - An aesthetic mapping, using the `aes()` function. 
