@@ -2,7 +2,7 @@
 title       : The Magic of `ggplot2`
 description : How ggplot turns variables into statistical graphics
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
 ## Quick Data Frame Review
 
 Remember that a `data.frame` is basically a table like format which
