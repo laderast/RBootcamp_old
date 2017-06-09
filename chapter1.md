@@ -107,7 +107,7 @@ test_output_contains("lifeExp", incorrect_msg="you need to map lifeExp to someth
 test_output_contains("continent", incorrect_msg="you need to map continent to something. What could that be?")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:dfbb0aff65
 ## Points versus lines
 
 The great thing about `ggplot2` is that it's easy to swap representations.
@@ -140,7 +140,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 test_output_contains("geom_line()", incorrect_msg="you need to change the geom")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1
+--- type:NormalExercise lang:r xp:100 skills:1 key:bcb9632ce4
 ## Geoms are layers on a ggplot
 
 *** =instructions
@@ -172,7 +172,7 @@ test_output_contains("geom_line()", incorrect_msg="you need to change the geom")
 test_output_contains("geom_point()", incorrect_msg="you need to change the geom")
 ```
 
---- type:NormalExercise lang:r xp:300 skills:1
+--- type:NormalExercise lang:r xp:300 skills:1 key:5cc17f52d1
 ## Final Challenge
 
 Your final challenge is to completely recreate this graph using the `gap1992` data.
