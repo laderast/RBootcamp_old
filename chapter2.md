@@ -21,7 +21,7 @@ Using the console, look at the `pets` dataset. For the `factor` and `ordered` va
 
 *** =pre_exercise_code
 ```{r}
-read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
 *** =sample_code
@@ -49,25 +49,28 @@ The `geom_bar()` default is to count the number of values with each factor level
 Given this dataset, we might want to ask how many pets have the same name. What is the most popular name?
 
 *** =instructions
-Try mapping another variable to `fill` (try both `weight` and `animal`). Are the results what you expected?
+Map the `animal` variable to `fill`. Are the results what you expected?
 
 *** =pre_exercise_code
 ```{r}
-read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+ggplot2(pets, aes(x=name)) + geom_bar()
 ```
 
 *** =sample_code
 ```{r}
-##show pets data
-pets
+##show a barplot and count by name and fill by animal
+ggplot2(pets, aes(x=name, fill=  )) + geom_bar()
 ```
 
 *** =solution
 ```{r}
-##show pets data
-pets
+##show a barplot and count by name and fill by animal
+ggplot2(pets, aes(x=name, fill=animal)) + geom_bar()
+
 ```
 *** =sct
 ```{r}
+
 ```
 
