@@ -260,7 +260,7 @@ test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ## Try out geom_boxplot yourself
 
 *** =instructions
-Plot a boxplot of `weight` conditioned on `animal`. Is there a difference in weights between animal types?
+Plot a boxplot of `weight` conditioned on `animal`. Is there a difference in weight between animal types?
 
 *** =pre_exercise_code
 ```{r}
@@ -273,25 +273,41 @@ Think about what variables map to what aesthetics.
 
 *** =sample_code
 ```{r}
-
+ggplot(pets, aes(x= , y=) + geom_boxplot()
 ```
 
 *** =solution
-
+```{r}
+ggplot(pets, aes(x=animal, y=weight) + geom_boxplot()
+```
 
 *** =sct
+```{r}
 
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:76115fda96
 ## Violin Plots
 
 Violin plots are another useful way to visualize the data. They provide a more nuanced look at the data. They're a density plot that's mirrored around the y-axis.
 
-*** =instructions
-Add `geom_violin()` to the ggplot statement. What  
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
 
+*** =instructions
+Add `geom_violin()` to the ggplot statement. How does the violin plot compare to the boxplot? Does it show less or more information?
+
+*** =sample_code
 ```{r}
 ggplot(pets, aes(x=animal, y=weight, fill=animal)) + 
+```
+
+*** =solution
+```{r}
+ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:374d642704
