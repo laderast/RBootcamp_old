@@ -278,6 +278,7 @@ vec2
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:a37cc5436e
+## Exercise 10
 **QUESTION 1-5**: What happens when you try to mix characters and numbers? What
 does this tell you about vectors? I.e. `c("This is character data", 1:5)`
 ```{r}
@@ -285,6 +286,7 @@ does this tell you about vectors? I.e. `c("This is character data", 1:5)`
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1,3 key:c00b5cb852
+## Exercise 11
 **QUESTION 1-6**: How might you combine `c()` and a series of names to pull out
 only the "M1", "M5", and "M10" weights? This is another kind of subsetting
 operation, and we'll cover it more in detail later.
