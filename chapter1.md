@@ -307,3 +307,11 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     geom_point()
 ```
 
+--- type:NormalExercise lang:r xp:0 skills:1
+## What you learned in this chapter
+
+- Basic `ggplot2` syntax.
+- Plotting x-y data using `ggplot2`.
+- Mapping variables in a dataset to visual properties using `aes()`
+- `geom`s correspond to layers in a graph.
+- That `ggplot2` can make some pretty cool graphs

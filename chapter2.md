@@ -231,8 +231,6 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(postion="fill") +
     facet_wrap(facets=~shotsCurrent, scale="free_x")
 ```
 
-
-
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:a1efb868f1
 ## Boxplots
 
@@ -255,9 +253,9 @@ ggplot(pets, aes(x=shotsCurrent, y=weight)) + geom_boxplot()
 
 *** =sct
 ```{r}
-msg1 = "Yes, this appears to be the case. The interquartile ranges are overlapping, so it's probably not significant"
+msg1 = "Yes, this appears to be the case. The interquartile ranges are overlapping, so it's probably not significant."
 msg2 = "This is a judgement call, but there is a small difference in means between the groups"
-msg3 = "Probably not true. The interquartile ranges are overlapping, so it's probably not significant"
+msg3 = "Probably not true. The interquartile ranges are overlapping, so it's probably not a significant difference in means."
 
 test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ```
