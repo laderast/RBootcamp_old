@@ -50,7 +50,7 @@ levels(pets$ageCategory)
 --- type:NormalExercise lang:r xp:100 skills:1 key:8102f92bcd
 ## A Basic Barplot using `geom_bar()`
 
-Now that we understand our the categories in our data, we can begin to visualize them using barplots generated with the `geom_bar()` geom.
+Now that we understand what categories exist in our dataset, we can begin to visualize them using barplots generated with the `geom_bar()` geom.
 
 ```{r}
 ##show a barplot and count by name and fill by animal
@@ -73,10 +73,14 @@ ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=
 
 *** =sample_code
 ```{r}
-##show a barplot and count by name and fill by animal
+##Show a barplot and count by name and fill by animal
 ##theme() allows us to angle the text labels so that we can read them
-ggplot(pets, aes(x=name, fill=  )) + geom_bar() + 
-    ## we make the x axis x angled for better legibility
+ggplot(pets, aes(
+    x=name, 
+    fill=  
+  )) + geom_bar() + 
+    ## We make the x axis text x angled 
+    ## for better legibility
     theme(axis.text.x = element_text(angle=45))
 ```
 
@@ -91,6 +95,40 @@ ggplot(pets, aes(x=name, fill=animal)) + geom_bar() +
 *** =sct
 ```{r}
 
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
+## Stacked Bars
+
+Let's see how many of each animal got shots. We can do this by mapping `shotsCurrent` to `fill`.
+
+```{r}
+#we map color (the outline of the plot) to black to make it look prettier
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
+## Proportional Barchart
+
+We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, we can show proportions rather than counts. 
+
+What percent of dogs did not receive shots?
+
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position = "fill", color = "black")
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3784f57df1
+## Dodge those bars!
+
+Instead of stacking, we can also dodge the bars (move the bars so they're beside each other).
+
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position="dodge", color="black")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3a6ee29fbc
@@ -129,7 +167,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
 ## Super Quick Review
 
-Faceting a graph allows us to
+Faceting a graph allows us to:
 
 ```{r}
 ggplot(pets, aes(x=name)) + geom_bar() + 
@@ -158,44 +196,12 @@ Look at the y-axis.
 *** =sct
 ```{r}
 msg1 = "Not that kind of facet!"
-msg2 = "Yes! faceting is a way of stratifying"
+msg2 = "Yes! Faceting is a way of visualizing information by stratifying on an additional variable."
 msg3 = "Not right."
 
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
-## Stacked Bars
-
-Let's see how many of each animal got shots. We can do this by mapping `shotsCurrent` to `fill`.
-
-```{r}
-#we map color (the outline of the plot) to black to make it look prettier
-ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
-  geom_bar(color="black")
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
-## Proportional Barchart
-
-We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, we can show proportions rather than counts. 
-
-What percent of dogs did not receive shots?
-
-```{r}
-ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
-  geom_bar(position = "fill", color = "black")
-```
-
---- type:NormalExercise lang:r xp:100 skills:1 key:3784f57df1
-## Dodge those bars!
-
-Instead of stacking, we can also dodge the bars (move the bars so they're beside each other).
-
-```{r}
-ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
-  geom_bar(position="dodge", color="black")
-```
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:2a9c3e204e
 ## Your Task: Bar Charts

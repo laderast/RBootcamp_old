@@ -59,9 +59,7 @@ Now that we've reviewed data frames, we can get to the fun part: making graphs.
 
 The first thing we are going to is think about how we represent variables in a plot. 
 
-We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
-
-Take a look at this graph. What variable is mapped to `y`, and what is mapped to `x`, and what is mapped to color?
+How do we visually represent a variable in our dataset? Take a look at this graph. What variable is mapped to `y`, and what is mapped to `x`, and what is mapped to `color`?
 
 ***=pre_exercise_code
 ```{r}
@@ -107,12 +105,12 @@ ggplot(data = gap1992, mapping = aes(x = log(gdpPercap), y=log(pop))) +
   geom_point()
 ```
 
-Let's take the code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
+Let's take the above code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
 
 1. `data` - in this case, `gap1992`.
 2. `mapping` - An aesthetic mapping, using the `aes()` function. 
 
-In order to map our variables to aesthetic properties, we will need to use `aes()`. Here we map `x` to `log(gdpPercap)` and `y` to `log(pop)`.
+In order to map our variables to aesthetic properties, we will need to use `aes()`, which is our `aes()`thetic mapping function. In our example, we map `x` to `log(gdpPercap)` and `y` to `log(pop)`.
 
 Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
@@ -136,7 +134,8 @@ ggplot(data = gap1992,
     mapping = aes(
       x = , 
       y = , 
-      color = )) + 
+      color = 
+      )) + 
 geom_point()
 ```
 *** =hint
@@ -149,7 +148,8 @@ ggplot(data=gap1992,
     mapping = aes(
       x = log(gdpPercap), 
       y = lifeExp, 
-      color = continent)) + 
+      color = continent
+      )) + 
 geom_point()
 ```
 
@@ -203,7 +203,7 @@ test_function("geom_line", incorrect_msg="you need to change the geom")
 
 We are not restricted to a single geom on a graph! You can think of geoms
 as layers on a graph. Thus, we can use the `+` symbol to add geoms to our
-base `ggplot()` statement.
+base `ggplot()` statement. 
 
 *** =instructions
 Add both `geom_line()` and `geom_point()` to the following ggplot. 
@@ -285,7 +285,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 ```
 
 *** =instructions
-- If you need to remember variable names, you can always call `head(gap1992)` in the console.
+- If you need to remember variable names, you can always call `head(gap1992)` or `colnames(gap1992)` in the console.
 - Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console.
 
 *** =sample_code
