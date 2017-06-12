@@ -5,7 +5,7 @@ description : Learn how ggplot turns variables into statistical graphics
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
 ## Quick Data Frame Review
 
-Remember that a `data.frame` is basically a table like format which
+Remember that a `data.frame` is basically a table-like format which has the following properties: 
 
 - Columns can each have multiple types (`numeric`, `character`, `boolean`, `factor`)
 - Columns are called "variables"
@@ -55,13 +55,13 @@ test_function("length", args="x", index=2, incorrect_msg-"use gap1992$lifeExp")
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-Now that we remember stuff about data frames, we can get to the fun part: making graphs.
+Now that we've reviewed data frames, we can get to the fun part: making graphs.
 
 The first thing we are going to is think about how we represent variables in a plot. 
 
 We need to figure out how to visually represent a variable in our dataset to some sort of aesthetic property.
 
-Take a look at this graph. What variable is mapped to y, and what is mapped to x, and what is mapped to color?
+Take a look at this graph. What variable is mapped to `y`, and what is mapped to `x`, and what is mapped to color?
 
 ***=pre_exercise_code
 ```{r}
