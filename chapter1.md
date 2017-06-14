@@ -311,7 +311,8 @@ ggplot(gap1992, aes(x = log(gdpPercap),
 ## What you learned in this chapter
 
 - Basic `ggplot2` syntax.
-- Plotting x-y data using `ggplot2`.
+- Plotting x-y data using `ggplot2` using both `geom_point()` and `geom_bar()`.
 - Mapping variables in a dataset to visual properties using `aes()`
 - `geom`s correspond to layers in a graph.
 - That `ggplot2` can make some pretty cool graphs
+- That you can do this!
