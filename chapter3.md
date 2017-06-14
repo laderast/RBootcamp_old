@@ -7,7 +7,7 @@ description : Learn how to manipulate data into a ggplot2 friendly format
 
 We've been looking at datasets that fit the `ggplot2` paradigm nicely; however, most data we encounter is really messy (missing values), or is a completely different format. In this chapter, we'll look at one of the most powerful tools in the `tidyverse`: `dplyr`, which lets you manipulate data frames.
 
-In particular, we're going to look at six fundamental verbs/actions in dplyr:
+In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 
 - `filter()`
 - `mutate()`
@@ -38,7 +38,7 @@ Run a `summary` on the `biopics` dataset. It's already loaded up for you. How ma
 ```{r}
 ##run summary here
 
-##length of country category here
+##show length of country categories here
 
 ```
 
@@ -75,7 +75,7 @@ Three things to note here:
 3. Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
-
+Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left.
 
 *** =pre_exercise_code
 ```{r}
@@ -85,6 +85,28 @@ library(dplyr)
 data(biopics)
 ```
 
+*** =sample_code
+```{r}
+#add your filter statement here
+crimeMovies <- 
+
+#show number of crime movies
+```
+
+*** =solution
+```{r}
+#add your filter statement here
+crimeMovies <- filter(biopics, type_of_subject == "Criminal")
+
+#show number of crime movies
+nrow(crimeMovies)
+```
+
+*** =sct
+```{r}
+
+```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:119cf149a3
 ## Comparison operators and chaining comparisons
 
@@ -92,19 +114,49 @@ Let's look at the following `filter()` statement:
 
 ```{r}
 filter(biopics, year_release > 1980 & 
-    type_of_subject == "criminal")
+    type_of_subject == "Criminal")
 ```
 
 A couple things to note:
 1. We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
-2. We also chained on another expression, `type_of_subject == "criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
+2. We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
 3. Chaining expressions is where `filter()` becomes super powerful.
+
+*** =instructions
+Add another comparison to the chain using `&`. Use `person_of_color == FALSE`. Show how many rows are left from your filter statement.
+
+*** =sample_code
+```{r}
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:1c76b8c8f2
+## Quick Quiz
+
+Which statement should be the larger subset?
+
+*** =instructions
+- `filter(biopics, year_release > 1980 & type_of_subject == "criminal")`
+- `filter(biopics, year_release > 1980 | type_of_subject == "criminal")`
+
+*** =sct
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
 
-We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. 
+We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. `%>%` is called a `pipe` operator. 
+What it does is that it takes the output of one statement and makes it the input of the next statement. When 
+I'm describing it, I think of it as a "Then". For example, I read the following expression
 
+```{r}
+biopics %>% filter(race_known == "Known") %>%
+    filter(subject_sex == "Female")
+```
+As: 
+I took the `biopics` data, THEN I filtered it down with the `race_known == "Known"` criteria and 
+THEN I filtered it down even further with `subject_sex == "Female"`.
+
+`%>%` allows you to chain multiple actions in the `tidyverse`. 
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4df8d2ca44
