@@ -99,9 +99,12 @@ biopicsUK
 ```
 
 Three things to note here: 
-1. first argument to filter is always the dataset. We'll see another variation in a second.
-2. For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
-3. Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
+
+    1. The first argument to filter is always the dataset. We'll see another variation in a second.
+    
+    2. For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
+
+    3. Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
 Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left.
@@ -147,9 +150,20 @@ filter(biopics, year_release > 1980 &
 ```
 
 Three things to note:
-1. We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
-2. We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
-3. Chaining expressions is where `filter()` becomes super powerful.
+
+    1. We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
+
+    2. We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
+
+    3. Chaining expressions is where `filter()` becomes super powerful.
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+```
 
 *** =instructions
 Add another comparison to the chain using `&`. Use `person_of_color == FALSE`. Show how many rows are left from your filter statement.
@@ -199,13 +213,52 @@ Think about the difference between `|` (or) and `&` (and)
 
 *** =sct
 ```{r}
-
+test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset (because you're applying both criteria)",
+"Correct! Because you accept either criteria, this is the larger subset")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
 `mutate()` is one of the most useful `dplyr` commands. You can use it to transform data and 
-add it as a new variable into the `data.frame`. 
+add it as a new variable into the `data.frame`. For example:
+
+```{r}
+
+```
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+```
+
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3bba8ddfc5
+## Another Use for mutate: changing a column in place
 
 
 *** =instructions
@@ -231,8 +284,6 @@ add it as a new variable into the `data.frame`.
 ```{r}
 
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
 
