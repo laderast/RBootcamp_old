@@ -89,7 +89,7 @@ length(levels(biopics$category))
 
 `filter()` is a very useful `dplyr` command. It allows you to subset a `data.frame` based on variable criteria.
 
-For example, if we wanted to subset `biopics` to those movies that were made in the `UK` we'd use the following statement.
+For example, if we wanted to subset `biopics` to those movies that were made in the `UK` we'd use the following statement:
 
 ```{r}
 #subset the data using filter
