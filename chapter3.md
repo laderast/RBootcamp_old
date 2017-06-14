@@ -321,8 +321,8 @@ format is great, because you can apply that pipeline to incoming data and have i
 
 ```
 
---- type:Multiple Choice Exercise lang:r xp:100 skills:1 key:61fad1c7bd
-# Chester Ismay's Mantra
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f9e951b711
+## Chester Ismay's Mantra
 
 What is the difference between `select()` and `filter()?`
 
@@ -331,5 +331,41 @@ What is the difference between `select()` and `filter()?`
 - `select()` only works after `filter()`
 - `select()` works on columns, `filter()` works on rows
 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:749b2485e7
+## What you learned in this chapter
 
 
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
