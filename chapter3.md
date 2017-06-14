@@ -179,7 +179,8 @@ nrows(crimeFilms)
 
 ```
 
---- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:1c76b8c8f2
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e6843338b8
 ## Quick Quiz about Chaining Comparisons
 
 Which statement should be the larger subset?
@@ -188,11 +189,18 @@ Which statement should be the larger subset?
 - `filter(biopics, year_release > 1980 & type_of_subject == "criminal")`
 - `filter(biopics, year_release > 1980 | type_of_subject == "criminal")`
 
-*** =sct
+*** =hint
+Think about the difference between `|` (or) and `&` (and)
+
+*** =pre_exercise_code
 ```{r}
 
 ```
 
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
