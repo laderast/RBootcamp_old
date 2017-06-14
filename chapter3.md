@@ -21,7 +21,29 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
+*** =instructions
 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
@@ -37,6 +59,9 @@ data(biopics)
 
 *** =instructions
 Run a `summary` on the `biopics` dataset. It's already loaded up for you. How many categories are in the `country` variable?
+
+*** =hint
+
 
 *** =sample_code
 ```{r}
@@ -165,12 +190,42 @@ Which statement should be the larger subset?
 
 *** =sct
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
+## dplyr::mutate()
+
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
 
 We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. `%>%` is called a `pipe` operator. 
 What it does is that it takes the output of one statement and makes it the input of the next statement. When 
-I'm describing it, I think of it as a "Then". For example, I read the following expression
+I'm describing it, I think of it as a "THEN". For example, I read the following expression
 
 ```{r}
 biopics %>% filter(race_known == "Known") %>%
@@ -179,18 +234,90 @@ biopics %>% filter(race_known == "Known") %>%
 As: I took the `biopics` data, THEN I filtered it down with the `race_known == "Known"` criteria and 
 THEN I filtered it down even further with `subject_sex == "Female"`.
 
-`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about it.
+`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about it. In fact,
+having a standardized chain of processing actions is called a *pipeline*. Having established a pipeline for a data
+format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
+
+*** =instructions
 
 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:4df8d2ca44
-## dplyr::mutate()
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:68bc51fbf1
+--- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
 ## dplyr::group_by()/dplyr::summarize()
 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
+## dplyr::select()
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 
 --- type:Multiple Choice Exercise lang:r xp:100 skills:1 key:61fad1c7bd
 # Chester Ismay's Mantra
@@ -201,5 +328,6 @@ What is the difference between `select()` and `filter()?`
 - `select()` works on booleans, whereas `filter()` works on all data types
 - `select()` only works after `filter()`
 - `select()` works on columns, `filter()` works on rows
+
 
 
