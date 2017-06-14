@@ -307,7 +307,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     geom_point()
 ```
 
---- type:NormalExercise lang:r xp:0 skills:1
+--- type:NormalExercise lang:r xp:0 skills:1 key:cd1bab71fb
 ## What you learned in this chapter
 
 - Basic `ggplot2` syntax.
