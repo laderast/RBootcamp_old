@@ -300,27 +300,38 @@ As: I took the `biopics` data, THEN I filtered it down with the `race_known == "
 THEN I filtered it down even further with `subject_sex == "Female"`.
 
 `%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about it. In fact,
-having a standardized chain of processing actions is called a *pipeline*. Having established a pipeline for a data
+having a standardized chain of processing actions is called a **pipeline**. Having established a pipeline for a data
 format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
 
 *** =instructions
+Use `%>%` to chain a `filter` command (`country=="Canada"`) with a `mutate` 
+command (`subject_is_richard=grepl("Richard",lead_actor_actress)`). 
 
+How many instances of Canadian Richards are there?
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
+data(biopics)
 ```
 
 *** =sample_code
 ```{r}
-
+richardCanada <- 
+    biopics %>%
 ```
 
 *** =solution
 ```{r}
-
+richardCanada <- 
+    biopics %>% filter(country=="Canada") %>% 
+        mutate(subject_is_richard=grepl("Richard",lead_actor_actress))
+    
+nrow(richardCanada)
 ```
 
 *** =sct
@@ -332,14 +343,27 @@ format is great, because you can apply that pipeline to incoming data and have i
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
 ## dplyr::group_by()/dplyr::summarize()
 
+`group_by()` doesn't do anything by itself. But when combined with `summarize()`, you can 
+calculate metrics (such as `mean`, `max`, `sd`) across groups. For example:
+
+```{r}
+countryMeans <- biopics %>% filter(!is.na(box_office)) %>% 
+    group_by(country) %>% summarize(mean_box_office = mean(box_office))
+```
+
+Here we want to calculate the mean box office 
 
 *** =instructions
+Let's ask a tough question. Is there a difference between mean `box_office` between `subject_sex`?
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
+data(biopics)
 ```
 
 *** =sample_code
@@ -408,6 +432,9 @@ What is the difference between `select()` and `filter()?`
 --- type:NormalExercise lang:r xp:100 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
+- How to use six of the main `dplyr` verbs
+- Chester's Mantra
+- 
 
 *** =instructions
 
