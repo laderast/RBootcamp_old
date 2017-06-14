@@ -22,6 +22,7 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
 *** =instructions
+Just move on to the next exercise!
 
 *** =hint
 
@@ -255,8 +256,6 @@ data(biopics)
 
 ```
 
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:3bba8ddfc5
 ## Another Use for mutate: changing a column in place
 
@@ -288,7 +287,9 @@ data(biopics)
 ## The pipe character: `%>%`
 
 We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. `%>%` is called a `pipe` operator. 
-What it does is that it takes the output of one statement and makes it the input of the next statement. When 
+You can think of it as being similar to the `+` in a `ggplot2` statement.
+
+What `%>%` does is that it takes the output of one statement and makes it the input of the next statement. When 
 I'm describing it, I think of it as a "THEN". For example, I read the following expression
 
 ```{r}

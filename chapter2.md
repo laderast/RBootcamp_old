@@ -326,7 +326,7 @@ What do you conclude? Which kind of animal weighs more on average than the other
 
 ```
 
---- type:NormalExercise lang:r xp:0 skills:1 key:df82fb7252
+--- type:NormalExercise lang:r xp:100 skills:1 key:87317d094e
 ## What you learned in this chapter
 
 - Three more types of plots: `geom_bar()`, `geom_boxplot()` and `geom_violin()`
@@ -334,3 +334,28 @@ What do you conclude? Which kind of animal weighs more on average than the other
 - Options for `geom_bar`: position = "fill" (proportional bars) and position = "dodge" (dodged bars)
 - How to stratify your graphs using `facet_wrap()`
 - More about how to put together a ggplot
+
+*** =instructions
+Just move on to the next chapter!
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```

@@ -307,7 +307,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     geom_point()
 ```
 
---- type:NormalExercise lang:r xp:0 skills:1 key:cd1bab71fb
+--- type:NormalExercise lang:r xp:100 skills:1 key:fe7e851b1f
 ## What you learned in this chapter
 
 - Basic `ggplot2` syntax.
@@ -316,3 +316,28 @@ ggplot(gap1992, aes(x = log(gdpPercap),
 - `geom`s correspond to layers in a graph.
 - That `ggplot2` can make some pretty cool graphs
 - That you can do this!
+
+*** =instructions
+Just move on to the next chapter!
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
