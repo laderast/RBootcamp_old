@@ -15,14 +15,96 @@ In particular, we're going to look at six fundamental verbs/actions in dplyr:
 - `arrange()`
 - `select()`
 
-Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time.
+Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
+## Let's look at some data and ways to manipulate it.
+
+We're going to use the `biopics` dataset in `fivethirtyeight` to do learn `dplyr`. This is a dataset of 761 different biopic movies.
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+```
+
+*** =instructions
+Run a `summary` on the `biopics` dataset. It's already loaded up for you. How many categories are in the `country` variable?
+
+*** =sample_code
+```{r}
+##run summary here
+
+##length of country category here
+
+```
+
+*** =solution
+```{r}
+##run summary here
+summary(biopics)
+##length of country category here
+length(levels(biopics$category))
+```
+
+*** =sct
+```{r}
+
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
 ## dplyr::filter()
 
+`filter()` is a very useful `dplyr` command. It allows you to subset a `data.frame` based on variable criteria.
+
+For example, if we wanted to subset `biopics` to those movies that were made in the `UK` we'd use the following statement.
+
+```{r}
+#subset the data using filter
+biopicsUK <- filter(biopics, country=="UK")
+#confirm that we have subsetted correctly
+biopicsUK
+```
+
+Three things to note here: 
+1. first argument to filter is always the dataset. We'll see another variation in a second.
+2. For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
+3. Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
+
+*** =instructions
+
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:119cf149a3
+## Comparison operators and chaining comparisons
+
+Let's look at the following `filter()` statement:
+
+```{r}
+filter(biopics, year_release > 1980 & 
+    type_of_subject == "criminal")
+```
+
+A couple things to note:
+1. We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
+2. We also chained on another expression, `type_of_subject == "criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
+3. Chaining expressions is where `filter()` becomes super powerful.
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
+
+We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. 
+
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4df8d2ca44
@@ -31,6 +113,20 @@ Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` e
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:68bc51fbf1
 ## dplyr::group_by()/dplyr::summarize()
+
+
+--- type:Multiple Choice Exercise lang:r xp:100 skills:1 key:61fad1c7bd
+# Chester Ismay's Mantra
+
+What is the difference between `select()` and `filter()?`
+
+*** =instructions
+- `select()` works on booleans, whereas `filter()` works on all data types
+- `select()` only works after `filter()`
+- `select()` works on columns, `filter()` works on rows
+
+
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
 ## Subsetting Using TRUE/FALSE:
