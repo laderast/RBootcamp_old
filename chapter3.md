@@ -189,6 +189,9 @@ Which statement should be the larger subset?
 - `filter(biopics, year_release > 1980 | type_of_subject == "criminal")`
 
 *** =sct
+```{r}
+
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
