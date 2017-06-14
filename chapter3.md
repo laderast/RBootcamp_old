@@ -193,6 +193,8 @@ Which statement should be the larger subset?
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
+`mutate()` is one of the most useful `dplyr` commands. You can use it to transform data and 
+add it as a new variable into the `data.frame`. 
 
 
 *** =instructions
