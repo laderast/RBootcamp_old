@@ -257,7 +257,7 @@ data(biopics)
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3bba8ddfc5
-## Another Use for mutate: changing a column in place
+## Another Use for mutate(): Changing a column in place
 
 
 *** =instructions
