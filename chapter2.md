@@ -14,10 +14,11 @@ There are two kinds of factors:
 
 We'll manipulate our barplots and add more information using factors.
 
-Here's the simple dataset we'll use to investigate how to work with factors in `ggplot`.
+Here's the simple dataset we'll use to investigate how to work with factors in `ggplot2`.
 
 *** =instructions
-Using the console, look at the `pets` dataset. Show the categories for `shotsCurrent` and `ageCategory` using `levels()`. Remember, you'll need to use the `$` operator to access the variables in the `data.frame` (example: `pets$animal`).
+Using the console, look at the `pets` dataset. Show the categories for `shotsCurrent` and `ageCategory` using `levels()`. 
+Remember, you'll need to use the `$` operator to access the variables in the `data.frame` (example: `pets$animal`).
 
 *** =pre_exercise_code
 ```{r}
@@ -162,6 +163,11 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 ggplot(pets, aes(x=name)) + geom_bar() + 
   facet_wrap(facets=~shotsCurrent, scale="free_x") +
   theme(axis.text.x = element_text(angle=45))
+```
+
+*** =sct
+```{r}
+
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb

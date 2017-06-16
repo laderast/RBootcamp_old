@@ -360,10 +360,10 @@ I'm describing it, I think of it as a "THEN". For example, I read the following 
 
 ```{r}
 biopics %>% filter(race_known == "Known") %>%
-    filter(subject_sex == "Female")
+    mutate(poc_code = as.numeric(person_of_color))
 ```
 As: I took the `biopics` data, THEN I filtered it down with the `race_known == "Known"` criteria and 
-THEN I filtered it down even further with `subject_sex == "Female"`.
+THEN I defined a new variable called `poc_code`.
 
 `%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about it. In fact,
 having a standardized chain of processing actions is called a **pipeline**. Having established a pipeline for a data
@@ -503,7 +503,8 @@ What is the difference between `select()` and `filter()?`
 - 
 
 *** =instructions
-Just move on to the next chapter. Good job for making it through the chapter!
+Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
+to becoming a tidyverse ninja!
 
 *** =hint
 
