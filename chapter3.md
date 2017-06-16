@@ -56,13 +56,14 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =instructions
 Run a `summary` on the `biopics` dataset. It's already loaded up for you. How many categories are in the `country` variable?
 
 *** =hint
-
+Use the `levels()` function.
 
 *** =sample_code
 ```{r}
@@ -77,12 +78,14 @@ Run a `summary` on the `biopics` dataset. It's already loaded up for you. How ma
 ##run summary here
 summary(biopics)
 ##length of country category here
-length(levels(biopics$category))
+length(levels(biopics$country))
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Nice work!")
+test_function("summary", incorrect_msg = "you need to use the summary() function on biopics")
+test_function("levels", incorrect_msg = "you need to use the levels() function on biopics")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
@@ -116,6 +119,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =sample_code
@@ -137,6 +141,10 @@ nrow(crimeMovies)
 
 *** =sct
 ```{r}
+success_msg("Good job! That's the right number.")
+test_function("filter", incorrect_msg = "Did you try using the `filter()` function?")
+test_object("crimeMovies", incorrect_msg = "Your filter statement is incorrect. Try again.")
+test_function("nrow", incorrect_msg = "You should use `nrow()` to show the number of rows in `crimeMovies`")
 
 ```
 
@@ -164,6 +172,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =instructions
@@ -186,12 +195,14 @@ crimeFilms <- filter(biopics, year_release > 1980 &
     type_of_subject == "Criminal" & person_of_color == FALSE)
 
 #show number of rows in crimeFilms
-nrows(crimeFilms)
+nrow(crimeFilms)
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Good job! Now you know how to chain comparisons!")
+test_object("crimeFilms", incorrect_msg = "Not quite. Did you add your comparison correctly?")
+test_function("nrow", incorrect_msg = "Show the number of rows in the crimeFilms using `nrow()`")
 ```
 
 
@@ -214,14 +225,74 @@ Think about the difference between `|` (or) and `&` (and)
 
 *** =sct
 ```{r}
+success_msg("Good Job! Let's move on.")
 test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset (because you're applying both criteria)",
-"Correct! Because you accept either criteria, this is the larger subset")
+"Correct! Because you accept either criteria, this is the larger subset"))
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
 `mutate()` is one of the most useful `dplyr` commands. You can use it to transform data and 
-add it as a new variable into the `data.frame`. For example:
+add it as a new variable into the `data.frame`. For example, let's calculate the total `box_office`
+divided by the `number_of_subjects` to normalize our comparison as `normalized_box_office`: 
+
+```{r}
+biopics2 <- mutate(biopics, normalized_box_office = box_office/number_of_subjects)
+```
+What did we do here? First, we used the `mutate()` function to add a new column into our 
+`data.frame` called `normalized_box_office`. This new variable is calculated per row by dividing
+`box_office` by `number_of_subjects`.
+
+*** =instructions
+Try defining a new variable `race_and_gender` by pasting together `subject_race` and `subject_sex`
+into a new `data_frame` called `biopics2`. Show the first few rows using `head()` so you can
+confirm that you added this new variable correctly.
+
+Remember, you can use the `paste()` function to paste two strings together.
+
+*** =hint
+`paste(subject_race, subject_sex)`
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+```
+
+*** =sample_code
+```{r}
+#assign new variable race_and_gender here using mutate()
+biopics2 <- 
+
+#show first rows of biopics2 using head()
+
+```
+
+*** =solution
+```{r}
+#assign new variable race_and_gender here using mutate()
+biopics2 <- mutate(biopics, race_and_gender = paste(subject_race, subject_sex))
+
+#show first rows using head
+head(biopics2)
+```
+
+*** =sct
+```{r}
+success_msg("Great! Now you know how to use `mutate()`!")
+test_object("biopics2", incorrect_msg = "Not quite. Did you use `paste()`?")
+test_function("head", incorrect_msg = "Almost there. Did you use `head()`")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:dfc4eaade1
+## You can use mutated variables right away!
+
+The nifty thing about `mutate()` is that once you define the variables in the statement,
+you can use them right away. For example, look at this code:
 
 ```{r}
 
@@ -234,12 +305,8 @@ add it as a new variable into the `data.frame`. For example:
 
 *** =pre_exercise_code
 ```{r}
-library(fivethirtyeight)
-library(dplyr)
 
-data(biopics)
 ```
-
 
 *** =sample_code
 ```{r}
@@ -255,7 +322,6 @@ data(biopics)
 ```{r}
 
 ```
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:3bba8ddfc5
 ## Another Use for mutate(): Changing a column in place
 
@@ -429,7 +495,7 @@ What is the difference between `select()` and `filter()?`
 ```{r}
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:749b2485e7
+--- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
 - How to use six of the main `dplyr` verbs
@@ -437,6 +503,7 @@ What is the difference between `select()` and `filter()?`
 - 
 
 *** =instructions
+Just move on to the next chapter. Good job for making it through the chapter!
 
 *** =hint
 
