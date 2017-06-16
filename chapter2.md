@@ -113,7 +113,9 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 --- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
 ## Proportional Barchart
 
-We may only be interested in the relative proportions between the different categories. Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, we can show proportions rather than counts. 
+We may only be interested in the relative proportions between the different categories. 
+Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, 
+we can show proportions rather than counts. 
 
 What percent of dogs did not receive shots?
 
@@ -191,7 +193,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 ```
 
 *** =instructions
-- see ourselves in the graph
+- plot points as pretty gems
 - stratify our graph by another category
 - add another set of categories to the x-axis
 
@@ -223,7 +225,8 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```
 
 *** =hint
-Think about what to map to `x`, and what to map to `fill`, and what `position` argument you need for `geom_bar()`. Finally, think about how to facet the variable.
+Think about what to map to `x`, and what to map to `fill`, and what `position` argument 
+you need for `geom_bar()`. Finally, think about how to facet the variable.
 
 *** =sample_code
 ```{r}
@@ -233,8 +236,13 @@ ggplot(pets, aes(x=ageCategory)) +
 *** =solution
 ```{r}
 #Space for your answer here.
-ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(postion="fill") +
+ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(position="fill") +
     facet_wrap(facets=~shotsCurrent, scale="free_x")
+```
+
+*** =sct
+```{r}
+test_ggplot()
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:a1efb868f1
@@ -293,7 +301,8 @@ ggplot(pets, aes(x=animal, y=weight) + geom_boxplot()
 
 *** =sct
 ```{r}
-
+success_msg("Great! Now you know how to set up boxplots!")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "You didn't quite get the variable mapping right. Try again.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:76115fda96
@@ -320,18 +329,36 @@ ggplot(pets, aes(x=animal, y=weight, fill=animal)) +
 ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:374d642704
+--- type:NormalExercise lang:r xp:100 skills:1 key:4b380fad6f
 ## Your task: How heavy are our pets?
 
-***=instructions
+
+*** =instructions
 Visualize `weight` by `animal` type. Plot both boxplots and a violin plot on the same graph.
 What do you conclude? Which kind of animal weighs more on average than the other? 
 
+*** =hint
+
+*** =pre_exercise_code
 ```{r}
-##Space for your answer here
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
+
+*** =sample_code
+```{r}
 
 ```
 
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:87317d094e
 ## What you learned in this chapter
 
