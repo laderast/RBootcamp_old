@@ -55,17 +55,12 @@ test_function("levels", index=2, incorrect_msg = "did you call levels() on pets$
 
 Now that we understand what categories exist in our dataset, we can begin to visualize them using barplots generated with the `geom_bar()` geom.
 
-```{r}
-##show a barplot and count by name and fill by animal
-ggplot(pets, aes(x=name)) + geom_bar()
-```
-
 The `geom_bar()` default is to count the number of values with each factor level. Note that you don't map to a y-aesthetic here, because the y values are the counts.
 
-Given this dataset, we might want to ask how many pets have the same name. What is the most popular name?
+Given this dataset, we might want to ask how many pets have the same name.
 
 *** =instructions
-Map the `animal` variable to `fill`. Are the results what you expected?
+Map the `name` variable to `x` in the `ggplot` statement. What is the most popular name?
 
 *** =pre_exercise_code
 ```{r}
@@ -78,10 +73,7 @@ ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=
 ```{r}
 ##Show a barplot and count by name and fill by animal
 ##theme() allows us to angle the text labels so that we can read them
-ggplot(pets, aes(
-    x=name, 
-    fill=  
-  )) + geom_bar() + 
+ggplot(pets, aes(x=   )) + geom_bar() + 
     ## We make the x axis text angled 
     ## for better legibility
     theme(axis.text.x = element_text(angle=45))
@@ -90,14 +82,15 @@ ggplot(pets, aes(
 *** =solution
 ```{r}
 ##show a barplot and count by name and fill by animal
-ggplot(pets, aes(x=name, fill=animal)) + geom_bar() + 
+ggplot(pets, aes(x=name)) + geom_bar() + 
     ## we make the x axis text angled for better legibility
     theme(axis.text.x = element_text(angle=45))
 
 ```
 *** =sct
 ```{r}
-#test_ggplot(check_aes = )
+success_msg("Great! You made your first barplot! Now we'll learn how to modify it.")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "did you map the `x` aesthetic to the right variable?")
 ```
 
 
@@ -105,12 +98,6 @@ ggplot(pets, aes(x=name, fill=animal)) + geom_bar() +
 ##  Stacked Bars
 
 Let's see how many of each animal got shots. We can do this by mapping `shotsCurrent` to `fill`.
-
-```{r}
-#we map color (the outline of the plot) to black to make it look prettier
-ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
-  geom_bar(color="black")
-```
 
 *** =instructions
 Map `shotsCurrent` to the `fill` aesthetic.
@@ -121,7 +108,6 @@ Map `shotsCurrent` to the `fill` aesthetic.
 ```{r}
 library(ggplot2)
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
-
 ```
 
 *** =sample_code
@@ -140,6 +126,7 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 
 *** =sct
 ```{r}
+success_msg("Great! Now you know how to make stacked bar plots by mapping a variable to `fill`.")
 test_ggplot(check_aes = TRUE)
 ```
 
@@ -178,10 +165,8 @@ We may only be interested in the relative proportions between the different cate
 Visualizing this is useful for various 2 x 2 tests on proportions. By mapping `position = "fill"`, 
 we can show proportions rather than counts. 
 
-What percent of dogs did not receive shots?
-
 *** =instructions
-Change the `position` argument in `geom_bar()` to `"fill"`.
+Change the `position` argument in `geom_bar()` to `"fill"`. What percent of dogs did not receive shots?
 
 *** =hint
 
@@ -322,7 +307,7 @@ test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 --- type:NormalExercise lang:r xp:300 skills:1 key:2a9c3e204e
 ## Your Task: Bar Charts
 
-Now you can put everything you've learned together into a single barplot.
+Now you'll put everything you've learned together into a single barplot.
 
 *** =instructions
 Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the `ageCategory` 
@@ -470,12 +455,17 @@ ggplot(pets, aes()) +
 
 *** =solution
 ```{r}
+ggplot(pets, aes(x=animal, y=weight)) +
+    geom_boxplot() + geom_violin()
 
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Great! You can see that the boxplot and the violin plot contribute different levels of detail to the graph")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Check your mapping")
+test_function("geom_boxplot", incorrect_msg = "I think you're missing a geom here.")
+test_function("geom_violin", incorrect_msg = "I think you're missing a geom.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:87317d094e
 ## What you learned in this chapter
