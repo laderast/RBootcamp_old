@@ -171,7 +171,8 @@ Instead of x-y points, we can plot the data as a line graph by swapping `geom_li
 for `geom_point()`.
 
 *** =instructions
-Change the `geom_point()` in the following graph to `geom_line()`. What happened?
+Change the `geom_point()` in the following graph to `geom_line()`. What happened? 
+How did the visual presentation of the data change?
 
 *** =pre_exercise_code
 ```{r}
@@ -195,6 +196,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 
 *** =sct
 ```{r}
+success_msg("Great! Now you know how to swap representations in ggplot2. Let's move on.")
 test_function("geom_line", incorrect_msg="you need to change the geom")
 ```
 
@@ -230,8 +232,8 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 
 *** =sct
 ```{r}
-test_function("geom_line", incorrect_msg="you need to change the geom")
-test_function("geom_point", incorrect_msg="you need to change the geom")
+test_function("geom_line", incorrect_msg="you need to add geom_line()")
+test_function("geom_point", incorrect_msg="you need to add geom_point()")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:349a622cb7
@@ -246,7 +248,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 
 *** =instructions
 - adds one `data.frame` to another `data.frame` 
-- allows you to chain data and geoms together
+- allows you to chain data and geoms together into a single statistical graphic
 - allows you to add variables together in a `data.frame`
 
 *** =hint
@@ -256,7 +258,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 ```{r}
 msg1 = "This is not the case. Go back and look at the ggplot code."
 msg2 = "Correct! This is how we can add data and layer geoms together"
-msg3 = "Look at the ggplot code and see if we are manipulating data or not"
+msg3 = "Look at the ggplot code and see if we are manipulating data or not. Are we?"
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
@@ -307,7 +309,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     geom_point()
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:fe7e851b1f
+--- type:NormalExercise lang:r xp:0 skills:1 key:fe7e851b1f
 ## What you learned in this chapter
 
 - Basic `ggplot2` syntax.
