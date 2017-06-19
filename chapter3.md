@@ -463,7 +463,8 @@ countryMeans <- biopics %>% filter(!is.na(box_office)) %>%
 Here we want to calculate the mean box office 
 
 *** =instructions
-Let's ask a tough question. Is there a difference between mean `box_office` between `subject_sex`?
+Let's ask a tough question. Is there a difference between mean `box_office` 
+between the two `subject_sex` categories? 
 
 *** =hint
 
@@ -536,6 +537,46 @@ What is the difference between `select()` and `filter()?`
 
 *** =sct
 ```{r}
+success_msg("Welcome to the cult of dplyr!")
+msg1 <- "Nope."
+msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
+msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
+test_mc(correct = 3, feedback_msgs = c())
+
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5bbc97ed1b
+## Putting it all together
+
+*** =instructions
+
+For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
+use `mutate()` to code a new variable, 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
 
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
@@ -547,7 +588,7 @@ What is the difference between `select()` and `filter()?`
 
 *** =instructions
 Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
-to becoming a tidyverse ninja!
+to becoming a `tidyverse` ninja!
 
 *** =hint
 
