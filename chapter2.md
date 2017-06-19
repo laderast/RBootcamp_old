@@ -180,21 +180,34 @@ we can show proportions rather than counts.
 
 What percent of dogs did not receive shots?
 
+*** =instructions
+Change the `position` argument in `geom_bar()` to `"fill"`.
+
+*** =hint
+
+*** =pre_exercise_code
 ```{r}
-ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
-  geom_bar(position = "fill", color = "black")
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:3784f57df1
-## 
-
-
-
+*** =sample_code
 ```{r}
 ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
-  geom_bar(position="dodge", color="black")
+  geom_bar(position= , color="black")
 ```
 
+*** =solution
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position= "fill", color="black")
+```
+
+*** =sct
+```{r}
+success_msg("Great! Now you know how to make a proportional stacked bar plot! Let's move on")
+test_function("geom_bar", args = "position", incorrect_msg = "Did you add a position argument to `geom_bar()`?")
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:5a8192a589
 ## Dodge those bars!
@@ -309,7 +322,11 @@ test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 --- type:NormalExercise lang:r xp:300 skills:1 key:2a9c3e204e
 ## Your Task: Bar Charts
 
-Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the `ageCategory` counts by `animal` type. Facet this plot by `shotsCurrent`. 
+Now you can put everything you've learned together into a single barplot.
+
+*** =instructions
+Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the `ageCategory` 
+counts by `animal` type. Facet this plot by `shotsCurrent`. 
 
 Is the proportion of animals receiving shots the same across each age category?
 
@@ -340,6 +357,7 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(position="fill") +
 
 *** =sct
 ```{r}
+success_msg("Good job! You managed to integrate everything you learned about barplots. Let's move on!")
 test_ggplot(check_facet = TRUE, check_aes = TRUE)
 test_function("geom_bar", incorrect_msg = "Did you use `geom_bar()`?")
 ```
@@ -462,9 +480,10 @@ ggplot(pets, aes()) +
 --- type:NormalExercise lang:r xp:100 skills:1 key:87317d094e
 ## What you learned in this chapter
 
+- How to visualize categorical data
 - Three more types of plots: `geom_bar()`, `geom_boxplot()` and `geom_violin()`
-- Aesthetics that can be mapped to these geoms (fill, x, y)
-- Options for `geom_bar`: position = "fill" (proportional bars) and position = "dodge" (dodged bars)
+- Aesthetics that can be mapped to these geoms (`fill`, `x`, `y`)
+- Options for `geom_bar()`: `position = "fill"` (proportional bars) and `position = "dodge"` (dodged bars)
 - How to stratify your graphs using `facet_wrap()`
 - More about how to put together a ggplot
 
