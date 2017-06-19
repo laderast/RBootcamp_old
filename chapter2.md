@@ -140,8 +140,7 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 
 *** =sct
 ```{r}
-#test_ggplot
-
+test_ggplot(check_aes = TRUE)
 ```
 
 
@@ -169,10 +168,8 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 ```{r}
 success_msg("Great! That's one tip for improving the appearance of your bar graph.")
 msg1 = "Not quite. Look at the graph. What is being mapped to `black`?"
-msg3 = "Good! Yes, we are outlining the bars in black."
+msg3 = "Good! Yes, we are outlining the bars in `black`."
 test_mc(correct = 3, feedback_msgs = c(msg1, msg1, msg3))
-
-
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
 ## Proportional Barchart
@@ -189,15 +186,49 @@ ggplot(pets, aes(x=animal,fill=shotsCurrent)) +
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3784f57df1
-## Dodge those bars!
+## 
 
-Instead of stacking, we can also dodge the bars (move the bars so they're beside each other).
+
 
 ```{r}
 ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
   geom_bar(position="dodge", color="black")
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5a8192a589
+## Dodge those bars!
+
+Instead of stacking, we can also dodge the bars (move the bars so they're beside each other).
+
+*** =instructions
+Change the `position` argument in `geom_bar()` to `"dodge"`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
+
+*** =sample_code
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position= , color="black")
+```
+
+*** =solution
+```{r}
+ggplot(pets, aes(x=animal,fill=shotsCurrent)) + 
+  geom_bar(position= "dodge", color="black")
+```
+
+*** =sct
+```{r}
+success_msg("Great! Now you know how to make a dodged bar plot! Let's move on")
+test_function("geom_bar", args = "position", incorrect_msg = "Did you add a position argument to `geom_bar()`?")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:3a6ee29fbc
 ## Faceting a graph
 
@@ -212,10 +243,10 @@ ggplot(data=pets, mapping=aes(x=name)) + geom_bar() +
   theme(axis.text.x = element_text(angle=45))
 ```
 
-You might notice that there are blank spots for the categories in each facet. We can restrict the factors in each by using `scale="free_x"` argument in `facet_wrap()`.
+You might notice that there are blank spots for the categories in each facet. We can remove these in each facet by using `scale="free_x"` argument in `facet_wrap()`.
 
 *** =instructions
-How many animals named "Morris" did not receive shots? Add `free_x` to the scale argument.
+Add `free_x` to the scale argument. How many animals named "Morris" did not receive shots? 
 
 *** =sample_code
 ```{r}
@@ -294,7 +325,10 @@ you need for `geom_bar()`. Finally, think about how to facet the variable.
 
 *** =sample_code
 ```{r}
-ggplot(pets, aes(x=ageCategory)) +
+ggplot(pets, aes(x=ageCategory, fill=)) + 
+    #what argument goes here?
+    geom_bar() +
+    facet_wrap()
 ```
 
 *** =solution
@@ -306,7 +340,8 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(position="fill") +
 
 *** =sct
 ```{r}
-test_ggplot()
+test_ggplot(check_facet = TRUE, check_aes = TRUE)
+test_function("geom_bar", incorrect_msg = "Did you use `geom_bar()`?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:a1efb868f1
@@ -339,7 +374,7 @@ test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:46aedf28cb
-## Try out geom_boxplot yourself
+## Try out geom_boxplot() yourself
 
 *** =instructions
 Plot a boxplot of `weight` conditioned on `animal`. Is there a difference in weight between animal types?
@@ -393,7 +428,7 @@ ggplot(pets, aes(x=animal, y=weight, fill=animal)) +
 ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:4b380fad6f
+--- type:NormalExercise lang:r xp:300 skills:1 key:4b380fad6f
 ## Your task: How heavy are our pets?
 
 
@@ -411,7 +446,8 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =sample_code
 ```{r}
-
+ggplot(pets, aes()) + 
+## add boxplots and violin plots as separate layers.
 ```
 
 *** =solution
