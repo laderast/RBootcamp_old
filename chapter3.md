@@ -460,11 +460,16 @@ countryMeans <- biopics %>% filter(!is.na(box_office)) %>%
     group_by(country) %>% summarize(mean_box_office = mean(box_office))
 ```
 
-Here we want to calculate the mean box office 
+Here we want to calculate the mean box office by country. However, in order to do that, we first need to remove
+any `NA` values that may confound our calculation.
 
 *** =instructions
 Let's ask a tough question. Is there a difference between mean `box_office` 
 between the two `subject_sex` categories? 
+
+Use `group_by()` and `summarize()` to calculate the mean `box_office` by `subject_sex`, naming the summary
+variable as `mean_bo_by_gender`.  Assign the output to `gender_box_office`. Make sure to
+remove `NA` values using `filter()`. 
 
 *** =hint
 
@@ -478,17 +483,27 @@ data(biopics)
 
 *** =sample_code
 ```{r}
-
+gender_box_office <- biopics %>% 
+    filter() %>%
+    group_by() %>% 
+    summarize(mean_bo_by_gender=)
+    
+##show gender_box_office
+gender_box_office
 ```
 
 *** =solution
 ```{r}
+gender_box_office <- biopics %>% filter(!is.na(box_office)) %>%
+    group_by(subject_sex) %>% summarize(mean_bo_by_gender=mean(box_office))
+
 
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Yes! You're summarizing like crazy! Let's move on.")
+test_object("gender_box_office", incorrect_msg = "almost, but not quite!")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
 ## dplyr::select()
@@ -546,15 +561,18 @@ test_mc(correct = 3, feedback_msgs = c())
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:5bbc97ed1b
+--- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
 ## Putting it all together
 
 *** =instructions
 
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
-use `mutate()` to code a new variable, 
+use `mutate()` to code a new variable, `box_office_per_subject`. `filter` to remove the NA values in
+`box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject`
+by `country` as `bops_by_country`. Assign the output of this chain to `biopics_by_country`.
 
 *** =hint
+Remember you can debug a `dplyr` chain by running each step incrementally.
 
 *** =pre_exercise_code
 ```{r}
@@ -567,17 +585,29 @@ biopics$country <- factor(biopics$country)
 
 *** =sample_code
 ```{r}
-
+biopics_by_country <- biopics %>%
+    filter() %>%
+    mutate() %>%
+    filter() %>%
+    group_by() %>%
+    summarize()
 ```
 
 *** =solution
 ```{r}
+biopics_by_country <- biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
+    filter(!is.na(box_office_per_subject)) %>%
+    group_by(country) %>%
+    summarize(bops_by_country = mean(box_office_per_subject))
 
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Wow! You've really come really far. I bestow the title of `dplyr` ninja!")
+test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
