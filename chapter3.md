@@ -349,6 +349,45 @@ you can use them right away. For example, look at this code:
 ```{r}
 
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b43bc05171
+## mutate() is all powerful
+
+What is the difference between these two statements?
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
 
@@ -362,11 +401,12 @@ I'm describing it, I think of it as a "THEN". For example, I read the following 
 biopics %>% filter(race_known == "Known") %>%
     mutate(poc_code = as.numeric(person_of_color))
 ```
-As: I took the `biopics` data, THEN I filtered it down with the `race_known == "Known"` criteria and 
-THEN I defined a new variable called `poc_code`.
+As: I took the `biopics` data, THEN 
+I filtered it down with the `race_known == "Known"` criteria and THEN 
+I defined a new variable called `poc_code`.
 
-`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about it. In fact,
-having a standardized chain of processing actions is called a **pipeline**. Having established a pipeline for a data
+`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about the `tidyverse`. In fact,
+having a standardized chain of processing actions is called a **pipeline**. Making pipelines for a data
 format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
 
 *** =instructions
@@ -389,6 +429,9 @@ data(biopics)
 ```{r}
 richardCanada <- 
     biopics %>%
+    
+#show number of rows in richardCanada
+
 ```
 
 *** =solution
