@@ -7,15 +7,17 @@ description : Learn how ggplot turns variables into statistical graphics
 
 Remember that a `data.frame` is basically a table-like format which has the following properties: 
 
-- Columns can each have multiple types (`numeric`, `character`, `boolean`, `factor`)
+- Columns can each have a different type (`numeric`, `character`, `boolean`, `factor`)
 - Columns are called "variables"
 - Rows correspond to a single observation (ideally)
 - Can be subset or filtered based on criteria
 
-Individual variables within a `data.frame` can be accessed with the `$` operator. We won't use this very often, as the `tidyverse` lets us access the names directly, as you'll see.
+Individual variables within a `data.frame` can be accessed with the `$` operator. We won't use this very often, 
+as the `tidyverse` lets us access the variables directly, as you'll see.
 
 *** =instructions
-Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the `length()` of the `pop` column is equal to the `lifeExp` column.
+Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the 
+`length()` of the `pop` column is equal to the `lifeExp` column.
 
 *** =pre_exercise_code
 ```{r}
@@ -28,6 +30,8 @@ gap1992 <- gapminder %>% filter(year == 1992)
 *** =sample_code
 ```{r}
 head(gap1992)
+##run colnames here on gap1992
+
 
 ##check if pop column is same length as lifeExp column
 ##show the length of the pop column
@@ -39,6 +43,8 @@ length()
 *** =solution
 ```{r}
 head(gap1992)
+##run colnames here on gap1992
+colnames(gap1992)
 
 ##check if pop column is same length as lifeExp column
 ##show the length of the pop column
@@ -49,6 +55,8 @@ length(gap1992$lifeExp)
 
 *** =sct
 ```{r}
+success_msg("Great! You remembered some basics about `data.frame`s! Let's move on.")
+test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
 test_function("length", args="x", index=1, incorrect_msg="use gap1992$pop")
 test_function("length", args="x", index=2, incorrect_msg-"use gap1992$lifeExp")
 ```
@@ -83,7 +91,7 @@ Look at the y-axis.
 *** =sct
 ```{r}
 msg1 = "You have things reversed, and you're taking the log of the wrong variable"
-msg2 = "Wrong variables. Go back and look"
+msg2 = "Wrong variables. Go back and look at what's being mapped"
 msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) as our x variable"
 
 test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
@@ -208,7 +216,7 @@ as layers on a graph. Thus, we can use the `+` symbol to add geoms to our
 base `ggplot()` statement. 
 
 *** =instructions
-Add both `geom_line()` and `geom_point()` to the following ggplot. 
+Add both `geom_line()` and `geom_point()` to the following ggplot. Are the results what you expected?
 
 *** =pre_exercise_code
 ```{r}
@@ -221,12 +229,14 @@ gap1992 <- gapminder %>% filter(year == 1992)
 *** =sample_code
 ```{r}
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
+## add code here
 
 ```
 
 *** =solution
 ```{r}
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
+## add code here
   geom_line() + geom_point()
 ```
 
@@ -239,7 +249,9 @@ test_function("geom_point", incorrect_msg="you need to add geom_point()")
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:349a622cb7
 ## Quick review about ggplot2
 
-What does the `+` in a `ggplot` statement do?
+What does the `+` in a `ggplot` statement do? 
+
+For example:
 
 ```{r}
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
@@ -262,10 +274,12 @@ msg3 = "Look at the ggplot code and see if we are manipulating data or not. Are 
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:6e0ba88ae9
+--- type:NormalExercise lang:r xp:0 skills:1 key:6e0ba88ae9
 ## "gg" is for *G*rammar of *G*raphics
 
-When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](http://www.springer.com/us/book/9780387245447) in mind. In this book, Wilkinson et. al. decomposed all statistical graphics of having a number of graphical elements.
+When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](http://www.springer.com/us/book/9780387245447) in mind. 
+
+In this book, Wilkinson et. al. decomposed all statistical graphics of having a number of graphical elements.
 
 `ggplot2` directly maps these concepts of a [grammar of graphics to plotting R Data](http://vita.had.co.nz/papers/layered-grammar.pdf). 
 

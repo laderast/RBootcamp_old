@@ -45,6 +45,8 @@ levels(pets$ageCategory)
 ```
 *** =sct
 ```{r}
+test_function("levels", index=1, incorrect_msg = "did you call levels() on pets$shotsCurrent?")
+test_function("levels", index=2, incorrect_msg = "did you call levels() on pets$ageCategory?")
 
 ```
 
@@ -80,7 +82,7 @@ ggplot(pets, aes(
     x=name, 
     fill=  
   )) + geom_bar() + 
-    ## We make the x axis text x angled 
+    ## We make the x axis text angled 
     ## for better legibility
     theme(axis.text.x = element_text(angle=45))
 ```
@@ -89,18 +91,18 @@ ggplot(pets, aes(
 ```{r}
 ##show a barplot and count by name and fill by animal
 ggplot(pets, aes(x=name, fill=animal)) + geom_bar() + 
-    ## we make the x axis x angled for better legibility
+    ## we make the x axis text angled for better legibility
     theme(axis.text.x = element_text(angle=45))
 
 ```
 *** =sct
 ```{r}
-
+#test_ggplot(check_aes = )
 ```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:5a83c50f55
-## Stacked Bars
+--- type:NormalExercise lang:r xp:100 skills:1 key:b2586607f1
+##  Stacked Bars
 
 Let's see how many of each animal got shots. We can do this by mapping `shotsCurrent` to `fill`.
 
@@ -110,6 +112,68 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
   geom_bar(color="black")
 ```
 
+*** =instructions
+Map `shotsCurrent` to the `fill` aesthetic.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+
+```
+
+*** =sample_code
+```{r}
+#map the right variable in pets to fill
+ggplot(pets, aes(x=animal, fill= )) + 
+  geom_bar(color="black")
+```
+
+*** =solution
+```{r}
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+
+```
+
+*** =sct
+```{r}
+#test_ggplot
+
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2723146f59
+## Quick Quiz
+
+What does mapping `color` to `"black"` in `geom_bar()` do? 
+
+*** =instructions
+- Makes the default bar fill color black
+- Specifies the text in the graph to be black
+- Outlines the bars in black
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+```
+
+*** =sct
+```{r}
+success_msg("Great! That's one tip for improving the appearance of your bar graph.")
+msg1 = "Not quite. Look at the graph. What is being mapped to `black`?"
+msg3 = "Good! Yes, we are outlining the bars in black."
+test_mc(correct = 3, feedback_msgs = c(msg1, msg1, msg3))
+
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
 ## Proportional Barchart
 
