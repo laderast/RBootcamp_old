@@ -410,10 +410,13 @@ having a standardized chain of processing actions is called a **pipeline**. Maki
 format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
 
 *** =instructions
-Use `%>%` to chain a `filter` command (`country=="Canada"`) with a `mutate` 
-command (`subject_is_richard=lead_actor_actress %like% "Richard"`). 
+Use `%>%` to chain a `filter` command (`country=="US"`) with another `filter` 
+command (`grepl("Richard",lead_actor_actress)`). Assign the output to `richardUS`. 
 
-How many instances of Canadian Richards are there?
+In this second `filter`, we search for any instances of `"Richard"` in 
+`lead_actor_actress` using `grepl`.
+
+How many instances of US Richards are there? 
 
 *** =hint
 
@@ -427,25 +430,29 @@ data(biopics)
 
 *** =sample_code
 ```{r}
-richardCanada <- 
+richardUS <- 
     biopics %>%
     
-#show number of rows in richardCanada
+#show number of rows in richardUS
 
 ```
 
 *** =solution
 ```{r}
-richardCanada <- 
-    biopics %>% filter(country=="Canada") %>% 
-        mutate(subject_is_richard=lead_actor_actress %like% "Richard")
-    
-nrow(richardCanada)
+richardUS <- 
+    biopics %>% filter(country=="US") %>% 
+        filter(grepl("Richard",lead_actor_actress))
+
+#show number of rows in richardUS    
+nrow(richardUS)
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Great! Now you know how to chain actions into a pipeline. Use `%>%` wisely.")
+test_function("filter", incorrect_msg = "did you use `filter()`?")
+test_object("richardUS", incorrect_msg = "Not quite. Go back and look at your `dplyr` statement.")
+test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 ```
 
 
@@ -505,32 +512,50 @@ gender_box_office <- biopics %>% filter(!is.na(box_office)) %>%
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
 test_object("gender_box_office", incorrect_msg = "almost, but not quite!")
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
 ## dplyr::select()
 
+The final verb we'll learn is `select()`. `select()` allows you to 1) extract columns, 
+2) reorder columns or 3) remove columns from your data, as well as 4) rename your data. 
+For example, look at the following code:
+
+```{r}
+biopics %>% select(movieTitle=title_of_movie, box_office)
+```
+Here, we're just extracting two columns (`title_of_movie`, `box_office`). Notice we also renamed
+`box_office` to `movieTitle`.
 
 *** =instructions
+Use `select` to extract the following variables: `title_of_movie` (rename it `movieTitle`), 
+`box_office` and `subject_sex` and assign them to a new table called `threeVarTable`
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
+data(biopics)
 ```
 
 *** =sample_code
 ```{r}
+threeVarTable <- biopics %>% select()
 
 ```
 
 *** =solution
 ```{r}
+threeVarTable <- biopics %>% select(movieTitle, box_office, subject_sex)
 
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Great! Now you know how to select stuff")
+test_object("threeVarTable", incorrect_msg = "Not quite. Remember names and order matters.")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f9e951b711
@@ -552,20 +577,17 @@ What is the difference between `select()` and `filter()?`
 
 *** =sct
 ```{r}
-success_msg("Welcome to the cult of dplyr!")
+success_msg("Welcome to the cult of dplyr! Your secret decoder ring is in the mail.")
 msg1 <- "Nope."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
 test_mc(correct = 3, feedback_msgs = c())
-
-
 ```
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
 ## Putting it all together
 
 *** =instructions
-
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
 use `mutate()` to code a new variable, `box_office_per_subject`. `filter` to remove the NA values in
 `box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject`
@@ -612,7 +634,11 @@ test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
-- How to use six of the main `dplyr` verbs
+- How to use `%>%` (the pipe)
+- `dplyr::filter()`
+- `dplyr::mutate()`
+- `dplyr::group_by()/dplyr::summarize()`
+- `dplyr::select()`
 - Chester's Mantra
 - 
 
