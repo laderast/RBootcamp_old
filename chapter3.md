@@ -463,8 +463,10 @@ test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 calculate metrics (such as `mean`, `max`, `sd`) across groups. For example:
 
 ```{r}
-countryMeans <- biopics %>% filter(!is.na(box_office)) %>% 
-    group_by(country) %>% summarize(mean_box_office = mean(box_office))
+countryMeans <- biopics %>% 
+                    filter(!is.na(box_office)) %>% 
+                    group_by(country) %>% 
+                    summarize(mean_box_office = mean(box_office))
 ```
 
 Here we want to calculate the mean box office by country. However, in order to do that, we first need to remove
@@ -501,18 +503,63 @@ gender_box_office
 
 *** =solution
 ```{r}
-gender_box_office <- biopics %>% filter(!is.na(box_office)) %>%
-    group_by(subject_sex) %>% summarize(mean_bo_by_gender=mean(box_office))
+gender_box_office <- biopics %>% 
+    filter(!is.na(box_office)) %>%
+    group_by(subject_sex) %>% 
+    summarize(mean_bo_by_gender=mean(box_office))
 
-
+##show gender_box_office
+gender_box_office
 ```
 
 *** =sct
 ```{r}
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
-test_object("gender_box_office", incorrect_msg = "almost, but not quite!")
+test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct")
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
+## dplyr::arrange()
+
+`arrange()` lets you sort by a variable. If you provide multiple variables, the variables are 
+arranged within each other. For example:
+
+```{r}
+biopics %>% arrange(country, year_release)
+```
+
+This statement will sort the data by `country` first, and then within each `country` category, 
+it will sort by `year_release`.
+
+*** =instructions
+Sort `biopics` by `year_release` then by `lead_actor_actress`. Assign the output to `biopics_sorted`
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+```
+
+*** =sample_code
+```{r}
+biopics_sorted <- biopics %>%
+```
+
+*** =solution
+```{r}
+biopics_sorted <- biopics %>% arrange(year_release, lead_actor_actress)
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to sort data using dplyr. Nifty, eh?")
+test_object("biopics_sorted", incorrect_msg = "Not quite. Make sure you are arranging variables in order")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
 ## dplyr::select()
 
@@ -548,7 +595,7 @@ threeVarTable <- biopics %>% select()
 
 *** =solution
 ```{r}
-threeVarTable <- biopics %>% select(movieTitle, box_office, subject_sex)
+threeVarTable <- biopics %>% select(movieTitle=title_of_movie, box_office, subject_sex)
 
 ```
 
@@ -578,20 +625,21 @@ What is the difference between `select()` and `filter()?`
 *** =sct
 ```{r}
 success_msg("Welcome to the cult of dplyr! Your secret decoder ring is in the mail.")
-msg1 <- "Nope."
+msg1 <- "Nope. Both of these verbs don't care what data type you use."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
 test_mc(correct = 3, feedback_msgs = c())
 ```
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
-## Putting it all together
+## Putting it all together: Challenge 1
 
 *** =instructions
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
 use `mutate()` to code a new variable, `box_office_per_subject`. `filter` to remove the NA values in
 `box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject`
-by `country` as `bops_by_country`. Assign the output of this chain to `biopics_by_country`.
+by `country` as `bops_by_country`. Use `arrange()` to sort by `bops_by_country`.  
+Assign the output of this chain to `biopics_by_country`.
 
 *** =hint
 Remember you can debug a `dplyr` chain by running each step incrementally.
@@ -612,7 +660,8 @@ biopics_by_country <- biopics %>%
     mutate() %>%
     filter() %>%
     group_by() %>%
-    summarize()
+    summarize() %>%
+    arrange()
 ```
 
 *** =solution
@@ -622,14 +671,61 @@ biopics_by_country <- biopics %>%
     mutate(box_office_per_subject = box_office / number_of_subjects) %>%
     filter(!is.na(box_office_per_subject)) %>%
     group_by(country) %>%
-    summarize(bops_by_country = mean(box_office_per_subject))
-
+    summarize(bops_by_country = mean(box_office_per_subject)) %>%
+    arrange(bops_by_country)
 ```
 
 *** =sct
 ```{r}
 success_msg("Wow! You've really come really far. I bestow the title of `dplyr` ninja!")
 test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
+```
+
+
+--- type:NormalExercise lang:r xp:300 skills:1 key:a4c8d46d41
+## Challenge 2: Show your stuff
+
+Answer the question: Do movies where we know the race is known (`race_known` == TRUE) make more 
+money than movies where the race is not known (`race_known`== FALSE) grouped by country? 
+Which `race_known`/`country` combination made the highest amount of money?
+
+*** =instructions
+You'll need to do a `filter` step first to remove `NA` values from `box_office` before you do 
+anything. Then think of what variables you need to `group_by`. Finally, what do you need to
+`summarize` (assign the value to `mean_box_office`) and `arrange` on (don't forget to use `desc`!)? 
+
+Assign the output to `race_country_box_office`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+```
+
+*** =sample_code
+```{r}
+race_country_box_office <- biopics %>%
+        
+```
+
+*** =solution
+```{r}
+race_country_box_office <- biopics %>%
+    filter(!is.na(box_office)) %>%
+    group_by(race_known, country) %>%
+    summarize(mean_box_office=mean(box_office)) %>%
+    arrange(desc(mean_box_office))
+```
+
+*** =sct
+```{r}
+success_msg("Your `dplyr` skills are ever improving!")
+test_object("race_country_box_office", incorrect_msg = "Not quite. Think about the order in which you need to do these operations.")
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
@@ -638,9 +734,10 @@ test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 - `dplyr::filter()`
 - `dplyr::mutate()`
 - `dplyr::group_by()/dplyr::summarize()`
+- `dplyr::arrange()`
 - `dplyr::select()`
+- How to put it all together!
 - Chester's Mantra
-- 
 
 *** =instructions
 Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
