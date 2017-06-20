@@ -104,11 +104,9 @@ biopicsUK
 
 Three things to note here: 
 
-    1. The first argument to filter is always the dataset. We'll see another variation in a second.
-    
-    2. For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
-
-    3. Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
++ The first argument to filter is always the dataset. We'll see another variation in a second.
++ For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
++ Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
 Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left.
@@ -125,7 +123,7 @@ biopics$country <- factor(biopics$country)
 *** =sample_code
 ```{r}
 #add your filter statement here
-crimeMovies <- 
+crimeMovies <- filter()
 
 #show number of crime movies
 ```
@@ -160,11 +158,9 @@ filter(biopics, year_release > 1980 &
 
 Three things to note:
 
-    1. We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
-
-    2. We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
-
-    3. Chaining expressions is where `filter()` becomes super powerful.
++ We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
++ We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
++ Chaining expressions is where `filter()` becomes super powerful.
 
 *** =pre_exercise_code
 ```{r}
@@ -204,8 +200,6 @@ success_msg("Good job! Now you know how to chain comparisons!")
 test_object("crimeFilms", incorrect_msg = "Not quite. Did you add your comparison correctly?")
 test_function("nrow", incorrect_msg = "Show the number of rows in the crimeFilms using `nrow()`")
 ```
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e6843338b8
 ## Quick Quiz about Chaining Comparisons
 
@@ -725,7 +719,8 @@ race_country_box_office <- biopics %>%
 *** =sct
 ```{r}
 success_msg("Your `dplyr` skills are ever improving!")
-test_object("race_country_box_office", incorrect_msg = "Not quite. Think about the order in which you need to do these operations.")
+test_object("race_country_box_office", incorrect_msg = 
+    "Not quite. Think about the order in which you need to do these operations.")
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
