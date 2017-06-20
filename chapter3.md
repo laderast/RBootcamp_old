@@ -411,7 +411,7 @@ format is great, because you can apply that pipeline to incoming data and have i
 
 *** =instructions
 Use `%>%` to chain a `filter` command (`country=="Canada"`) with a `mutate` 
-command (`subject_is_richard=grepl("Richard",lead_actor_actress)`). 
+command (`subject_is_richard=lead_actor_actress %like% "Richard"`). 
 
 How many instances of Canadian Richards are there?
 
@@ -438,7 +438,7 @@ richardCanada <-
 ```{r}
 richardCanada <- 
     biopics %>% filter(country=="Canada") %>% 
-        mutate(subject_is_richard=grepl("Richard",lead_actor_actress))
+        mutate(subject_is_richard=lead_actor_actress %like% "Richard")
     
 nrow(richardCanada)
 ```
