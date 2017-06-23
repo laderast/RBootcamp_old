@@ -39,3 +39,61 @@ Just move on to the next exercise.
 ```{r}
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:efed4e694f
+## Long versus Wide Data
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
+## Joining two tables together
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```

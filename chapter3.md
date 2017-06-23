@@ -226,9 +226,10 @@ test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
-`mutate()` is one of the most useful `dplyr` commands. You can use it to transform data and 
-add it as a new variable into the `data.frame`. For example, let's calculate the total `box_office`
-divided by the `number_of_subjects` to normalize our comparison as `normalized_box_office`: 
+`mutate()` is one of the most useful `dplyr` commands. You can use it to transform data 
+(variables in your `data.frame`) and  add it as a new variable into the `data.frame`. 
+For example, let's calculate the total `box_office` divided by the `number_of_subjects` 
+to normalize our comparison as `normalized_box_office`: 
 
 ```{r}
 biopics2 <- mutate(biopics, normalized_box_office = box_office/number_of_subjects)
@@ -259,7 +260,7 @@ biopics$country <- factor(biopics$country)
 *** =sample_code
 ```{r}
 #assign new variable race_and_gender here using mutate()
-biopics2 <- 
+biopics2 <- mutate()
 
 #show first rows of biopics2 using head()
 
@@ -286,7 +287,7 @@ test_function("head", incorrect_msg = "Almost there. Did you use `head()`")
 ## You can use mutated variables right away!
 
 The nifty thing about `mutate()` is that once you define the variables in the statement,
-you can use them right away. For example, look at this code:
+you can use them right away, in the same `mutate` statement. For example, look at this code:
 
 ```{r}
 
@@ -321,6 +322,7 @@ you can use them right away. For example, look at this code:
 
 
 *** =instructions
+Change the 
 
 *** =hint
 
