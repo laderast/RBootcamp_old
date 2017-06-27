@@ -10,6 +10,8 @@ description : Why we need tidy data and using `tidyr` to make messy data tidy
 + How to make messy data tidy using `tidyr`
 + Long vs. Wide data
 + The tidy manifesto
++ Joining tables on a common identifier
+
 
 After this chapter, you will be able to handle about 90% of your data visualization,
 data manipulation, and data cleaning problems. Hopefully you'll have gained enough
