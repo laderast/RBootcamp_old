@@ -290,9 +290,11 @@ The nifty thing about `mutate()` is that once you define the variables in the st
 you can use them right away, in the same `mutate` statement. For example, look at this code:
 
 ```{r}
-
+biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
+Notice that we first defined `box_office_year` in the first part of the `mutate()` statement,
+and then used it right away to define a new variable, `box_office_subject`. 
 
 *** =instructions
 
@@ -300,7 +302,11 @@ you can use them right away, in the same `mutate` statement. For example, look a
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
+data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =sample_code
@@ -348,42 +354,44 @@ Change the
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b43bc05171
-## mutate() is all powerful
 
-What is the difference between these two statements?
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3b247ce89c
+## The difference between `filter()` and `mutate()`
+
+What is the difference between these two statements? Try them out in the console if you're not sure.
 
 ```{r}
-
+biopics %>% filter(year_release > 1998)
 ```
 
 ```{r}
-
+biopics %>% mutate(isNewer = year_release > 1998)
 ```
 
 *** =instructions
+- The first statement should have a larger number of rows than the second one
+- The first statement filters the data, whereas the second statement defines a new boolean variable.
+- The second statement is more confusing.
 
 *** =hint
+Compare the number of rows and the output of each of these statements.
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
+data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =sct
 ```{r}
 
+success_msg("Yes! I'm glad you understand the difference.")
+
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
 ## The pipe character: `%>%`
 
@@ -564,13 +572,13 @@ The final verb we'll learn is `select()`. `select()` allows you to 1) extract co
 For example, look at the following code:
 
 ```{r}
-biopics %>% select(movieTitle=title_of_movie, box_office)
+biopics %>% select(movieTitle=title, box_office)
 ```
 Here, we're just extracting two columns (`title_of_movie`, `box_office`). Notice we also renamed
-`box_office` to `movieTitle`.
+`title` to `movieTitle`.
 
 *** =instructions
-Use `select` to extract the following variables: `title_of_movie` (rename it `movieTitle`), 
+Use `select` to extract the following variables: `title` (rename it `movieTitle`), 
 `box_office` and `subject_sex` and assign them to a new table called `threeVarTable`
 
 *** =hint
@@ -591,13 +599,12 @@ threeVarTable <- biopics %>% select()
 
 *** =solution
 ```{r}
-threeVarTable <- biopics %>% select(movieTitle=title_of_movie, box_office, subject_sex)
-
+threeVarTable <- biopics %>% select(movieTitle=title, box_office, subject_sex)
 ```
 
 *** =sct
 ```{r}
-success_msg("Great! Now you know how to select stuff")
+success_msg("Great! Now you know how to select columns from your tables.")
 test_object("threeVarTable", incorrect_msg = "Not quite. Remember names and order matters.")
 ```
 
