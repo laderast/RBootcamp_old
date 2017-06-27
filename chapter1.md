@@ -134,6 +134,10 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
   geom_point() + ggtitle("Gapminder for 1992")
 ```
 
+*** =hint
+Look at the graph. If you need the variable names, you can always 
+use `head()` on the gap1992 dataset.
+
 *** =sample_code
 ```{r}
 ggplot(data = gap1992, 
@@ -144,9 +148,6 @@ ggplot(data = gap1992,
       )) + 
 geom_point()
 ```
-*** =hint
-Look at the graph. If you need the variable names, you can always 
-use `head()` on the gap1992 dataset.
 
 *** =solution
 ```{r}
