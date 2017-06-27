@@ -118,6 +118,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -169,6 +170,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =instructions
@@ -219,6 +221,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sct
@@ -259,6 +262,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -311,6 +315,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -351,6 +356,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sct
@@ -388,6 +394,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sct
@@ -438,6 +445,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -500,6 +508,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -555,6 +564,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -597,6 +607,7 @@ library(fivethirtyeight)
 library(dplyr)
 
 data(biopics)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -662,6 +673,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
@@ -716,6 +728,7 @@ library(dplyr)
 
 data(biopics)
 biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
 ```
 
 *** =sample_code
