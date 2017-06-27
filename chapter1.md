@@ -276,16 +276,6 @@ msg3 = "Look at the ggplot code and see if we are manipulating data or not. Are 
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:0 skills:1 key:6e0ba88ae9
-## "gg" is for *G*rammar of *G*raphics
-
-When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](http://www.springer.com/us/book/9780387245447) in mind. 
-
-In this book, Wilkinson et. al. decomposed all statistical graphics of having a number of graphical elements.
-
-`ggplot2` directly maps these concepts of a [grammar of graphics to plotting R Data](http://vita.had.co.nz/papers/layered-grammar.pdf). 
-
-
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
 ## Final Challenge: Recreate this Gapminder Plot
 
