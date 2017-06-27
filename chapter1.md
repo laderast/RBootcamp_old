@@ -95,7 +95,10 @@ msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) 
 test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:81ca7deaa1
 ## Mapping variables to produce geometric plots
 
 A statistical graphic consists of:
@@ -123,6 +126,11 @@ Finally, we can superimpose our geometry on the plot using `geom_point()`.
 *** =instructions
 Based on the graph, map the appropriate variables to the x, y, and color aesthetics. Run your plot.
 
+*** =hint
+Look at the graph. If you need the variable names, you can always 
+use `head()` on the gap1992 dataset.
+
+
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
@@ -133,10 +141,6 @@ gap1992 <- gapminder %>% filter(year == 1992)
 ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent)) +
   geom_point() + ggtitle("Gapminder for 1992")
 ```
-
-*** =hint
-Look at the graph. If you need the variable names, you can always 
-use `head()` on the gap1992 dataset.
 
 *** =sample_code
 ```{r}
@@ -169,7 +173,6 @@ test_output_contains("lifeExp",
 test_output_contains("continent", 
         incorrect_msg="you need to map continent to something. What could that be?")
 ```
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
 
