@@ -12,8 +12,8 @@ Remember that a `data.frame` is basically a table-like format which has the foll
 - Rows correspond to a single observation (ideally)
 - Can be subset or filtered based on criteria
 
-Individual variables within a `data.frame` can be accessed with the `$` operator. We won't use this very often, 
-as the `tidyverse` lets us access the variables directly, as you'll see.
+Individual variables within a `data.frame` can be accessed with the `$` operator (such as `gap1992$pop`). We won't use this very often, 
+as the `tidyverse` lets us access the variables without it, as you'll see.
 
 *** =instructions
 Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the 
