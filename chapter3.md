@@ -305,6 +305,8 @@ Notice that we first defined `box_office_year` in the first part of the `mutate(
 and then used it right away to define a new variable, `box_office_subject`. 
 
 *** =instructions
+Define another variable called `box_office_year_subject_number` in the same `mutate()` statement by taking 
+`box_office_year` and dividing it by `number_of_subjects`. Assign the output to `mutatedBiopics`.
 
 *** =hint
 
@@ -320,12 +322,13 @@ options(tibble.width = Inf)
 
 *** =sample_code
 ```{r}
-
+mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
 *** =solution
 ```{r}
-
+mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
+box_office_year_subject_number = box_office_year/number_of_subjects)
 ```
 
 *** =sct
@@ -335,7 +338,7 @@ options(tibble.width = Inf)
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bfd4f10b15
-## Another Use for mutate()
+## Another Use for `mutate()`
 
 What is this statement doing? Try it out in the console if you're not sure.
 
@@ -477,7 +480,7 @@ test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
-## dplyr::group_by()/dplyr::summarize()
+## group_by()/summarize()
 
 `group_by()` doesn't do anything by itself. But when combined with `summarize()`, you can 
 calculate metrics (such as `mean`, `max`, `sd`) across groups. For example:
@@ -541,7 +544,7 @@ test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check e
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
-## dplyr::arrange()
+## arrange()
 
 `arrange()` lets you sort by a variable. If you provide multiple variables, the variables are 
 arranged within each other. For example:
@@ -583,7 +586,7 @@ success_msg("Now you know how to sort data using dplyr. Nifty, eh?")
 test_object("biopics_sorted", incorrect_msg = "Not quite. Make sure you are arranging variables in order")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
-## dplyr::select()
+## select()
 
 The final verb we'll learn is `select()`. `select()` allows you to 1) extract columns, 
 2) reorder columns or 3) remove columns from your data, as well as 4) rename your data. 
