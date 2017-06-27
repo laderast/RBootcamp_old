@@ -57,8 +57,6 @@ length(gap1992$lifeExp)
 ```{r}
 success_msg("Great! You remembered some basics about `data.frame`s! Let's move on.")
 test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
-test_function("length", args="x", index=1, incorrect_msg="use gap1992$pop")
-test_function("length", args="x", index=2, incorrect_msg-"use gap1992$lifeExp")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
