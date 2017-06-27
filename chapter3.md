@@ -203,7 +203,7 @@ test_function("nrow", incorrect_msg = "Show the number of rows in the crimeFilms
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e6843338b8
 ## Quick Quiz about Chaining Comparisons
 
-Which statement should be the larger subset?
+Which statement should be the larger subset? Try them out in the console if you're not sure.
 
 *** =instructions
 - `filter(biopics, year_release > 1980 & type_of_subject == "criminal")`
@@ -214,7 +214,11 @@ Think about the difference between `|` (or) and `&` (and)
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
+data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =sct
@@ -323,38 +327,39 @@ biopics$country <- factor(biopics$country)
 ```{r}
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:3bba8ddfc5
-## Another Use for mutate(): Changing a column in place
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bfd4f10b15
+## Another Use for mutate()
+
+What is this statement doing? Try it out in the console if you're not sure.
+
+```{r}
+mutate(biopics, subject= paste(subject, year_release))
+```
 
 *** =instructions
-Change the 
+- We are defining a brand-new variable with the same name in our dataset and keeping the old variable as well
+- We are processing the variable `subject` and saving it in place
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(fivethirtyeight)
+library(dplyr)
 
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
+data(biopics)
+biopics$country <- factor(biopics$country)
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Great! Now you know you can also use `mutate()` to process variables in place.")
+msg1 = "Try it out. Did we add another variable?"
+msg2 = "Correct! We're processing `subject` in place."
+test_mc(correct=2, feedback_msgs = c(msg1, msg2))
 ```
-
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3b247ce89c
 ## The difference between `filter()` and `mutate()`
 
@@ -389,7 +394,10 @@ biopics$country <- factor(biopics$country)
 ```{r}
 
 success_msg("Yes! I'm glad you understand the difference.")
-
+msg1 = "Not the case! Try comparing the number of rows."
+msg2 = "Yes, this is correct! We're identifying a new variable that we can use to flag the data."
+msg3 = "It is a little confusing, but think it out."
+test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
@@ -631,7 +639,7 @@ success_msg("Welcome to the cult of dplyr! Your secret decoder ring is in the ma
 msg1 <- "Nope. Both of these verbs don't care what data type you use."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
-test_mc(correct = 3, feedback_msgs = c())
+test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
@@ -680,7 +688,7 @@ biopics_by_country <- biopics %>%
 
 *** =sct
 ```{r}
-success_msg("Wow! You've really come really far. I bestow the title of `dplyr` ninja!")
+success_msg("Wow! You've really come really far. I bestow upon you the title of `dplyr` ninja!")
 test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 ```
 
