@@ -400,7 +400,7 @@ Think about what variables map to what aesthetics.
 
 *** =sample_code
 ```{r}
-ggplot(pets, aes(x= , y=) + geom_boxplot()
+ggplot(pets, aes(x= , y=)) + geom_boxplot()
 ```
 
 *** =solution
