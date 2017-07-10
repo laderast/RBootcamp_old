@@ -405,7 +405,7 @@ ggplot(pets, aes(x= , y=) + geom_boxplot()
 
 *** =solution
 ```{r}
-ggplot(pets, aes(x=animal, y=weight) + geom_boxplot()
+ggplot(pets, aes(x=animal, y=weight)) + geom_boxplot()
 ```
 
 *** =sct
