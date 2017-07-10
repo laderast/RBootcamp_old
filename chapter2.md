@@ -243,6 +243,13 @@ ggplot(data=pets, mapping=aes(x=name)) + geom_bar() +
 
 You might notice that there are blank spots for the categories in each facet. We can remove these in each facet by using `scale="free_x"` argument in `facet_wrap()`.
 
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
+
+
 *** =instructions
 Add `free_x` to the scale argument. How many animals named "Morris" did not receive shots? 
 
