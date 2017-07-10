@@ -98,7 +98,8 @@ test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:81ca7deaa1
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:bfe1375688
 ## Mapping variables to produce geometric plots
 
 A statistical graphic consists of:
@@ -122,6 +123,7 @@ Let's take the above code apart. A `ggplot2` call always starts with the `ggplot
 In order to map our variables to aesthetic properties, we will need to use `aes()`, which is our `aes()`thetic mapping function. In our example, we map `x` to `log(gdpPercap)` and `y` to `log(pop)`.
 
 Finally, we can superimpose our geometry on the plot using `geom_point()`.
+
 
 *** =instructions
 Based on the graph, map the appropriate variables to the x, y, and color aesthetics. Run your plot.
@@ -162,6 +164,7 @@ ggplot(data=gap1992,
       color = continent
       )) + 
 geom_point()
+
 ```
 
 *** =sct
@@ -173,6 +176,7 @@ test_output_contains("lifeExp",
 test_output_contains("continent", 
         incorrect_msg="you need to map continent to something. What could that be?")
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
 
