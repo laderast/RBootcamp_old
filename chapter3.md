@@ -85,7 +85,7 @@ length(levels(biopics$country))
 ```{r}
 success_msg("Nice work!")
 test_function("summary", incorrect_msg = "you need to use the summary() function on biopics")
-test_function("levels", incorrect_msg = "you need to use the levels() function on biopics")
+test_function("levels", incorrect_msg = "you need to use the levels() function on biopics$country")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
