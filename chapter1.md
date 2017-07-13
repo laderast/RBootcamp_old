@@ -345,6 +345,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
 *** =sct
 ```{r}
 success_msg("Now you know the basics of ggplot and aesthetics. Congrats!")
+test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the variables to the correct aesthetics.")
 #test_output_contains("continent", 
 #        incorrect_msg="you need to map `continent` to something. What could that be?")
 #test_output_contains("log(gdpPercap)", 
