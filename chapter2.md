@@ -134,7 +134,12 @@ test_ggplot(check_aes = TRUE,aes_fail_msg = "Make sure that you're mapping `shot
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2723146f59
 ## Quick Quiz
 
-What does mapping `color` to `"black"` in `geom_bar()` do? 
+What does mapping `color` to `"black"` in `geom_bar()` do? For example:
+
+```{r}
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+```
 
 *** =instructions
 - Makes the default bar fill color black
@@ -249,7 +254,6 @@ library(ggplot2)
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
 ```
 
-
 *** =instructions
 Add `free_x` to the scale argument. How many animals named "Morris" did not receive shots? 
 
@@ -330,7 +334,7 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =hint
 Think about what to map to `x`, and what to map to `fill`, and what `position` argument 
-you need for `geom_bar()`. Finally, think about how to facet the variable.
+you need for `geom_bar()`. Finally, think about how to facet the variable. 
 
 *** =sample_code
 ```{r}
@@ -350,7 +354,7 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(position="fill") +
 *** =sct
 ```{r}
 success_msg("Good job! You managed to integrate everything you learned about barplots. Let's move on!")
-test_ggplot(check_facet = TRUE, check_aes = TRUE)
+test_ggplot(check_facet = TRUE, check_aes = TRUE, facet_fail_msg = "You didn't map the right facet. Try again.", aes_fail_msg = "Not the right fill aesthetic. Try again.")
 test_function("geom_bar", incorrect_msg = "Did you use `geom_bar()`?")
 ```
 

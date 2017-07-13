@@ -32,7 +32,6 @@ gap1992 <- gapminder %>% filter(year == 1992)
 head(gap1992)
 ##run colnames here on gap1992
 
-
 ##check if pop column is same length as lifeExp column
 ##show the length of the pop column
 length() 
