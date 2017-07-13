@@ -122,7 +122,7 @@ Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
 
 *** =instructions
-Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot.
+Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot. Remember, you can try plots out in the console before you submit your answer.
 
 *** =hint
 Look at the graph. If you need the variable names, you can always 
@@ -180,8 +180,11 @@ For `geom_point()`, there are lots of other aesthetics. The important thing to k
 aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
 map to a `geom`, you can always use `help()` (such as `help(geom_point)`).
 
-Look at `help(geom_point)` and look at all the aesthetic mappings. Which of the following is not
-a mappable aesthetic to `geom_point()`?
+I'd ask you to look at `help(geom_point)`, but the documentation is not correct on Datacamp. 
+Instead, look here: [http://ggplot.yhathq.com/docs/geom_point.html](http://ggplot.yhathq.com/docs/geom_point.html)
+and look at all the aesthetic mappings. 
+
+Which of the following is *not* a mappable aesthetic to `geom_point()`?
 
 *** =instructions
 - `x`
@@ -195,8 +198,9 @@ library(ggplot2)
 
 *** =sct
 ```{r}
+success_msg("Great! Now you know where to look for mappable aesthetics.")
 msg1 = "Nope. This is a mappable aesthetic to `geom_point().`"
-msg3 = "Correct. `linetype` is not mappable to `geom_point()`."
+msg3 = "Correct. `linetype` is not mappable to `geom_point()`. Points don't have a `linetype`, do they?"
 test_mc(correct = 3, feedback_msgs=c(msg1, msg1, msg3))
 ```
 
@@ -234,7 +238,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 *** =sct
 ```{r}
 success_msg("Great! Now you know how to swap representations in ggplot2. Let's move on.")
-test_function("geom_line", incorrect_msg="you need to change the geom")
+test_function("geom_line", incorrect_msg="You need to change the geom.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:13ea4fbf3d
@@ -321,7 +325,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 
 *** =instructions
 - If you need to remember variable names, you can always call `head(gap1992)` or `colnames(gap1992)` in the console.
-- Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console.
+- Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console before you submit your answer.
 
 *** =sample_code
 ```{r}
