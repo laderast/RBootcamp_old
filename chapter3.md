@@ -775,6 +775,8 @@ tricky thing to remember is that everything after the `ggplot()` is connected wi
 `+`, and not `%>%`. 
 
 *** =instructions
+Are you sick of `biopics` yet? I promise this is the last time we use this dataset.
+
 
 *** =hint
 
