@@ -1,6 +1,6 @@
 ---
-title       : The Magic of `ggplot2`
-description : Learn how ggplot turns variables into statistical graphics
+title       : The Magic of ggplot2
+description : Learn how ggplot2 turns variables into statistical graphics
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
 ## Quick Data Frame Review

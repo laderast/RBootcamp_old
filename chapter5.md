@@ -1,5 +1,5 @@
 ---
-title       : Simple Stats and Modeling with `broom`.
+title       : Simple Stats and Modeling with broom.
 description : Now we have tidy data, let's start doing some statistics!
 
 
