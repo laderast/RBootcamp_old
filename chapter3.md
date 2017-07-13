@@ -755,6 +755,55 @@ success_msg("Your `dplyr` skills are ever improving!")
 test_object("race_country_box_office", incorrect_msg = 
     "Not quite. Think about the order in which you need to do these operations.")
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b7b6b449de
+## Challenge 3: Putting together what we know about ggplot2 and dplyr
+
+Now we're cooking with fire. You can directly pipe the output of a `dplyr` pipeline
+into a `ggplot2` statement. For example:
+
+```{r}
+biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
+    ggplot(aes(x = year_release, y=box_office_per_subject)) +
+    geom_point()
+```
+
+Note that we use `%>%` to pipe our statement into the `ggplot()` function. The
+tricky thing to remember is that everything after the `ggplot()` is connected with
+`+`, and not `%>%`. 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
