@@ -173,59 +173,33 @@ test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mappin
 #        incorrect_msg="you need to map continent to something. What could that be?")
 ```
 
-
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
-## More about ma
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:3c1a6dbf5c
-## More  Mappings
+## More about  aethetic mapping
 
 For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
 aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
-map to a `geom`, you can always use `help()` (such as `help(geom_point)`.)
+map to a `geom`, you can always use `help()` (such as `help(geom_point)`).
 
+Look at `help(geom_point)` and look at all the aesthetic mappings. Which of the following is not
+a mappable aesthetic to `geom_point()`?
 
 *** =instructions
-Look at `help(geom_point)` and look at all the 
-
-*** =hint
+- `x`
+- `group`
+- `linetype`
 
 *** =pre_exercise_code
 ```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
+library(ggplot2)
 ```
 
 *** =sct
 ```{r}
-
+msg1 = "Nope. This is a mappable aesthetic to `geom_point().`"
+msg3 = "Correct. `linetype` is not mappable to `geom_point()`."
+test_mc(correct = 3, feedback_msgs=c(msg1, msg1, msg3))
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
 
