@@ -756,8 +756,6 @@ test_object("race_country_box_office", incorrect_msg =
     "Not quite. Think about the order in which you need to do these operations.")
 ```
 
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:b7b6b449de
 ## Challenge 3: Putting together what we know about ggplot2 and dplyr
 
