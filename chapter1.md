@@ -95,10 +95,6 @@ msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) 
 test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
-
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:bfe1375688
 ## Mapping variables to produce geometric plots
 
@@ -126,7 +122,7 @@ Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
 
 *** =instructions
-Based on the graph, map the appropriate variables to the x, y, and color aesthetics. Run your plot.
+Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot.
 
 *** =hint
 Look at the graph. If you need the variable names, you can always 
@@ -149,8 +145,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 ggplot(data = gap1992, 
     mapping = aes(
       x = , 
-      y = , 
-      color = 
+      y =  
       )) + 
 geom_point()
 ```
@@ -161,7 +156,6 @@ ggplot(data=gap1992,
     mapping = aes(
       x = log(gdpPercap), 
       y = lifeExp, 
-      color = continent
       )) + 
 geom_point()
 
@@ -169,6 +163,8 @@ geom_point()
 
 *** =sct
 ```{r}
+success_msg("Wunderbar! Now you're on your way to recreating that gapminder plot")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mapping the right variables to the right aesthetics.")
 #test_output_contains("log(gdpPercap)", 
 #        incorrect_msg="You need to log transform one of the variables.")
 #test_output_contains("lifeExp", 
@@ -177,6 +173,59 @@ geom_point()
 #        incorrect_msg="you need to map continent to something. What could that be?")
 ```
 
+
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
+## More about ma
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:3c1a6dbf5c
+## More  Mappings
+
+For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
+aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
+map to a `geom`, you can always use `help()` (such as `help(geom_point)`.)
+
+
+*** =instructions
+Look at `help(geom_point)` and look at all the 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
 

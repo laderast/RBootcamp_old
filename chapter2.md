@@ -127,7 +127,7 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 *** =sct
 ```{r}
 success_msg("Great! Now you know how to make stacked bar plots by mapping a variable to `fill`.")
-test_ggplot(check_aes = TRUE)
+test_ggplot(check_aes = TRUE,aes_fail_msg = "Make sure that you're mapping `shotsCurrent` to the right aesthetic")
 ```
 
 
@@ -269,7 +269,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 
 *** =sct
 ```{r}
-
+test_function("facet_wrap", args = "scale", incorrect_msg = "Did you add a scale argument to `facet_wrap()`?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
