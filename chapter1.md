@@ -154,7 +154,7 @@ geom_point()
 ggplot(data=gap1992, 
     mapping = aes(
       x = log(gdpPercap), 
-      y = lifeExp, 
+      y = lifeExp 
       )) + 
 geom_point()
 
