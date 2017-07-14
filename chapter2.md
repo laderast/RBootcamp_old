@@ -273,7 +273,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 
 *** =sct
 ```{r}
-test_function("facet_wrap", args = "scale", incorrect_msg = "Did you add a scale argument to `facet_wrap()`?")
+#test_function("facet_wrap", args = "scale", incorrect_msg = "Did you add a scale argument to `facet_wrap()`?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
