@@ -170,7 +170,7 @@ Three things to note here:
 + Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
-Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left.
+Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left using `nrows(crimeMovies)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -222,7 +222,7 @@ Three things to note:
 
 + We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
 + We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
-+ Chaining expressions is where `filter()` becomes super powerful.
++ Chaining expressions is where `filter()` becomes super powerful. However, it's also the source of headaches, so you will need to carefully test your chain of expressions.
 
 *** =pre_exercise_code
 ```{r}
@@ -411,8 +411,6 @@ mutate(biopics, subject= paste(subject, year_release))
 - We are defining a brand-new variable with the same name in our dataset and keeping the old variable as well
 - We are processing the variable `subject` and saving it in place
 
-*** =hint
-
 *** =pre_exercise_code
 ```{r}
 library(fivethirtyeight)
@@ -463,7 +461,6 @@ options(tibble.width = Inf)
 
 *** =sct
 ```{r}
-
 success_msg("Yes! I'm glad you understand the difference.")
 msg1 = "Not the case! Try comparing the number of rows."
 msg2 = "Yes, this is correct! We're identifying a new variable that we can use to flag the data."
@@ -544,7 +541,7 @@ test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 ## group_by()/summarize()
 
 `group_by()` doesn't do anything by itself. But when combined with `summarize()`, you can 
-calculate metrics (such as `mean`, `max`, `sd`) across groups. For example:
+calculate metrics (such as `mean`, `max` - the maximum, `sd` - the standard deviation) across groups. For example:
 
 ```{r}
 countryMeans <- biopics %>% 
@@ -560,9 +557,9 @@ any `NA` values that may confound our calculation.
 Let's ask a tough question. Is there a difference between mean `box_office` 
 between the two `subject_sex` categories? 
 
-Use `group_by()` and `summarize()` to calculate the mean `box_office` by `subject_sex`, naming the summary
-variable as `mean_bo_by_gender`.  Assign the output to `gender_box_office`. Make sure to
-remove `NA` values using `filter()`. 
+First use `filter()` to remove the NA values. Then, use `group_by()` and `summarize()` to 
+calculate the mean `box_office` by `subject_sex`, naming the summary
+variable as `mean_bo_by_gender`.  Assign the output to `gender_box_office`. 
 
 *** =hint
 
@@ -583,7 +580,7 @@ gender_box_office <- biopics %>%
     summarize(mean_bo_by_gender=)
     
 ##show gender_box_office
-gender_box_office
+head(gender_box_office)
 ```
 
 *** =solution
@@ -594,7 +591,7 @@ gender_box_office <- biopics %>%
     summarize(mean_bo_by_gender=mean(box_office))
 
 ##show gender_box_office
-gender_box_office
+head(gender_box_office)
 ```
 
 *** =sct
@@ -602,8 +599,6 @@ gender_box_office
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
 test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct")
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
 ## arrange()
 
@@ -700,8 +695,6 @@ What is the difference between `select()` and `filter()?`
 - `select()` works on booleans, whereas `filter()` works on all data types
 - `select()` only works after `filter()`
 - `select()` works on columns, `filter()` works on rows
-
-*** =hint
 
 *** =pre_exercise_code
 ```{r}
