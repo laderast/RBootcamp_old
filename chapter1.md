@@ -333,13 +333,6 @@ ggplot(gap1992, aes(x = log(gdpPercap),
 ```{r}
 success_msg("Now you know the basics of ggplot and aesthetics. Congrats!")
 test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the variables to the correct aesthetics.")
-#test_output_contains("continent", 
-#        incorrect_msg="you need to map `continent` to something. What could that be?")
-#test_output_contains("log(gdpPercap)", 
-#        incorrect_msg="you need to map `log(gdpPercap)` to something. What could that be?")
-#test_output_contains("lifeExp", 
-#        incorrect_msg="you need to map lifeExp to something")
-#test_output_contains("pop", incorrect_msg = "You need to map `pop` to something.")
 ```
 
 --- type:NormalExercise lang:r xp:0 skills:1 key:fe7e851b1f
@@ -353,7 +346,7 @@ test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the varia
 - That you can do this!
 
 *** =instructions
-Just move on to the next chapter!
+Just move on to the next chapter! 
 
 *** =hint
 
