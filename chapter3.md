@@ -828,9 +828,15 @@ Note that we use `%>%` to pipe our statement into the `ggplot()` function. The
 tricky thing to remember is that everything after the `ggplot()` is connected with
 `+`, and not `%>%`. 
 
+Also note: we don't assign a `data` variable in the `ggplot()` statement. We are piping
+in the data. 
+
 *** =instructions
 Are you sick of `biopics` yet? I promise this is the last time we use this dataset.
 
+First filter `biopics` to have `year_release` < 1990. Then pipe that into a `ggplot()` statement
+that plots an x-y plot of `box_office` (use `geom_point()`) where `x=year_release` and 
+`y=log(box_office)`. Color the points by `person_of_color`.
 
 *** =hint
 
@@ -846,17 +852,21 @@ options(tibble.width = Inf)
 
 *** =sample_code
 ```{r}
-
+biopics %>%
 ```
 
 *** =solution
 ```{r}
-
+biopics %>% filter(year_release < 1990) %>%
+    ggplot(aes(x=year_release, y=log(box_office), color=person_of_color)) +
+    geom_point()
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Now you know how to chain dplyr statements straight into a ggplot!")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "Make sure you're mapping the right variables")
+test_ggplot(check_data = TRUE, data_fail_msg = "Did you do the filter step correctly?")
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
