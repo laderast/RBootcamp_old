@@ -27,6 +27,9 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =sample_code
 ```{r}
+##look at the pets data
+pets
+
 ##show categories for shotsCurrent
 levels()
 
@@ -37,6 +40,9 @@ levels()
 
 *** =solution
 ```{r}
+##look at the pets data
+pets
+
 ##show categories for shotsCurrent
 levels(pets$shotsCurrent)
 
@@ -66,7 +72,6 @@ Map the `name` variable to `x` in the `ggplot` statement. What is the most popul
 ```{r}
 library(ggplot2)
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
-ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=45))
 ```
 
 *** =sample_code
@@ -92,8 +97,6 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 success_msg("Great! You made your first barplot! Now we'll learn how to modify it.")
 test_ggplot(check_aes = TRUE, aes_fail_msg = "did you map the `x` aesthetic to the right variable?")
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:b2586607f1
 ##  Stacked Bars
 
@@ -129,7 +132,6 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 success_msg("Great! Now you know how to make stacked bar plots by mapping a variable to `fill`.")
 test_ggplot(check_aes = TRUE,aes_fail_msg = "Make sure that you're mapping `shotsCurrent` to the right aesthetic")
 ```
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2723146f59
 ## Quick Quiz
