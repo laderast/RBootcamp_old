@@ -485,9 +485,11 @@ As: I took the `biopics` data, THEN
 I filtered it down with the `race_known == "Known"` criteria and THEN 
 I defined a new variable called `poc_code`.
 
-`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about the `tidyverse`. In fact,
+Note that `filter()` doesn't have a `data` argument, because the `data` is `piped` into `filter()`. Same thing for `mutate()`.
+
+`%>%` allows you to chain multiple verbs in the `tidyverse`. It's one of the most powerful things about the `tidyverse`. In fact,
 having a standardized chain of processing actions is called a **pipeline**. Making pipelines for a data
-format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
+format is great, because you can apply that pipeline to incoming data that has the same formatting and have it output in a `ggplot2` friendly format.
 
 *** =instructions
 Use `%>%` to chain a `filter` command (`country=="US"`) with another `filter` 
