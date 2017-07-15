@@ -45,6 +45,67 @@ Just move on to the next exercise!
 ```{r}
 
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:0643d8c567
+## A Little Bit about assignment
+
+In order to do the following exercises, we need to learn a little bit about how to assign 
+the output of a function to a variable.
+
+For example, we can assign the output of the operation `1 + 2` to a variable called `sumOfTwoNumbers`
+using the `<-` operator. This is called the `assignment` operator.
+
+You can also use `=` to assign a value to a variable, but I find it makes my code a bit confusing, because
+there is also `==`, which tests for equality.
+```{r}
+sumOfTwoNumbers <- 1 + 2
+```
+Once we have something assigned to a variable, we can use it in other expressions:
+
+```{r}
+sumOfThreeNumbers <- sumOfTwoNumbers + 3
+```
+This is the bare basics of assignment. We'll use it in the next exercises to evaluate the output
+of our `dplyr` cleaning.
+
+*** =instructions
+Assign `newValue` the value of `10`. Then use `newValue` to calculate the value of `multValue` by
+calculating `newValue * 5`. Show `multValue`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+##assign newValue
+newValue <-
+## use newValue to calculate multValue
+multValue <- 
+##show multValue
+multValue
+```
+
+*** =solution
+```{r}
+##assign newValue
+newValue <- 10
+## use newValue to calculate multValue
+multValue <- newValue * 5
+##show multValue
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to assign variables and use them in expressions. Well done!")
+test_object("newValue", incorrect_msg = "Not quite. Did you assign `newValue` to 10?")
+test_object("multValue", incorrect_msg = "Not quite. Did you use `newValue` in your expression?")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
