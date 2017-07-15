@@ -155,7 +155,7 @@ test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mappin
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
-## More about  ae
+## More about aes
 For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
 aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
 map to a `geom`, you can always use `help()` (such as `help(geom_point)`).
@@ -168,7 +168,7 @@ Which of the following is *not* a mappable aesthetic to `geom_point()`?
 
 *** =instructions
 - `x`
-- `group`
+- `shape`
 - `linetype`
 
 *** =pre_exercise_code
