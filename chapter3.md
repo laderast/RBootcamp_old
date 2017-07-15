@@ -552,8 +552,8 @@ countryMeans <- biopics %>%
                     summarize(mean_box_office = mean(box_office))
 ```
 
-Here we want to calculate the mean box office by country. However, in order to do that, we first need to remove
-any `NA` values that may confound our calculation.
+Here we want to calculate the mean `box_office` by `country`. However, in order to do that, we first need to remove
+any rows that have `NA` values in `box_office` that may confound our calculation.
 
 *** =instructions
 Let's ask a tough question. Is there a difference between mean `box_office` 
@@ -615,7 +615,7 @@ This statement will sort the data by `country` first, and then within each `coun
 it will sort by `year_release`.
 
 *** =instructions
-Sort `biopics` by `year_release` then by `lead_actor_actress`. Assign the output to `biopics_sorted`
+Sort `biopics` by `year_release` then by `lead_actor_actress`. Assign the output to `biopics_sorted`.
 
 *** =hint
 
