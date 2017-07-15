@@ -836,15 +836,15 @@ in the data.
 *** =instructions
 Are you sick of `biopics` yet? I promise this is the last time we use this dataset.
 
-First filter `biopics` to have `year_release` < 1990. Then pipe that into a `ggplot()` statement
-that plots an x-y plot of `box_office` (use `geom_point()`) where `x=year_release` and 
+First filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
+Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
+(use `geom_point()`) where `x=year_release` and 
 `y=log(box_office)`. Color the points by `person_of_color`.
-
-*** =hint
 
 *** =pre_exercise_code
 ```{r}
 library(fivethirtyeight)
+library(ggplot2)
 library(dplyr)
 
 data(biopics)
