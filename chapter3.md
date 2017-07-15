@@ -109,7 +109,7 @@ test_object("multValue", incorrect_msg = "Not quite. Did you use `newValue` in y
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
-We're going to use the `biopics` dataset in `fivethirtyeight` to do learn `dplyr`. This is a dataset of 761 different biopic movies.
+We're going to use the `biopics` dataset in the `fivethirtyeight` package to do learn `dplyr`. This is a dataset of 761 different biopic movies.
 
 *** =pre_exercise_code
 ```{r}
@@ -165,7 +165,7 @@ biopicsUK
 
 Three things to note here: 
 
-+ The first argument to filter is always the dataset. We'll see another variation in a second.
++ The first argument to `filter()` is the dataset. We'll see another variation of this in a second.
 + For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
 + Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 

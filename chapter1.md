@@ -14,7 +14,7 @@ A `data.frame` is basically a table-like format which has the following properti
 Individual variables within a `data.frame` can be accessed with the `$` operator (such as `gap1992$pop`). We won't use this very often, as the `tidyverse` lets us access the variables without it, as you'll see.
 
 *** =instructions
-Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. 
+Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Then see how many rows there are in the dataset using nrow(). Run these in console before you submit your answer.
 
 *** =pre_exercise_code
 ```{r}
@@ -30,6 +30,7 @@ gap1992 <- gapminder %>% filter(year == 1992)
 head(gap1992)
 ##run colnames here on gap1992
 colnames()
+##run nrow() on gap1992
 
 ```
 
@@ -39,6 +40,8 @@ colnames()
 head(gap1992)
 ##run colnames here on gap1992
 colnames(gap1992)
+##run nrow() on gap1992
+nrow(gap1992)
 ```
 
 *** =sct
