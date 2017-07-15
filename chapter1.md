@@ -3,21 +3,18 @@ title       : The Magic of ggplot2
 description : Learn how ggplot2 turns variables into statistical graphics
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
-## Quick Data Frame Review
-
-Remember that a `data.frame` is basically a table-like format which has the following properties: 
+## Quick Data Frame Introduction
+A `data.frame` is basically a table-like format which has the following properties: 
 
 - Columns can each have a different type (`numeric`, `character`, `boolean`, `factor`)
 - Columns are called "variables"
 - Rows correspond to a single observation (ideally)
 - Can be subset or filtered based on criteria
 
-Individual variables within a `data.frame` can be accessed with the `$` operator (such as `gap1992$pop`). We won't use this very often, 
-as the `tidyverse` lets us access the variables without it, as you'll see.
+Individual variables within a `data.frame` can be accessed with the `$` operator (such as `gap1992$pop`). We won't use this very often, as the `tidyverse` lets us access the variables without it, as you'll see.
 
 *** =instructions
-Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the 
-`length()` of the `pop` column is equal to the `lifeExp` column.
+Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. 
 
 *** =pre_exercise_code
 ```{r}
@@ -29,38 +26,30 @@ gap1992 <- gapminder %>% filter(year == 1992)
 
 *** =sample_code
 ```{r}
+##run head on gap1992
 head(gap1992)
 ##run colnames here on gap1992
+colnames()
 
-##check if pop column is same length as lifeExp column
-##show the length of the pop column
-length() 
-##show the length of the lifeExp column
-length()
 ```
 
 *** =solution
 ```{r}
+##run head on gap1992
 head(gap1992)
 ##run colnames here on gap1992
 colnames(gap1992)
-
-##check if pop column is same length as lifeExp column
-##show the length of the pop column
-length(gap1992$pop) 
-##show the length of the lifeExp column
-length(gap1992$lifeExp)
 ```
 
 *** =sct
 ```{r}
-success_msg("Great! You remembered some basics about `data.frame`s! Let's move on.")
+success_msg("Great! You learned some basics about `data.frame`s! Let's move on.")
 test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-Now that we've reviewed data frames, we can get to the fun part: making graphs.
+Now that we've learned a little about the `data.frame`, we can get to the fun part: making graphs.
 
 The first thing we are going to is think about how we represent variables in a plot. 
 
@@ -110,7 +99,7 @@ ggplot(data = gap1992, mapping = aes(x = log(gdpPercap), y=log(pop))) +
   geom_point()
 ```
 
-Let's take the above code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
+Let's take the above example code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
 
 1. `data` - in this case, `gap1992`.
 2. `mapping` - An aesthetic mapping, using the `aes()` function. 
@@ -124,8 +113,7 @@ Finally, we can superimpose our geometry on the plot using `geom_point()`.
 Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot. Remember, you can try plots out in the console before you submit your answer.
 
 *** =hint
-Look at the graph. If you need the variable names, you can always 
-use `head()` on the gap1992 dataset.
+Look at the graph. If you need the variable names, you can always use `head()` on the gap1992 dataset.
 
 
 *** =pre_exercise_code
@@ -164,17 +152,10 @@ geom_point()
 ```{r}
 success_msg("Wunderbar! Now you're on your way to recreating that gapminder plot")
 test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mapping the right variables to the right aesthetics.")
-#test_output_contains("log(gdpPercap)", 
-#        incorrect_msg="You need to log transform one of the variables.")
-#test_output_contains("lifeExp", 
-#        incorrect_msg="you need to map lifeExp to something")
-#test_output_contains("continent", 
-#        incorrect_msg="you need to map continent to something. What could that be?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
-## More about  aethetic mapping
-
+## More about  ae
 For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
 aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
 map to a `geom`, you can always use `help()` (such as `help(geom_point)`).
