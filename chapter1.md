@@ -48,6 +48,7 @@ nrow(gap1992)
 ```{r}
 success_msg("Great! You learned some basics about `data.frame`s! Let's move on.")
 test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
+test_function("nrow", incorrect_msg = "did you use nrow(gap1992)")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
@@ -111,12 +112,11 @@ In order to map our variables to aesthetic properties, we will need to use `aes(
 
 Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
-
 *** =instructions
 Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot. Remember, you can try plots out in the console before you submit your answer.
 
 *** =hint
-Look at the graph. If you need the variable names, you can always use `head()` on the gap1992 dataset.
+Look at the graph. If you need the variable names, you can always use `head()` or `colnames()` on the `gap1992` dataset.
 
 
 *** =pre_exercise_code
