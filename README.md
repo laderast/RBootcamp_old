@@ -6,11 +6,8 @@ The R-Bootcamp is meant to be a gentle and gradual introduction to manipulating 
 2. More `ggplot2` using factors.
 3. Basic Data Manipulation using `dplyr`.
 4. Tidy Data: Why and How using `tidyr`.
-5. Control structures: doing one thing many times, making decisions.
-6. Merging datasets using `dplyr`.
-7. Functions: Why and How.
-8. The basics of Databases using `RSQLite`.
-9. Advanced Topics
+5. Simple Statistics using Broom
+6. More on using factors
 
 ## Contributors
 
