@@ -14,6 +14,6 @@ The R-Bootcamp is meant to be a gentle and gradual introduction to manipulating 
 
 ## Contributors
 
-Written by Ted Laderas with contributions from: Eric Leung, Aurora Blucher, Tracy Edinger, Dian Chase, Gabrielle Choonoo, Clint Olson, and Joshua Meyer. Portions of this Bootcamp were adapted from a workshop I gave with Chester Ismay: https://github.com/Cascadia-R/gRadual-intRoduction-tidyverse
+Written by Ted Laderas, Jessica Minnier, and Chester Ismay with contributions from: Eric Leung, Aurora Blucher, Tracy Edinger, Dian Chase, Gabrielle Choonoo, Clint Olson, and Joshua Meyer. Portions of this Bootcamp were adapted from a workshop I gave with Chester Ismay: https://github.com/Cascadia-R/gRadual-intRoduction-tidyverse
 
 
