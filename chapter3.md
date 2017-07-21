@@ -359,7 +359,7 @@ The nifty thing about `mutate()` is that once you define the variables in the st
 you can use them right away, in the same `mutate` statement. For example, look at this code:
 
 ```{r}
-biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
+mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
 Notice that we first defined `box_office_year` in the first part of the `mutate()` statement,
@@ -383,12 +383,12 @@ options(tibble.width = Inf)
 
 *** =sample_code
 ```{r}
-mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
+mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
 *** =solution
 ```{r}
-mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
+mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
 box_office_year_subject_number = box_office_year/number_of_subjects)
 ```
 
@@ -496,7 +496,9 @@ Use `%>%` to chain a `filter` command (`country=="US"`) with another `filter`
 command (`grepl("Richard",lead_actor_actress)`). Assign the output to `richardUS`. 
 
 In this second `filter`, we search for any instances of `"Richard"` in 
-`lead_actor_actress` using `grepl`.
+`lead_actor_actress` using `grepl`. `grepl` returns a TRUE if there is a match
+for `"Richard"` in the entry, and returns FALSE when it doesn't match. Hence,
+we can use it in a `filter` statement.
 
 How many instances of US Richards are there? 
 
@@ -543,7 +545,7 @@ test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 ## group_by()/summarize()
 
 `group_by()` doesn't do anything by itself. But when combined with `summarize()`, you can 
-calculate metrics (such as `mean`, `max` - the maximum, `sd` - the standard deviation) across groups. For example:
+calculate metrics (such as `mean`, `max` - the maximum, `min`, `sd` - the standard deviation) across groups. For example:
 
 ```{r}
 countryMeans <- biopics %>% 
@@ -714,6 +716,11 @@ test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3))
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
 ## Putting it all together: Challenge 1
+
+Now here comes the fun part. Chaining `dplyr` verbs together to accomplish some
+data cleaning and transformation.
+
+For a reference while you work, you can use the `dplyr` cheatsheet here: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
 *** =instructions
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
