@@ -22,7 +22,7 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
 You will want to keep this `dplyr` cheat sheet open in a separate window to remind you about the syntax:
-[`dplyr` cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+[dplyr cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 ###Hints to Help You
 
@@ -35,7 +35,7 @@ colnames(biopics)
 If you want more information on a function such as `mutate()`, you can always ask for help:
 
 ```{r}
-?filter
+?mutate
 ```
 
 *** =instructions
@@ -126,7 +126,16 @@ test_object("multValue", incorrect_msg = "Not quite. Did you use `newValue` in y
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
-We're going to use the `biopics` dataset in the `fivethirtyeight` package to do learn `dplyr`. This is a dataset of 761 different biopic movies.
+We're going to use the `biopics` dataset in the `fivethirtyeight` package to do learn `dplyr`. This is a dataset of 761 different biopic movies. 
+
+This is how we loaded the data into the session. Note that I've already done this for you, so you don't need to do this.
+
+```{r}
+#load fivethirtyeight package
+library(fivethirtyeight)
+#access biopics data
+data(biopics)
+```
 
 *** =pre_exercise_code
 ```{r}
@@ -309,9 +318,6 @@ test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset 
 "Correct! Because you accept either criteria, this is the larger subset"))
 ```
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:7b9a4c4b99
 ## Removing Missing Values
 
@@ -444,10 +450,11 @@ Notice that we first defined `box_office_year` in the first part of the `mutate(
 and then used it right away to define a new variable, `box_office_subject`. 
 
 *** =instructions
-Define another variable called `box_office_year_subject_number` in the same `mutate()` statement by taking 
+Define another variable called `box_office_y_s_num` in the same `mutate()` statement by taking 
 `box_office_year` and dividing it by `number_of_subjects`. Assign the output to `mutatedBiopics`.
 
 *** =hint
+Add `box_office_y_s_num=box_office_year/number_of_subjects` to the statement below.
 
 *** =pre_exercise_code
 ```{r}
@@ -467,7 +474,7 @@ mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, b
 *** =solution
 ```{r}
 mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
-box_office_year_subject_number = box_office_year/number_of_subjects)
+box_office_y_s_num = box_office_year/number_of_subjects)
 ```
 
 *** =sct
