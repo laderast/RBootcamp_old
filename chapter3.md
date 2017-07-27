@@ -22,7 +22,7 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
 You will want to keep this `dplyr` cheat sheet open in a separate window to remind you about the syntax:
-https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+[`dplyr` cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
 
 ###Hints to Help You
 
@@ -308,6 +308,67 @@ success_msg("Good Job! Let's move on.")
 test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset (because you're applying both criteria)",
 "Correct! Because you accept either criteria, this is the larger subset"))
 ```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7b9a4c4b99
+## Removing Missing Values
+
+One trick you can use `filter()` for is to remove missing values. Usually missing values are
+coded as `NA` in data. You can remove rows that contain `NAs` by using `is.na()`. For example:
+
+```{r}
+filter(biopics, !is.na(box_office))
+```
+
+Note the `!` in front of `is.na(box_office)`. This `!` is known as the NOT operator. Basically,
+it switches the values in our `is.na` statement, making everything that was `TRUE` into `FALSE`, 
+and everything `FALSE` into `TRUE`. We want to keep everything that is not `NA`, so that's why 
+we use the `!`. 
+
+*** =instructions
+Filter `biopics` to remove the NAs, and assign the output to `filteredBiopics`. Compare the number
+of rows in `biopics` to `filteredBiopics`. How many missing values did we remove?
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+filteredBiopics <- filter()
+
+#show number of rows in biopics
+
+#show number of rows in filteredBiopics
+
+```
+
+*** =solution
+```{r}
+filteredBiopics <- filter(biopics, !is.na(box_office))
+
+#show number of rows in biopics
+nrow(biopics)
+#show number of rows in filteredBiopics
+nrow(filteredBiopics)
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to filter out missing values! Let's move on.")
+test_object("filteredBiopics", incorrect_msg = "Did you use !is.na() correctly?")
+test_function("nrow", incorrect_msg = "Did you call `nrow()`?")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
@@ -411,7 +472,8 @@ box_office_year_subject_number = box_office_year/number_of_subjects)
 
 *** =sct
 ```{r}
-
+success_msg("You used a variable that was defined in a mutate statement. Great!")
+test_object("mutatedBiopics", incorrect_msg = "Not quite. Did you define a new variable?")
 ```
 
 
@@ -618,7 +680,7 @@ head(gender_box_office)
 *** =sct
 ```{r}
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
-test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct")
+test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct.")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
 ## arrange()
@@ -724,7 +786,7 @@ What is the difference between `select()` and `filter()?`
 
 *** =sct
 ```{r}
-success_msg("Welcome to the cult of dplyr! Your secret decoder ring is in the mail.")
+success_msg("Welcome to the cult of `dplyr`! Your secret decoder ring is in the mail.")
 msg1 <- "Nope. Both of these verbs don't care what data type you use."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
@@ -907,7 +969,7 @@ test_ggplot(check_data = TRUE, data_fail_msg = "Did you do the filter step corre
 - Chester's Mantra
 
 *** =instructions
-Please fill out our feedback form! We're trying to improve these workshops for future students.
+Please fill out our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSeWynGvUkqmE750I63mB0Y_VA6m7XVa16rJLBEviny3TwcJ5g/viewform?usp=sf_link)! We're trying to improve these workshops for future students.
 
 Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
 to becoming a `tidyverse` ninja!
