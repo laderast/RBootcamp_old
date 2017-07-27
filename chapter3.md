@@ -866,7 +866,7 @@ biopics %>%
 
 *** =solution
 ```{r}
-biopics %>% filter(year_release < 1990) %>%
+biopics %>% filter(year_release < 1990) %>% filter(!is.na(box_office)) +
     ggplot(aes(x=year_release, y=log(box_office), color=person_of_color)) +
     geom_point()
 ```
@@ -890,6 +890,8 @@ test_ggplot(check_data = TRUE, data_fail_msg = "Did you do the filter step corre
 - Chester's Mantra
 
 *** =instructions
+Please fill out our feedback form! We're trying to improve these workshops for future students.
+
 Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
 to becoming a `tidyverse` ninja!
 
