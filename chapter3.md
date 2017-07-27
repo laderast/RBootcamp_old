@@ -21,6 +21,23 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
+You will want to keep this `dplyr` cheat sheet open in a separate window to remind you about the syntax:
+https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+###Hints to Help You
+
+Also, remember: if you need to know the variables in a `data.frame` called `biopics` you can always use 
+
+```{r}
+colnames(biopics)
+```
+
+If you want more information on a function such as `mutate()`, you can always ask for help:
+
+```{r}
+?filter
+```
+
 *** =instructions
 Just move on to the next exercise!
 
