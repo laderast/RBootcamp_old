@@ -78,6 +78,7 @@ using the `<-` operator. This is called the `assignment` operator.
 
 You can also use `=` to assign a value to a variable, but I find it makes my code a bit confusing, because
 there is also `==`, which tests for equality.
+
 ```{r}
 sumOfTwoNumbers <- 1 + 2
 ```
