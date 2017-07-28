@@ -733,6 +733,41 @@ head(gender_box_office)
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
 test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct.")
 ```
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:915110e4a5
+## Counting Stuff
+
+What does the following code do? Try it out in the console!
+
+```{r}
+biopics %>% group_by(type_of_subject) %>% summarize(count=n())
+```
+
+*** =instructions
+
+- just shows the regular `biopics` `data.frame`
+- counts each `type_of_subject` and puts it in another table
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+options(tibble.width = Inf)
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to use `group_by()` and `summarize()` to count categories.")
+resp1 <- "Nope. Try it out and see what it does."
+resp2 <- "Correct! This is a recipe for counting categories."
+test_mc(correct=2, feedback_msgs = c(resp1, resp2))
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
 ## arrange()
 
