@@ -5,6 +5,8 @@ description : Learn how to manipulate data into a ggplot2 friendly format
 --- type:NormalExercise lang:r xp:0 skills:1 key:e0b4f34c19
 ## Introduction to dplyr
 
+Remember: Please Join our [RBootcamp OHSU Group!](https://www.datacamp.com/groups/de163cc541d0d9bde4956157d17dbedfb1149225/invite)
+
 We've been looking at datasets that fit the `ggplot2` paradigm nicely; however, most data we encounter 
 is really messy (missing values), or is a completely different format. In this chapter, we'll look 
 at one of the most powerful tools in the `tidyverse`: `dplyr`, which lets you manipulate data frames. 
