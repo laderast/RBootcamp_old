@@ -81,6 +81,8 @@ sometimes you will have to fix these. We'll show you how to do that in the next 
 ```{r}
 
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:efed4e694f
 ## Long versus Wide Data
 
