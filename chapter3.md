@@ -318,6 +318,50 @@ test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset 
 "Correct! Because you accept either criteria, this is the larger subset"))
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:aa9b117998
+## The %in% operator
+
+What if you wanted to select for multiple values? You can use the `%in%` operator. Here we
+put the values into a `vector` with the `c()` function, which concatentates the
+values together into a form that R can manipulate. Note that these values have to be exact.
+
+```{r}
+biopicsUSUK <- biopics %>% filter(country %in% c("US", "UK"))
+```
+
+*** =instructions
+Pick out the `Musician`, `Artist` and `Singer` movies from `type_of_subject`. Assign
+the output to `biopicsArt`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+biopics$type_of_subject <- factor(biopics$type_of_subject)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+biopicsArt <- biopics %>%
+```
+
+*** =solution
+```{r}
+biopicsArt <- biopics %>% filter(type_of_subject %in% c("Musician", "Artist", "Singer"))
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to filter on multiple values! Let's move on.")
+test_object("biopicsArt", incorrect_msg = "Not Quite.")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7b9a4c4b99
 ## Removing Missing Values
 
