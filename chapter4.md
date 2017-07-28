@@ -45,8 +45,8 @@ Just move on to the next exercise.
 --- type:NormalExercise lang:r xp:100 skills:1 key:24146e724e
 ## Loading data
 
-We've been hiding some of the complexity of the analysis from you until now. One of the 
-most confusing parts about R to learn is how to load data. 
+We've been hiding some of the complexity of the analysis procedure from you until now. One of the 
+most confusing parts about R to learn is how to load data. We'll take it step by step.
 
 There are three main formats we'll have to deal with:
 
@@ -58,6 +58,7 @@ The functions in these packages will make a guess as to the formatting of the co
 sometimes you will have to fix these. We'll show you how to do that in the next section.
 
 *** =instructions
+
 
 *** =hint
 
