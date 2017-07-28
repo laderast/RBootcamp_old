@@ -1,23 +1,20 @@
 ---
-title       : The Magic of `ggplot2`
-description : Learn how ggplot turns variables into statistical graphics
+title       : The Magic of ggplot2
+description : Learn how ggplot2 turns variables into statistical graphics
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
-## Quick Data Frame Review
-
-Remember that a `data.frame` is basically a table-like format which has the following properties: 
+## Quick Data Frame Introduction
+A `data.frame` is basically a table-like format which has the following properties: 
 
 - Columns can each have a different type (`numeric`, `character`, `boolean`, `factor`)
 - Columns are called "variables"
 - Rows correspond to a single observation (ideally)
 - Can be subset or filtered based on criteria
 
-Individual variables within a `data.frame` can be accessed with the `$` operator. We won't use this very often, 
-as the `tidyverse` lets us access the variables directly, as you'll see.
+Individual variables within a `data.frame` can be accessed with the `$` operator (such as `gap1992$pop`). We won't use this very often, as the `tidyverse` lets us access the variables without it, as you'll see.
 
 *** =instructions
-Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Confirm that the 
-`length()` of the `pop` column is equal to the `lifeExp` column.
+Run `colnames()` and `head()` on the `gap1992` data to see what's in each column. Then see how many rows there are in the dataset using `nrow()`. Run these in console before you submit your answer.
 
 *** =pre_exercise_code
 ```{r}
@@ -29,41 +26,34 @@ gap1992 <- gapminder %>% filter(year == 1992)
 
 *** =sample_code
 ```{r}
+##run head on gap1992
 head(gap1992)
 ##run colnames here on gap1992
+colnames()
+##run nrow() on gap1992
 
-
-##check if pop column is same length as lifeExp column
-##show the length of the pop column
-length() 
-##show the length of the lifeExp column
-length()
 ```
 
 *** =solution
 ```{r}
+##run head on gap1992
 head(gap1992)
 ##run colnames here on gap1992
 colnames(gap1992)
-
-##check if pop column is same length as lifeExp column
-##show the length of the pop column
-length(gap1992$pop) 
-##show the length of the lifeExp column
-length(gap1992$lifeExp)
+##run nrow() on gap1992
+nrow(gap1992)
 ```
 
 *** =sct
 ```{r}
-success_msg("Great! You remembered some basics about `data.frame`s! Let's move on.")
+success_msg("Great! You learned some basics about `data.frame`s! Let's move on.")
 test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
-test_function("length", args="x", index=1, incorrect_msg="use gap1992$pop")
-test_function("length", args="x", index=2, incorrect_msg-"use gap1992$lifeExp")
+test_function("nrow", incorrect_msg = "did you use nrow(gap1992)")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
-Now that we've reviewed data frames, we can get to the fun part: making graphs.
+Now that we've learned a little about the `data.frame`, we can get to the fun part: making graphs.
 
 The first thing we are going to is think about how we represent variables in a plot. 
 
@@ -97,7 +87,7 @@ msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) 
 test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:ef91841efd
+--- type:NormalExercise lang:r xp:100 skills:1 key:bfe1375688
 ## Mapping variables to produce geometric plots
 
 A statistical graphic consists of:
@@ -113,7 +103,7 @@ ggplot(data = gap1992, mapping = aes(x = log(gdpPercap), y=log(pop))) +
   geom_point()
 ```
 
-Let's take the above code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
+Let's take the above example code apart. A `ggplot2` call always starts with the `ggplot()` function. In this function, we need two things:
 
 1. `data` - in this case, `gap1992`.
 2. `mapping` - An aesthetic mapping, using the `aes()` function. 
@@ -123,7 +113,11 @@ In order to map our variables to aesthetic properties, we will need to use `aes(
 Finally, we can superimpose our geometry on the plot using `geom_point()`.
 
 *** =instructions
-Based on the graph, map the appropriate variables to the x, y, and color aesthetics. Run your plot.
+Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics. Run your plot. Remember, you can try plots out in the console before you submit your answer.
+
+*** =hint
+Look at the graph. If you need the variable names, you can always use `head()` or `colnames()` on the `gap1992` dataset.
+
 
 *** =pre_exercise_code
 ```{r}
@@ -141,34 +135,56 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 ggplot(data = gap1992, 
     mapping = aes(
       x = , 
-      y = , 
-      color = 
+      y =  
       )) + 
 geom_point()
 ```
-*** =hint
-Look at the graph. If you need the variable names, you can always 
-use `head()` on the gap1992 dataset.
 
 *** =solution
 ```{r}
 ggplot(data=gap1992, 
     mapping = aes(
       x = log(gdpPercap), 
-      y = lifeExp, 
-      color = continent
+      y = lifeExp 
       )) + 
 geom_point()
+
 ```
 
 *** =sct
 ```{r}
-test_output_contains("log(gdpPercap)", 
-        incorrect_msg="You need to log transform one of the variables.")
-test_output_contains("lifeExp", 
-        incorrect_msg="you need to map lifeExp to something")
-test_output_contains("continent", 
-        incorrect_msg="you need to map continent to something. What could that be?")
+success_msg("Wunderbar! Now you're on your way to recreating that gapminder plot")
+test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mapping the right variables to the right aesthetics.")
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
+## More about aes
+For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
+aesthetics are properties of the `geom`. If you need to know the aesthetics that you can 
+map to a `geom`, you can always use `help()` (such as `help(geom_point)`).
+
+I'd ask you to look at `help(geom_point)`, but the documentation is not correct on Datacamp. 
+Instead, look here: [http://ggplot.yhathq.com/docs/geom_point.html](http://ggplot.yhathq.com/docs/geom_point.html)
+and look at all the aesthetic mappings. 
+
+Which of the following is *not* a mappable aesthetic to `geom_point()`?
+
+*** =instructions
+- `x`
+- `shape`
+- `linetype`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+```
+
+*** =sct
+```{r}
+success_msg("Great! Now you know where to look for mappable aesthetics.")
+msg1 = "Nope. This is a mappable aesthetic to `geom_point().`"
+msg3 = "Correct. `linetype` is not mappable to `geom_point()`. Points don't have a `linetype`, do they?"
+test_mc(correct = 3, feedback_msgs=c(msg1, msg1, msg3))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
@@ -205,7 +221,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 *** =sct
 ```{r}
 success_msg("Great! Now you know how to swap representations in ggplot2. Let's move on.")
-test_function("geom_line", incorrect_msg="you need to change the geom")
+test_function("geom_line", incorrect_msg="You need to change the geom.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:13ea4fbf3d
@@ -274,16 +290,6 @@ msg3 = "Look at the ggplot code and see if we are manipulating data or not. Are 
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:0 skills:1 key:6e0ba88ae9
-## "gg" is for *G*rammar of *G*raphics
-
-When Hadley Wickham built `ggplot2`, he had Wilkinson's ["Grammar of Graphics"](http://www.springer.com/us/book/9780387245447) in mind. 
-
-In this book, Wilkinson et. al. decomposed all statistical graphics of having a number of graphical elements.
-
-`ggplot2` directly maps these concepts of a [grammar of graphics to plotting R Data](http://vita.had.co.nz/papers/layered-grammar.pdf). 
-
-
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
 ## Final Challenge: Recreate this Gapminder Plot
 
@@ -302,7 +308,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, size=pop, color=continent))
 
 *** =instructions
 - If you need to remember variable names, you can always call `head(gap1992)` or `colnames(gap1992)` in the console.
-- Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console.
+- Recreate the above graphic by mapping the right variables to the right aesthetic elements. Remember, you can try plots out in the console before you submit your answer.
 
 *** =sample_code
 ```{r}
@@ -323,6 +329,12 @@ ggplot(gap1992, aes(x = log(gdpPercap),
     geom_point()
 ```
 
+*** =sct
+```{r}
+success_msg("Now you know the basics of ggplot and aesthetics. Congrats!")
+test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the variables to the correct aesthetics.")
+```
+
 --- type:NormalExercise lang:r xp:0 skills:1 key:fe7e851b1f
 ## What you learned in this chapter
 
@@ -334,7 +346,7 @@ ggplot(gap1992, aes(x = log(gdpPercap),
 - That you can do this!
 
 *** =instructions
-Just move on to the next chapter!
+Just move on to the next chapter! 
 
 *** =hint
 

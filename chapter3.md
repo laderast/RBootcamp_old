@@ -21,6 +21,23 @@ In particular, we're going to look at six fundamental verbs/actions in `dplyr`:
 
 Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` expert in no time!
 
+You will want to keep this `dplyr` cheat sheet open in a separate window to remind you about the syntax:
+[dplyr cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+###Hints to Help You
+
+Also, remember: if you need to know the variables in a `data.frame` called `biopics` you can always use 
+
+```{r}
+colnames(biopics)
+```
+
+If you want more information on a function such as `mutate()`, you can always ask for help:
+
+```{r}
+?mutate
+```
+
 *** =instructions
 Just move on to the next exercise!
 
@@ -45,10 +62,80 @@ Just move on to the next exercise!
 ```{r}
 
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:0643d8c567
+## A Little Bit about assignment
+
+In order to do the following exercises, we need to learn a little bit about how to assign 
+the output of a function to a variable.
+
+For example, we can assign the output of the operation `1 + 2` to a variable called `sumOfTwoNumbers`
+using the `<-` operator. This is called the `assignment` operator.
+
+You can also use `=` to assign a value to a variable, but I find it makes my code a bit confusing, because
+there is also `==`, which tests for equality.
+```{r}
+sumOfTwoNumbers <- 1 + 2
+```
+Once we have something assigned to a variable, we can use it in other expressions:
+
+```{r}
+sumOfThreeNumbers <- sumOfTwoNumbers + 3
+```
+This is the bare basics of assignment. We'll use it in the next exercises to evaluate the output
+of our `dplyr` cleaning.
+
+*** =instructions
+Assign `newValue` the value of `10`. Then use `newValue` to calculate the value of `multValue` by
+calculating `newValue * 5`. Show `multValue`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+##assign newValue
+newValue <-
+## use newValue to calculate multValue
+multValue <- 
+##show multValue
+multValue
+```
+
+*** =solution
+```{r}
+##assign newValue
+newValue <- 10
+## use newValue to calculate multValue
+multValue <- newValue * 5
+##show multValue
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to assign variables and use them in expressions. Well done!")
+test_object("newValue", incorrect_msg = "Not quite. Did you assign `newValue` to 10?")
+test_object("multValue", incorrect_msg = "Not quite. Did you use `newValue` in your expression?")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
-We're going to use the `biopics` dataset in `fivethirtyeight` to do learn `dplyr`. This is a dataset of 761 different biopic movies.
+We're going to use the `biopics` dataset in the `fivethirtyeight` package to do learn `dplyr`. This is a dataset of 761 different biopic movies. 
+
+This is how we loaded the data into the session. Note that I've already done this for you, so you don't need to do this.
+
+```{r}
+#load fivethirtyeight package
+library(fivethirtyeight)
+#access biopics data
+data(biopics)
+```
 
 *** =pre_exercise_code
 ```{r}
@@ -85,7 +172,7 @@ length(levels(biopics$country))
 ```{r}
 success_msg("Nice work!")
 test_function("summary", incorrect_msg = "you need to use the summary() function on biopics")
-test_function("levels", incorrect_msg = "you need to use the levels() function on biopics")
+test_function("levels", incorrect_msg = "you need to use the levels() function on biopics$country")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
@@ -104,12 +191,12 @@ biopicsUK
 
 Three things to note here: 
 
-+ The first argument to filter is always the dataset. We'll see another variation in a second.
++ The first argument to `filter()` is the dataset. We'll see another variation of this in a second.
 + For those who are used to accessing `data.frame` variables by `$`, notice we don't have to use `biopics$country`. Instead, we can just use the variable name `country`.
 + Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
-Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left.
+Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left using `nrows(crimeMovies)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -161,7 +248,7 @@ Three things to note:
 
 + We used the comparison operator `>`. The basic comparisons you'll use are `>` (greater than), `<` (less than), `==` (equals to) and `!=` (not equal to) 
 + We also chained on another expression, `type_of_subject == "Criminal"` using `&` (and). The other chaining operator that you'll use is `|`, which corresponds to OR. 
-+ Chaining expressions is where `filter()` becomes super powerful.
++ Chaining expressions is where `filter()` becomes super powerful. However, it's also the source of headaches, so you will need to carefully test your chain of expressions.
 
 *** =pre_exercise_code
 ```{r}
@@ -229,6 +316,64 @@ options(tibble.width = Inf)
 success_msg("Good Job! Let's move on.")
 test_mc(correct = 2, feedback_msgs = c("Nope. This should be the smaller subset (because you're applying both criteria)",
 "Correct! Because you accept either criteria, this is the larger subset"))
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7b9a4c4b99
+## Removing Missing Values
+
+One trick you can use `filter()` for is to remove missing values. Usually missing values are
+coded as `NA` in data. You can remove rows that contain `NAs` by using `is.na()`. For example:
+
+```{r}
+filter(biopics, !is.na(box_office))
+```
+
+Note the `!` in front of `is.na(box_office)`. This `!` is known as the NOT operator. Basically,
+it switches the values in our `is.na` statement, making everything that was `TRUE` into `FALSE`, 
+and everything `FALSE` into `TRUE`. We want to keep everything that is not `NA`, so that's why 
+we use the `!`. 
+
+*** =instructions
+Filter `biopics` to remove the NAs, and assign the output to `filteredBiopics`. Compare the number
+of rows in `biopics` to `filteredBiopics`. How many missing values did we remove?
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+filteredBiopics <- filter()
+
+#show number of rows in biopics
+
+#show number of rows in filteredBiopics
+
+```
+
+*** =solution
+```{r}
+filteredBiopics <- filter(biopics, !is.na(box_office))
+
+#show number of rows in biopics
+nrow(biopics)
+#show number of rows in filteredBiopics
+nrow(filteredBiopics)
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to filter out missing values! Let's move on.")
+test_object("filteredBiopics", incorrect_msg = "Did you use !is.na() correctly?")
+test_function("nrow", incorrect_msg = "Did you call `nrow()`?")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
@@ -298,17 +443,18 @@ The nifty thing about `mutate()` is that once you define the variables in the st
 you can use them right away, in the same `mutate` statement. For example, look at this code:
 
 ```{r}
-biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
+mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
 Notice that we first defined `box_office_year` in the first part of the `mutate()` statement,
 and then used it right away to define a new variable, `box_office_subject`. 
 
 *** =instructions
-Define another variable called `box_office_year_subject_number` in the same `mutate()` statement by taking 
+Define another variable called `box_office_y_s_num` in the same `mutate()` statement by taking 
 `box_office_year` and dividing it by `number_of_subjects`. Assign the output to `mutatedBiopics`.
 
 *** =hint
+Add `box_office_y_s_num=box_office_year/number_of_subjects` to the statement below.
 
 *** =pre_exercise_code
 ```{r}
@@ -322,18 +468,19 @@ options(tibble.width = Inf)
 
 *** =sample_code
 ```{r}
-mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
+mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject))
 ```
 
 *** =solution
 ```{r}
-mutatedBiopics <- biopics %>% mutate(box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
-box_office_year_subject_number = box_office_year/number_of_subjects)
+mutatedBiopics <- mutate(biopics, box_office_year = year_release * box_office, box_office_subject = paste0(box_office_year, subject), 
+box_office_y_s_num = box_office_year/number_of_subjects)
 ```
 
 *** =sct
 ```{r}
-
+success_msg("You used a variable that was defined in a mutate statement. Great!")
+test_object("mutatedBiopics", incorrect_msg = "Not quite. Did you define a new variable?")
 ```
 
 
@@ -349,8 +496,6 @@ mutate(biopics, subject= paste(subject, year_release))
 *** =instructions
 - We are defining a brand-new variable with the same name in our dataset and keeping the old variable as well
 - We are processing the variable `subject` and saving it in place
-
-*** =hint
 
 *** =pre_exercise_code
 ```{r}
@@ -402,7 +547,6 @@ options(tibble.width = Inf)
 
 *** =sct
 ```{r}
-
 success_msg("Yes! I'm glad you understand the difference.")
 msg1 = "Not the case! Try comparing the number of rows."
 msg2 = "Yes, this is correct! We're identifying a new variable that we can use to flag the data."
@@ -427,16 +571,20 @@ As: I took the `biopics` data, THEN
 I filtered it down with the `race_known == "Known"` criteria and THEN 
 I defined a new variable called `poc_code`.
 
-`%>%` allows you to chain multiple actions in the `tidyverse`. It's one of the most powerful things about the `tidyverse`. In fact,
+Note that `filter()` doesn't have a `data` argument, because the `data` is `piped` into `filter()`. Same thing for `mutate()`.
+
+`%>%` allows you to chain multiple verbs in the `tidyverse`. It's one of the most powerful things about the `tidyverse`. In fact,
 having a standardized chain of processing actions is called a **pipeline**. Making pipelines for a data
-format is great, because you can apply that pipeline to incoming data and have it output as a standardized format.
+format is great, because you can apply that pipeline to incoming data that has the same formatting and have it output in a `ggplot2` friendly format.
 
 *** =instructions
 Use `%>%` to chain a `filter` command (`country=="US"`) with another `filter` 
 command (`grepl("Richard",lead_actor_actress)`). Assign the output to `richardUS`. 
 
 In this second `filter`, we search for any instances of `"Richard"` in 
-`lead_actor_actress` using `grepl`.
+`lead_actor_actress` using `grepl`. `grepl` returns a TRUE if there is a match
+for `"Richard"` in the entry, and returns FALSE when it doesn't match. Hence,
+we can use it in a `filter` statement.
 
 How many instances of US Richards are there? 
 
@@ -483,7 +631,7 @@ test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
 ## group_by()/summarize()
 
 `group_by()` doesn't do anything by itself. But when combined with `summarize()`, you can 
-calculate metrics (such as `mean`, `max`, `sd`) across groups. For example:
+calculate metrics (such as `mean`, `max` - the maximum, `min`, `sd` - the standard deviation) across groups. For example:
 
 ```{r}
 countryMeans <- biopics %>% 
@@ -492,16 +640,16 @@ countryMeans <- biopics %>%
                     summarize(mean_box_office = mean(box_office))
 ```
 
-Here we want to calculate the mean box office by country. However, in order to do that, we first need to remove
-any `NA` values that may confound our calculation.
+Here we want to calculate the mean `box_office` by `country`. However, in order to do that, we first need to remove
+any rows that have `NA` values in `box_office` that may confound our calculation.
 
 *** =instructions
 Let's ask a tough question. Is there a difference between mean `box_office` 
 between the two `subject_sex` categories? 
 
-Use `group_by()` and `summarize()` to calculate the mean `box_office` by `subject_sex`, naming the summary
-variable as `mean_bo_by_gender`.  Assign the output to `gender_box_office`. Make sure to
-remove `NA` values using `filter()`. 
+First use `filter()` to remove the NA values. Then, use `group_by()` and `summarize()` to 
+calculate the mean `box_office` by `subject_sex`, naming the summary
+variable as `mean_bo_by_gender`.  Assign the output to `gender_box_office`. 
 
 *** =hint
 
@@ -522,7 +670,7 @@ gender_box_office <- biopics %>%
     summarize(mean_bo_by_gender=)
     
 ##show gender_box_office
-gender_box_office
+head(gender_box_office)
 ```
 
 *** =solution
@@ -533,16 +681,14 @@ gender_box_office <- biopics %>%
     summarize(mean_bo_by_gender=mean(box_office))
 
 ##show gender_box_office
-gender_box_office
+head(gender_box_office)
 ```
 
 *** =sct
 ```{r}
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
-test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct")
+test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct.")
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
 ## arrange()
 
@@ -557,7 +703,7 @@ This statement will sort the data by `country` first, and then within each `coun
 it will sort by `year_release`.
 
 *** =instructions
-Sort `biopics` by `year_release` then by `lead_actor_actress`. Assign the output to `biopics_sorted`
+Sort `biopics` by `year_release` then by `lead_actor_actress`. Assign the output to `biopics_sorted`.
 
 *** =hint
 
@@ -640,8 +786,6 @@ What is the difference between `select()` and `filter()?`
 - `select()` only works after `filter()`
 - `select()` works on columns, `filter()` works on rows
 
-*** =hint
-
 *** =pre_exercise_code
 ```{r}
 
@@ -649,7 +793,7 @@ What is the difference between `select()` and `filter()?`
 
 *** =sct
 ```{r}
-success_msg("Welcome to the cult of dplyr! Your secret decoder ring is in the mail.")
+success_msg("Welcome to the cult of `dplyr`! Your secret decoder ring is in the mail.")
 msg1 <- "Nope. Both of these verbs don't care what data type you use."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
@@ -658,6 +802,11 @@ test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3))
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
 ## Putting it all together: Challenge 1
+
+Now here comes the fun part. Chaining `dplyr` verbs together to accomplish some
+data cleaning and transformation.
+
+For a reference while you work, you can use the `dplyr` cheatsheet here: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
 
 *** =instructions
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
@@ -755,6 +904,70 @@ success_msg("Your `dplyr` skills are ever improving!")
 test_object("race_country_box_office", incorrect_msg = 
     "Not quite. Think about the order in which you need to do these operations.")
 ```
+
+--- type:NormalExercise lang:r xp:300 skills:1 key:b7b6b449de
+## Challenge 3: Putting together what we know about ggplot2 and dplyr
+
+Now we're cooking with fire. You can directly pipe the output of a `dplyr` pipeline
+into a `ggplot2` statement. For example:
+
+```{r}
+biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
+    ggplot(aes(x = year_release, y=box_office_per_subject)) +
+    geom_point()
+```
+
+Note that we use `%>%` to pipe our statement into the `ggplot()` function. The
+tricky thing to remember is that everything after the `ggplot()` is connected with
+`+`, and not `%>%`. 
+
+Also note: we don't assign a `data` variable in the `ggplot()` statement. We are piping
+in the data. 
+
+*** =instructions
+Are you sick of `biopics` yet? I promise this is the last time we use this dataset.
+
+First filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
+Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
+(use `geom_point()`) where `x=year_release` and 
+`y=log(box_office)`. Color the points by `person_of_color`. Assign the output to `bPlot` and
+print it to the screen using `print(bPlot)`.
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(ggplot2)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+bPlot <- biopics %>%
+
+print(bPlot)
+```
+
+*** =solution
+```{r}
+bPlot <- biopics %>% filter(year_release < 1990) %>% filter(!is.na(box_office)) %>%
+    ggplot(aes(x=year_release, y=log(box_office), color=person_of_color)) +
+    geom_point()
+    
+print(bPlot)
+```
+
+*** =sct
+```{r}
+success_msg("Now you know how to chain dplyr statements straight into a ggplot!")
+#test_ggplot(index = 0, check_aes = TRUE, aes_fail_msg = "Make sure you're mapping the right variables")
+#test_ggplot(index=0, check_data = TRUE, data_fail_msg = "Did you do the filter step correctly?")
+```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
@@ -768,6 +981,8 @@ test_object("race_country_box_office", incorrect_msg =
 - Chester's Mantra
 
 *** =instructions
+Please fill out our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSeWynGvUkqmE750I63mB0Y_VA6m7XVa16rJLBEviny3TwcJ5g/viewform?usp=sf_link)! We're trying to improve these workshops for future students.
+
 Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
 to becoming a `tidyverse` ninja!
 

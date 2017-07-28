@@ -27,6 +27,9 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =sample_code
 ```{r}
+##look at the pets data
+pets
+
 ##show categories for shotsCurrent
 levels()
 
@@ -37,6 +40,9 @@ levels()
 
 *** =solution
 ```{r}
+##look at the pets data
+pets
+
 ##show categories for shotsCurrent
 levels(pets$shotsCurrent)
 
@@ -66,7 +72,6 @@ Map the `name` variable to `x` in the `ggplot` statement. What is the most popul
 ```{r}
 library(ggplot2)
 pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
-ggplot(pets, aes(x=name)) + geom_bar() + theme(axis.text.x = element_text(angle=45))
 ```
 
 *** =sample_code
@@ -92,8 +97,6 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 success_msg("Great! You made your first barplot! Now we'll learn how to modify it.")
 test_ggplot(check_aes = TRUE, aes_fail_msg = "did you map the `x` aesthetic to the right variable?")
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:b2586607f1
 ##  Stacked Bars
 
@@ -127,14 +130,18 @@ ggplot(pets, aes(x=animal, fill=shotsCurrent)) +
 *** =sct
 ```{r}
 success_msg("Great! Now you know how to make stacked bar plots by mapping a variable to `fill`.")
-test_ggplot(check_aes = TRUE)
+test_ggplot(check_aes = TRUE,aes_fail_msg = "Make sure that you're mapping `shotsCurrent` to the right aesthetic")
 ```
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2723146f59
 ## Quick Quiz
 
-What does mapping `color` to `"black"` in `geom_bar()` do? 
+What does mapping `color` to `"black"` in `geom_bar()` do? For example:
+
+```{r}
+ggplot(pets, aes(x=animal, fill=shotsCurrent)) + 
+  geom_bar(color="black")
+```
 
 *** =instructions
 - Makes the default bar fill color black
@@ -243,6 +250,12 @@ ggplot(data=pets, mapping=aes(x=name)) + geom_bar() +
 
 You might notice that there are blank spots for the categories in each facet. We can remove these in each facet by using `scale="free_x"` argument in `facet_wrap()`.
 
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/pets.csv")
+```
+
 *** =instructions
 Add `free_x` to the scale argument. How many animals named "Morris" did not receive shots? 
 
@@ -262,7 +275,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 
 *** =sct
 ```{r}
-
+#test_function("facet_wrap", args = "scale", incorrect_msg = "Did you add a scale argument to `facet_wrap()`?")
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
@@ -323,7 +336,7 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 
 *** =hint
 Think about what to map to `x`, and what to map to `fill`, and what `position` argument 
-you need for `geom_bar()`. Finally, think about how to facet the variable.
+you need for `geom_bar()`. Finally, think about how to facet the variable. 
 
 *** =sample_code
 ```{r}
@@ -343,7 +356,7 @@ ggplot(pets, aes(x=ageCategory, fill=animal)) + geom_bar(position="fill") +
 *** =sct
 ```{r}
 success_msg("Good job! You managed to integrate everything you learned about barplots. Let's move on!")
-test_ggplot(check_facet = TRUE, check_aes = TRUE)
+test_ggplot(check_facet = TRUE, check_aes = TRUE, facet_fail_msg = "You didn't map the right facet. Try again.", aes_fail_msg = "Not the right fill aesthetic. Try again.")
 test_function("geom_bar", incorrect_msg = "Did you use `geom_bar()`?")
 ```
 
@@ -393,12 +406,12 @@ Think about what variables map to what aesthetics.
 
 *** =sample_code
 ```{r}
-ggplot(pets, aes(x= , y=) + geom_boxplot()
+ggplot(pets, aes(x= , y=)) + geom_boxplot()
 ```
 
 *** =solution
 ```{r}
-ggplot(pets, aes(x=animal, y=weight) + geom_boxplot()
+ggplot(pets, aes(x=animal, y=weight)) + geom_boxplot()
 ```
 
 *** =sct
