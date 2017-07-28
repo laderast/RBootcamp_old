@@ -905,7 +905,7 @@ test_object("race_country_box_office", incorrect_msg =
     "Not quite. Think about the order in which you need to do these operations.")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:b7b6b449de
+--- type:NormalExercise lang:r xp:300 skills:1 key:b7b6b449de
 ## Challenge 3: Putting together what we know about ggplot2 and dplyr
 
 Now we're cooking with fire. You can directly pipe the output of a `dplyr` pipeline
@@ -932,7 +932,8 @@ Are you sick of `biopics` yet? I promise this is the last time we use this datas
 First filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
 Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
 (use `geom_point()`) where `x=year_release` and 
-`y=log(box_office)`. Color the points by `person_of_color`.
+`y=log(box_office)`. Color the points by `person_of_color`. Assign the output to `bPlot` and
+print it to the screen using `print(bPlot)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -947,21 +948,25 @@ options(tibble.width = Inf)
 
 *** =sample_code
 ```{r}
-biopics %>%
+bPlot <- biopics %>%
+
+print(bPlot)
 ```
 
 *** =solution
 ```{r}
-biopics %>% filter(year_release < 1990) %>% filter(!is.na(box_office)) +
+bPlot <- biopics %>% filter(year_release < 1990) %>% filter(!is.na(box_office)) %>%
     ggplot(aes(x=year_release, y=log(box_office), color=person_of_color)) +
     geom_point()
+    
+print(bPlot)
 ```
 
 *** =sct
 ```{r}
 success_msg("Now you know how to chain dplyr statements straight into a ggplot!")
-test_ggplot(check_aes = TRUE, aes_fail_msg = "Make sure you're mapping the right variables")
-test_ggplot(check_data = TRUE, data_fail_msg = "Did you do the filter step correctly?")
+#test_ggplot(index = 0, check_aes = TRUE, aes_fail_msg = "Make sure you're mapping the right variables")
+#test_ggplot(index=0, check_data = TRUE, data_fail_msg = "Did you do the filter step correctly?")
 ```
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
