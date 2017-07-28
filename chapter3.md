@@ -199,7 +199,7 @@ Three things to note here:
 + Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
-Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left using `nrows(crimeMovies)`.
+Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left using `nrow(crimeMovies)`.
 
 *** =pre_exercise_code
 ```{r}
