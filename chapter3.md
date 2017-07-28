@@ -954,6 +954,7 @@ anything. Then think of what variables you need to `group_by`. Finally, what do 
 Assign the output to `race_country_box_office`.
 
 *** =hint
+You can do this!
 
 *** =pre_exercise_code
 ```{r}
