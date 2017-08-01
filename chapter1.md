@@ -4,6 +4,9 @@ description : Learn how ggplot2 turns variables into statistical graphics
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
 ## Quick Data Frame Introduction
+
+Before we start: please join the [RBootcamp OHSU Group!](https://www.datacamp.com/groups/de163cc541d0d9bde4956157d17dbedfb1149225/invite)
+
 A `data.frame` is basically a table-like format which has the following properties: 
 
 - Columns can each have a different type (`numeric`, `character`, `boolean`, `factor`)
