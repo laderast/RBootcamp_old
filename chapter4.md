@@ -133,7 +133,7 @@ library(tidyr)
 library(stringr)
 
 gatheredData <- dem_score %>% gather(key=year, value=score, -country) %>%
-        str_replace(year, "X","")
+        mutate(year=str_replace(string=year, string="X",replacement = ""))
 
 head(gatheredData)
 ```
