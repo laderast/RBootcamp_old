@@ -6,7 +6,6 @@ description : Why we need tidy data and using `tidyr` to make messy data tidy
 --- type:NormalExercise lang:r xp:0 skills:1 key:2b27344379
 ## What you'll learn in this Chapter:
 
-+ How to load data
 + How to identify tidy data
 + How to make messy data tidy using `tidyr`
 + Long vs. Wide data
@@ -19,6 +18,98 @@ confidence to start going beyond this Bootcamp and learn some more.
 
 *** =instructions
 Just move on to the next exercise.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:80e373da6a
+## What is Tidy Data?
+
+Tidy data is defined as the following:
+
+
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:0c7200c72b
+## Long versus Wide Data
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
+## Joining two tables together
+
+
+*** =instructions
 
 *** =hint
 
@@ -82,60 +173,3 @@ sometimes you will have to fix these. We'll show you how to do that in the next 
 
 ```
 
-
---- type:NormalExercise lang:r xp:100 skills:1 key:efed4e694f
-## Long versus Wide Data
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
-## Joining two tables together
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
