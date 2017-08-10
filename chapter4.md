@@ -94,24 +94,42 @@ test_mc(correct = 2)
 --- type:NormalExercise lang:r xp:100 skills:1 key:c1c536cd5d
 ## tidyr::gather()
 
+`gather()` is a special function in the `tidyr` package that takes columns and combines them into a single column. 
+`gather()` has the following syntax:
+
+```{r}
+dem_score %>% gather(key=year, value=score, -country)
+```
+The first argument, `key`, is the name of our 'gathered' variable. We're smushing all of the columns that have year names and 
+calling the column names, or the `key` the name of `year`. The second argument, `value`, is the actual observations. Finally, if we don't want a column to be gathered, we can leave it out with the `-` notation (here, `-country`).
 
 *** =instructions
+
+Try out the above `gather` statement, assigning it to `gatheredData`. 
+
+Use a `mutate` statement to remove the `X` in front of `year`. Look up the documentation for `str_replace` to see how to 
+remove the `X`
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(dplyr)
+library(tidyr)
+library(stringr)
 dem_score <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
 ```
 
 *** =sample_code
 ```{r}
-
+gatheredData <- 
 ```
 
 *** =solution
 ```{r}
 
+gatheredData <- dem_score %>% gather(key=year, value=score, -country) %>%
+        str_replace("X","", year)
 ```
 
 *** =sct
