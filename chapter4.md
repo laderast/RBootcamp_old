@@ -40,11 +40,6 @@ Just move on to the next exercise.
 ```{r}
 
 ```
-
-
-
-
-
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:80e373da6a
 ## What is Tidy Data?
 
@@ -88,9 +83,6 @@ total_fertility <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/product
 test_mc(correct = 2)
 ```
 
-
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:c1c536cd5d
 ## tidyr::gather()
 
@@ -105,12 +97,12 @@ calling the column names, or the `key` the name of `year`. The second argument, 
 
 *** =instructions
 
-Try out the above `gather` statement, assigning it to `gatheredData`. 
-
-Use a `mutate` statement to remove the `X` in front of `year`. Look up the documentation for `str_replace` to see how to 
-remove the `X` in the mutate statement.
+Try out the above `gather` statement. Use a `mutate` expression to remove the `X` in front of `year`. 
+Look up the documentation for `str_replace` to see how to remove the `X` in the mutate statement. Assign the output
+to `gatheredData`.
 
 *** =hint
+The `mutate` expression is `mutate(year=str_replace(year, "X", "")`.
 
 *** =pre_exercise_code
 ```{r}
@@ -140,10 +132,11 @@ head(gatheredData)
 
 *** =sct
 ```{r}
-
+test_object(gatheredData, incorrect_msg = "Not quite. Did you run `gather` and `mutate`?")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:0c7200c72b
-## Long versus Wide Data
+## tidyr::separate()
+
 
 
 *** =instructions
@@ -171,6 +164,34 @@ head(gatheredData)
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:651465f93b
+## Long versus Wide data
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
 ## Joining two tables together
 
@@ -199,6 +220,35 @@ head(gatheredData)
 
 ```
 
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:54f7a84f13
+## who_tidy
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/who_tidy.rda")
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:24146e724e
 ## Loading data
 
