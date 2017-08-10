@@ -7,4 +7,5 @@ university: Oregon Health & Science University
 difficulty_level: 1
 time_needed: 10 hours
 datasets:
+  module4.RData: Module4
   tidy-1.png: Tidy-1
