@@ -48,10 +48,13 @@ Just move on to the next exercise.
 --- type:NormalExercise lang:r xp:100 skills:1 key:80e373da6a
 ## What is Tidy Data?
 
-Tidy data is defined as the following:
+Tidy data is defined as data that has the following properties:
 
+- each row corresponds to an observation
+- each variable is a column
+- each type of observation is in a different table
 
-
+![Tidy Data](http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/tidy-1.png)
 
 *** =instructions
 
