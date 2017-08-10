@@ -114,22 +114,28 @@ remove the `X`
 
 *** =pre_exercise_code
 ```{r}
-library(dplyr)
-library(tidyr)
-library(stringr)
 dem_score <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
 ```
 
 *** =sample_code
 ```{r}
+library(dplyr)
+library(tidyr)
+library(stringr)
+
 gatheredData <- 
 ```
 
 *** =solution
 ```{r}
+library(dplyr)
+library(tidyr)
+library(stringr)
 
 gatheredData <- dem_score %>% gather(key=year, value=score, -country) %>%
-        str_replace("X","", year)
+        str_replace(year, "X","")
+
+head(gatheredData)
 ```
 
 *** =sct
