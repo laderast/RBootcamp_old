@@ -195,6 +195,7 @@ test_object(gatheredData, incorrect_msg = "Not quite. Did you run `gather` and `
 --- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
 ## Joining two tables together
 
+A very common operation that we have to do is when 
 
 *** =instructions
 
