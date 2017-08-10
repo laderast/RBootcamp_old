@@ -45,7 +45,7 @@ Just move on to the next exercise.
 
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:80e373da6a
+--- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:80e373da6a
 ## What is Tidy Data?
 
 Tidy data is defined as data that has the following properties:
@@ -56,13 +56,52 @@ Tidy data is defined as data that has the following properties:
 
 ![Tidy Data](http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/tidy-1.png)
 
+One thing to keep in mind is when columns are not separate variables. One clue is that the column names could be considered categories of a single variable. This means that the columns themselves could each correspond to a single observation.
+
+Look at the `dem_score` dataset in the console by using either `head()` or `summary()` Would you consider this dataset tidy?
+
+*** =instructions
+
+- Yes, we consider each row to be a separate observation
+- No, each column is not a separate observation, but actually multiple observations
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+dem_score <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
+total_fertility <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/total_fertility.csv")
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct = 2)
+```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c1c536cd5d
+## tidyr::gather()
+
+
 *** =instructions
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+dem_score <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
 ```
 
 *** =sample_code
