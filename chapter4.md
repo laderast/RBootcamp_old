@@ -108,7 +108,7 @@ calling the column names, or the `key` the name of `year`. The second argument, 
 Try out the above `gather` statement, assigning it to `gatheredData`. 
 
 Use a `mutate` statement to remove the `X` in front of `year`. Look up the documentation for `str_replace` to see how to 
-remove the `X`
+remove the `X` in the mutate statement.
 
 *** =hint
 
@@ -133,7 +133,7 @@ library(tidyr)
 library(stringr)
 
 gatheredData <- dem_score %>% gather(key=year, value=score, -country) %>%
-        mutate(year=str_replace(string=year, string="X",replacement = ""))
+        mutate(year=str_replace(year, "X",""))
 
 head(gatheredData)
 ```
