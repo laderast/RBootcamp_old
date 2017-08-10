@@ -102,7 +102,7 @@ Look up the documentation for `str_replace` to see how to remove the `X` in the 
 to `gatheredData`.
 
 *** =hint
-The `mutate` expression is `mutate(year=str_replace(year, "X", "")`.
+The `mutate` expression to remove the `X` is `mutate(year=str_replace(year, "X", "")`.
 
 *** =pre_exercise_code
 ```{r}
@@ -135,57 +135,104 @@ head(gatheredData)
 test_object("gatheredData", incorrect_msg = "Not quite. Did you run `gather` and `mutate`?")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:0c7200c72b
-## tidyr::separate()
+## tidyr::spread()
 
+`spread()` does the opposite of `gather()`. It "unbundles" a column into multiple columns.
+This situation can happen because related measurements that consist of an observation are
+collected separately, or someone has `gather`ed the data a little too enthusiastically.
 
+`spread()` has the following syntax:
+
+```{r}
+gatheredData %>% spread(key=country, value=score)
+```
+We see that `spread()` takes two arguments: the first is the *key* column, which is the 
+variable name that contains our column names of interest; the second is the *value* 
+column, which is the variable that contains the values we want to fill with.
 
 *** =instructions
+
+Let's transform our `gatheredData` into a matrix again, but with each column having a 
+`country`. Assign the output to `spreadData`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+dem_score <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
+library(dplyr)
+library(tidyr)
+library(stringr)
 
+gatheredData <- dem_score %>% gather(key=year, value=score, -country) %>%
+        mutate(year=str_replace(year, "X",""))
 ```
 
 *** =sample_code
 ```{r}
-
+spreadData <- 
+head(spreadData)
 ```
 
 *** =solution
 ```{r}
-
+spreadData <- gatheredData %>% spread(key=country, value=score)
+head(spreadData)
 ```
 
 *** =sct
 ```{r}
-
+success_msg("Great! Now you know how to spread!")
+test_object("spreadData", incorrect_msg = "Almost, but not quite")
 ```
-
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:651465f93b
 ## Long versus Wide data
 
+In addition to tidy data, we can have long data versus wide data. We call a dataset as *long data*
+because the format of the data has many more rows than columns, and we call data *wide data*, 
+because it has more columns than rows. 
+
+You have seen how to transform a *wide* dataset (`dem_score`) into a *long* one with `gather()` and
+transform it into a different *wide* format with (`gather`). 
+
 
 *** =instructions
+
+Let's practice our `gather`ing. Look at the `MouseBalanceTimeSeries` `data.frame`. This
+is a wide `data.frame` where each column corresponds to the time (in seconds) a mouse stayed on
+a balance beam pre and post treatment. `gather()` the measurements into a single column called 
+`time` with a key called `interventionStatus`. Use `separate()` to make `measurementStatus` into 
+two columns (`intervention` and `replicate`) by separating with `Treat`. Remove any observations 
+that are `NA`. Assign the output to `gatheredMouse`. Make a boxplot of `gatheredMouse`, plotting 
+`time` versus `intervention` using `geom_boxplot`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData"))
+MouseBalanceTimeSeries <- data.frame(MouseBalanceTimeSeries)
+MouseBalanceTimeSeries <- data.frame(mouseID=rownames(MouseBalanceTimeSeries), MouseBalanceTimeSeries)
 ```
 
 *** =sample_code
 ```{r}
-
+library(tidyr)
+library(dplyr)
+gatheredMouse <- MouseBalanceTimeSeries %>% 
 ```
 
 *** =solution
 ```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
 
+gatheredMouse <- MouseBalanceTimeSeries %>% gather(key=measurementStatus, value=time, -mouseID) %>%
+    filter(!is.na(time)) %>% separate(measurementStatus, c("intervention","replicate"), sep="Treat")
+
+ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 ```
 
 *** =sct
@@ -195,7 +242,11 @@ test_object("gatheredData", incorrect_msg = "Not quite. Did you run `gather` and
 --- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
 ## Joining two tables together
 
-A very common operation that we have to do is when 
+A very common operation that we have to do is when we have two tables with common ids. Often times, we
+want to merge them on these common ids. In order to do that, we have to be aware of the column name
+in each table that contains the 
+
+Then, we can do what's called a join.
 
 *** =instructions
 
@@ -203,7 +254,7 @@ A very common operation that we have to do is when
 
 *** =pre_exercise_code
 ```{r}
-load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData")
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData"))
 ```
 
 *** =sample_code
@@ -223,6 +274,39 @@ load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/dataset
 
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7cdbd2ac43
+## Inner Joins versus Outer Joins
+
+What's the difference between these two joins?
+
+```{r}
+inner_join(Mouse
+```
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData"))
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:54f7a84f13
 ## who_tidy
 
