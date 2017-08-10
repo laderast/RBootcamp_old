@@ -132,7 +132,7 @@ head(gatheredData)
 
 *** =sct
 ```{r}
-test_object(gatheredData, incorrect_msg = "Not quite. Did you run `gather` and `mutate`?")
+test_object("gatheredData", incorrect_msg = "Not quite. Did you run `gather` and `mutate`?")
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:0c7200c72b
 ## tidyr::separate()
@@ -203,7 +203,7 @@ A very common operation that we have to do is when
 
 *** =pre_exercise_code
 ```{r}
-
+load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData")
 ```
 
 *** =sample_code
