@@ -197,10 +197,19 @@ separated by something? Something like this?
 `separate()` is made to make this one variable into many other variable. Separate takes the following arguments:
 
 ```{r}
-health_code_example %>% separate(``
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
 ```
+Here we specify the variable name with `col`, the names of the new columns with `into`, and 
+the delimiter, or separator in the variable to separate on, with `sep`. Note that `sep` can
+be any string.
 
 *** =instructions
+
+Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode`. Show
+those patients that had `HealthCode==411`.
 
 *** =hint
 
@@ -213,12 +222,24 @@ health_code_example <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/pro
 
 *** =sample_code
 ```{r}
-
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
+        
+patients411 <- health_code_separated %>% filter()
 ```
 
 *** =solution
 ```{r}
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
+        
+patients411 <- health_code_separated %>% filter()
 
+patients411
 ```
 
 *** =sct
