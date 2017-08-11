@@ -208,8 +208,8 @@ be any string.
 
 *** =instructions
 
-Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode`. Show
-those patients that had `HealthCode==411`.
+Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode` for  `health_code_example`, assigning the output to `health_code_separated`. Show
+those patients that had `HealthCode==410`, assigning them to `patients410`. Show `patients410`.
 
 *** =hint
 
@@ -217,17 +217,18 @@ those patients that had `HealthCode==411`.
 ```{r}
 library(tidyr)
 library(dplyr)
-health_code_example <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/healthExample.csv")
+library(readr)
+health_code_example <- 
+    read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/healthExample.csv")
 ```
 
 *** =sample_code
 ```{r}
 health_code_separated <- 
-    health_code_example %>% 
-        separate(col=HealthCodeEncounterCode, 
-        into=c("HealthCode", "EncounterCode"), sep="/")
         
-patients411 <- health_code_separated %>% filter()
+patients410 <- health_code_separated %>% filter()
+
+patients410
 ```
 
 *** =solution
@@ -235,11 +236,12 @@ patients411 <- health_code_separated %>% filter()
 health_code_separated <- 
     health_code_example %>% 
         separate(col=HealthCodeEncounterCode, 
-        into=c("HealthCode", "EncounterCode"), sep="/")
+        into=c("HealthCode", "EncounterCode"), 
+        sep="/")
         
-patients411 <- health_code_separated %>% filter()
+patients410 <- health_code_separated %>% filter(HealthCode==410)
 
-patients411
+patients410
 ```
 
 *** =sct
@@ -324,7 +326,7 @@ fertilityMeanByYear
 --- type:NormalExercise lang:r xp:500 skills:1 key:651465f93b
 ## Putting  dplyr, tidyr, and ggplot2 all together
 
-Let's put everything we've learned together. 
+Let's put everything we've learned together on a new data.frame called `MouseBalanceTimeSeries`.
 
 *** =instructions
 
@@ -408,6 +410,118 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 ```{r}
 test_mc(correct=2)
 ```
+--- type:NormalExercise lang:r xp:100 skills:1 key:24146e724e
+## Loading data
+
+We've been hiding some of the complexity of the analysis procedure from you until now. One of the most confusing parts about R to learn is how to load data. We'll take it step by step.
+
+There are three main formats we'll have to deal with:
+
++ Comma Separated Values (`.csv` files) - use the `readr` package
++ Tab Delimited Files (`.tsv` or `.txt` files) - use the `readr` package
++ Excel Spreadsheets (`.xls` and `.xlsx` files) - use the `readxl` package
+
+The functions in these packages will make a guess as to the formatting of the columns, but sometimes you will have to fix these. We'll show you how to do that in the next section.
+
+Let's try the `readr` package. For `.csv` (Comma Separated Value) files, we can use the `read_csv` function. For this exercise, we have to use files that are available online. But if you have data on your disk, you can load it into R if you know the path (location) of the data file.
+
+If you have a tab-separated file, you can use the general file reader, `read_delim`, supplying the argument `delim="\t"`. `"\t"` is the programmatic way of specifying a tab.
+
+```{r}
+library(readr)
+dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
+```
+
+*** =instructions
+Take a look at the the `dem_score.csv` file here: http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv
+
+Load this file as `dem_score`. Show the number of rows in `dem_score`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(tidyverse)
+
+dem_score <- read.csv()
+nrow(dem_score)
+```
+
+*** =sample_code
+```{r}
+library(readr)
+```
+
+*** =solution
+```{r}
+library(readr)
+dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
+nrow(dem_score)
+```
+
+*** =sct
+```{r}
+
+```
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d458cbbf05
+## header=TRUE
+
+What is the difference between `header=TRUE` and `header=FALSE`? Try it out in the console.
+
+```{r}
+library(tidyverse)
+dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
+
+head(dem_score)
+```
+
+*** =instructions
+
+- There is no difference.
+- `header=TRUE` is faster
+- `header=TRUE` assumes the first row defines the column names, whereas `header=FALSE` assumes there are no column names
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct=3)
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:1683bd8844
+## readxl
+
+For excel files, there is the `readxl` package built into `tidyverse`. 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
 ## Joining two tables together
 
@@ -484,113 +598,6 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/dat
 *** =pre_exercise_code
 ```{r}
 load("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/who_tidy.rda")
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:24146e724e
-## Loading data
-
-We've been hiding some of the complexity of the analysis procedure from you until now. One of the most confusing parts about R to learn is how to load data. We'll take it step by step.
-
-There are three main formats we'll have to deal with:
-
-+ Comma Separated Values (`.csv` files) - use the `readr` package
-+ Tab Delimited Files (`.tsv` or `.txt` files) - use the `readr` package
-+ Excel Spreadsheets (`.xls` and `.xlsx` files) - use the `readxl` package
-
-The functions in these packages will make a guess as to the formatting of the columns, but sometimes you will have to fix these. We'll show you how to do that in the next section.
-
-Let's try the `readr` package. For `.csv` (Comma Separated Value) files, we can use the `read_csv` function. For this exercise, we have to use files that are available online. But if you have data on your disk, you can load it into R if you know the path (location) of the data file.
-
-```{r}
-library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
-```
-
-*** =instructions
-Take a look at the the `dem_score.csv` file here: http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv
-
-Load this file as `dem_score`. Show the number of rows in `dem_score`.
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-library(tidyverse)
-
-dem_score <- read.csv()
-nrow(dem_score)
-```
-
-*** =sample_code
-```{r}
-library(tidyverse)
-```
-
-*** =solution
-```{r}
-library(tidyverse)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
-nrow(dem_score)
-```
-
-*** =sct
-```{r}
-
-```
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d458cbbf05
-## header=TRUE
-
-What is the difference between `header=TRUE` and `header=FALSE`? Try it out in the console.
-
-```{r}
-library(tidyverse)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
-
-head(dem_score)
-```
-
-*** =instructions
-
-- There is no difference.
-- `header=TRUE` is faster
-- `header=TRUE` assumes the first row defines the column names, whereas `header=FALSE` assumes there are no column names
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-test_mc()
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:1683bd8844
-## <<<New Exercise>>>
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
 ```
 
 *** =sample_code
