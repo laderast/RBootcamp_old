@@ -491,7 +491,7 @@ test_function("geom_violin", incorrect_msg = "I think you're missing a geom.")
 - More about how to put together a ggplot
 
 *** =instructions
-Just move on to the next chapter!
+Just move on to the next chapter! (CTRL+K)
 
 *** =hint
 
