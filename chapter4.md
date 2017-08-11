@@ -192,27 +192,54 @@ Have you ever had a table which had a column that actually consisted of bunch of
 separated by something? Something like this?
 
 ```{r}
-"value1;value2;value3"
+"value1/value2/value3"
 ```
-`separate()` is made to make this one column into many other columns.
+`separate()` is made to make this one variable into many other variable. Separate takes the following arguments:
+
+```{r}
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
+```
+Here we specify the variable name with `col`, the names of the new columns with `into`, and 
+the delimiter, or separator in the variable to separate on, with `sep`. Note that `sep` can
+be any string.
 
 *** =instructions
+
+Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode`. Show
+those patients that had `HealthCode==411`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+library(tidyr)
+library(dplyr)
+health_code_example <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/healthExample.csv")
 ```
 
 *** =sample_code
 ```{r}
-
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
+        
+patients411 <- health_code_separated %>% filter()
 ```
 
 *** =solution
 ```{r}
+health_code_separated <- 
+    health_code_example %>% 
+        separate(col=HealthCodeEncounterCode, 
+        into=c("HealthCode", "EncounterCode"), sep="/")
+        
+patients411 <- health_code_separated %>% filter()
 
+patients411
 ```
 
 *** =sct
