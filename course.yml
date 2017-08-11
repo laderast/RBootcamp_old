@@ -7,6 +7,7 @@ university: Oregon Health & Science University
 difficulty_level: 1
 time_needed: 10 hours
 datasets:
+  excelFile.xlsx: Excelfile
   healthExample.csv: Healthexample
   module4.RData: Module4
   tidy-1.png: Tidy-1
