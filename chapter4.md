@@ -208,8 +208,8 @@ be any string.
 
 *** =instructions
 
-Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode`. Show
-those patients that had `HealthCode==411`.
+Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode` for  `health_code_example`, assigning the output to `health_code_separated`. Show
+those patients that had `HealthCode==410`, assigning them to `patients410`. Show `patients410`.
 
 *** =hint
 
@@ -217,17 +217,18 @@ those patients that had `HealthCode==411`.
 ```{r}
 library(tidyr)
 library(dplyr)
-health_code_example <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/healthExample.csv")
+library(readr)
+health_code_example <- 
+    read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/healthExample.csv")
 ```
 
 *** =sample_code
 ```{r}
 health_code_separated <- 
-    health_code_example %>% 
-        separate(col=HealthCodeEncounterCode, 
-        into=c("HealthCode", "EncounterCode"), sep="/")
         
-patients411 <- health_code_separated %>% filter()
+patients410 <- health_code_separated %>% filter()
+
+patients410
 ```
 
 *** =solution
@@ -235,11 +236,12 @@ patients411 <- health_code_separated %>% filter()
 health_code_separated <- 
     health_code_example %>% 
         separate(col=HealthCodeEncounterCode, 
-        into=c("HealthCode", "EncounterCode"), sep="/")
+        into=c("HealthCode", "EncounterCode"), 
+        sep="/")
         
-patients411 <- health_code_separated %>% filter()
+patients410 <- health_code_separated %>% filter(HealthCode==410)
 
-patients411
+patients410
 ```
 
 *** =sct
@@ -324,7 +326,7 @@ fertilityMeanByYear
 --- type:NormalExercise lang:r xp:500 skills:1 key:651465f93b
 ## Putting  dplyr, tidyr, and ggplot2 all together
 
-Let's put everything we've learned together. 
+Let's put everything we've learned together on a new data.frame called `MouseBalanceTimeSeries`.
 
 *** =instructions
 
