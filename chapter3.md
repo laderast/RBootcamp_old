@@ -41,7 +41,7 @@ If you want more information on a function such as `mutate()`, you can always as
 ```
 
 *** =instructions
-Just move on to the next exercise!
+Just move on to the next exercise! (CTRL+K)
 
 *** =hint
 
@@ -1066,7 +1066,9 @@ success_msg("Now you know how to chain dplyr statements straight into a ggplot!"
 *** =instructions
 Please fill out our [feedback form](https://docs.google.com/forms/d/e/1FAIpQLSeWynGvUkqmE750I63mB0Y_VA6m7XVa16rJLBEviny3TwcJ5g/viewform?usp=sf_link)! We're trying to improve these workshops for future students.
 
-Just move on to the next chapter. Good job for making it through this chapter! You're well on your way
+Just move on to the next chapter. (CTRL+K)  
+
+Good job for making it through this chapter! You're well on your way
 to becoming a `tidyverse` ninja!
 
 *** =hint

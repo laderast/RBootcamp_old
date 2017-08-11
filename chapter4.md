@@ -17,7 +17,7 @@ data manipulation, and data cleaning problems. Hopefully you'll have gained enou
 confidence to start going beyond this Bootcamp and learn some more.
 
 *** =instructions
-Just move on to the next exercise.
+Just move on to the next exercise. (CTRL+K)
 
 *** =hint
 
@@ -219,7 +219,7 @@ separated by something? Something like this?
 ```{r}
 
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:3d8e137017
+--- type:NormalExercise lang:r xp:300 skills:1 key:3d8e137017
 ## Wide Versus Long Data
 
 In addition to tidy data, we can have long data versus wide data. We call a dataset as *long data*
@@ -231,7 +231,7 @@ In general, I tend to work with long data because this format makes it easeir to
 plots when I have a lot of covariates. Let's look at what's possible because the data is in a long format.
 
 Let's practice with another dataset in long format, called `fertilityTidy`. You can look at the 
-original data as `fertilityData`.
+original data as `fertilityData`. We'll summarize it in two different ways.
 
 *** =instructions
 
@@ -297,11 +297,12 @@ fertilityMeanByYear
 --- type:NormalExercise lang:r xp:500 skills:1 key:651465f93b
 ## Putting  dplyr, tidyr, and ggplot2 all together
 
-Let's put everything together into a single plot!
+Let's put everything we've learned together. 
 
 *** =instructions
 
-Look at the `MouseBalanceTimeSeries` `data.frame`. This is a wide `data.frame` where each column corresponds to the time (in seconds) a mouse stayed on
+Look at the `MouseBalanceTimeSeries` `data.frame`. This is a wide `data.frame` where 
+each column corresponds to the time (in seconds) a mouse stayed on
 a balance beam pre and post treatment. `gather()` the measurements into a single column called 
 `time` with a key called `interventionStatus`. 
 

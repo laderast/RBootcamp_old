@@ -349,7 +349,7 @@ test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the varia
 - That you can do this!
 
 *** =instructions
-Just move on to the next chapter! 
+Just move on to the next chapter! (CTRL+K)
 
 *** =hint
 
