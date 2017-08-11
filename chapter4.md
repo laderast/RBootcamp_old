@@ -307,7 +307,7 @@ a balance beam pre and post treatment. `gather()` the measurements into a single
 `time` with a key called `interventionStatus`. 
 
 Use `separate()` to make `measurementStatus` into 
-two columns (`intervention` and `replicate`) by separating with `Treat`. 
+two columns (`intervention` and `replicate`) by specifying `sep="Treat"`. 
 
 Remove any observations 
 that are `NA`. Assign the output to `gatheredMouse`. 
@@ -350,7 +350,7 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:26c910c309
-## Was there aa difference?
+## Was there a difference?
 
 Was there a difference in mean time spent on the balance beam pre and post treatment?
 
