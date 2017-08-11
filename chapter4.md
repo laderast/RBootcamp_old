@@ -224,28 +224,70 @@ separated by something? Something like this?
 
 In addition to tidy data, we can have long data versus wide data. We call a dataset as *long data*
 because the format of the data has many more rows than columns, and we call data *wide data*, 
-because it has more columns than rows. 
+because it has more columns than rows. You have seen how to transform a *wide* dataset (`dem_score`) 
+into a *long* one with `gather()` and transform it into a different *wide* format with (`spread`).
 
-You have seen how to transform a *wide* dataset (`dem_score`) into a *long* one with `gather()` and
-transform it into a different *wide* format with (`spread`). 
+In general, I tend to work with long data because this format makes it easeir to aggregate the data for 
+plots when I have a lot of covariates. Let's look at what's possible because the data is in a long format.
+
+Let's practice with another dataset in long format, called `fertilityTidy`. You can look at the 
+original data as `fertilityData`.
 
 *** =instructions
 
+Look at `fertilityTidy`. Show the average fertility by country to present day 
+by using `dplyr` verbs, calling this variable `meanCountryRate`. Assign the summarized 
+data to `fertilityMeanByCountry`. Show `fertilityMeanByCountry`.
+
+Next, show average fertility by `Year`, using `group_by/summarize()` assigning the
+summarized data to `fertilityMeanByYear`. Show `fertilityMeanByYear`.
+
 *** =hint
+You'll have to first use a `filter()` statement, and then a `group_by/summarize` statement.
 
 *** =pre_exercise_code
 ```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+fertilityData <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/total_fertility.csv", check.names = FALSE)
+
+colnames(fertilityData)[1] <- "Total fertility rate"
+
+fertilityTidy <- 
+  gather(fertilityData, "Year", "fertilityRate", -`Total fertility rate`) %>% 
+  select(Country = `Total fertility rate`, Year, fertilityRate) %>% 
+  #remove na values (there are countries that have no information)
+  filter(!is.na(fertilityRate))
 
 ```
 
 *** =sample_code
 ```{r}
+fertilityMeanByCountry <- fertilityTidy %>%
 
+#show fertlityMeanByCountry
+fertilityMeanByCountry
+
+fertilityMeanByYear <- fertilityTidy %>%
+
+#show fertilityMeanByYear
+fertilityMeanByYear
 ```
 
 *** =solution
 ```{r}
-
+fertilityMeanByCountry <- fertilityTidy %>% 
+        group_by(Country) %>% summarize(meanCountryRate=mean(fertilityRate))
+    
+#show fertlityMeanByCountry
+fertilityMeanByCountry
+        
+fertilityMeanByYear <- fertilityTidy %>% 
+        group_by(Year) %>% summarize(meanYearRate=mean(fertilityRate))
+        
+#show fertilityMeanByYear
+fertilityMeanByYear
 ```
 
 *** =sct
@@ -305,8 +347,6 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 ```{r}
 
 ```
-
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:26c910c309
 ## Was there aa difference?
