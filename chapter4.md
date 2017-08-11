@@ -186,25 +186,60 @@ success_msg("Great! Now you know how to spread!")
 test_object("spreadData", incorrect_msg = "Almost, but not quite")
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:651465f93b
-## Long versus Wide data
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3d8e137017
+## Wide Versus Long Data
 
 In addition to tidy data, we can have long data versus wide data. We call a dataset as *long data*
 because the format of the data has many more rows than columns, and we call data *wide data*, 
 because it has more columns than rows. 
 
 You have seen how to transform a *wide* dataset (`dem_score`) into a *long* one with `gather()` and
-transform it into a different *wide* format with (`gather`). 
-
+transform it into a different *wide* format with (`spread`). 
 
 *** =instructions
 
-Let's practice our `gather`ing. Look at the `MouseBalanceTimeSeries` `data.frame`. This
-is a wide `data.frame` where each column corresponds to the time (in seconds) a mouse stayed on
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:NormalExercise lang:r xp:500 skills:1 key:651465f93b
+## Putting  dplyr, tidyr, and ggplot2 all together
+
+Let's put everything together into a single plot!
+
+*** =instructions
+
+Look at the `MouseBalanceTimeSeries` `data.frame`. This is a wide `data.frame` where each column corresponds to the time (in seconds) a mouse stayed on
 a balance beam pre and post treatment. `gather()` the measurements into a single column called 
-`time` with a key called `interventionStatus`. Use `separate()` to make `measurementStatus` into 
-two columns (`intervention` and `replicate`) by separating with `Treat`. Remove any observations 
-that are `NA`. Assign the output to `gatheredMouse`. Make a boxplot of `gatheredMouse`, plotting 
+`time` with a key called `interventionStatus`. 
+
+Use `separate()` to make `measurementStatus` into 
+two columns (`intervention` and `replicate`) by separating with `Treat`. 
+
+Remove any observations 
+that are `NA`. Assign the output to `gatheredMouse`. 
+
+Finally, make a boxplot of `gatheredMouse`, plotting 
 `time` versus `intervention` using `geom_boxplot`.
 
 *** =hint
@@ -214,6 +249,7 @@ that are `NA`. Assign the output to `gatheredMouse`. Make a boxplot of `gathered
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData"))
 MouseBalanceTimeSeries <- data.frame(MouseBalanceTimeSeries)
 MouseBalanceTimeSeries <- data.frame(mouseID=rownames(MouseBalanceTimeSeries), MouseBalanceTimeSeries)
+colnames(MouseBalanceTimeSeries)[3] <- "PreTreat2"
 ```
 
 *** =sample_code
@@ -238,6 +274,41 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 *** =sct
 ```{r}
 
+```
+
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:26c910c309
+## Was there aa difference?
+
+Was there a difference in mean time spent on the balance beam pre and post treatment?
+
+*** =instructions
+- No, the times were too close to tell.
+- Yes, the intervals overlapped, but the means were clearly different
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/module4.RData"))
+MouseBalanceTimeSeries <- data.frame(MouseBalanceTimeSeries)
+MouseBalanceTimeSeries <- data.frame(mouseID=rownames(MouseBalanceTimeSeries), MouseBalanceTimeSeries)
+colnames(MouseBalanceTimeSeries)[3] <- "PreTreat2"
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+
+gatheredMouse <- MouseBalanceTimeSeries %>% gather(key=measurementStatus, value=time, -mouseID) %>%
+    filter(!is.na(time)) %>% separate(measurementStatus, c("intervention","replicate"), sep="Treat")
+
+ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
+```
+
+*** =sct
+```{r}
+test_mc(correct=2)
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:87aa2a11b4
 ## Joining two tables together
