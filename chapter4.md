@@ -497,7 +497,7 @@ test_mc(correct=3)
 --- type:NormalExercise lang:r xp:100 skills:1 key:1683bd8844
 ## readxl
 
-
+For excel files, there is the `readxl` package built into `tidyverse`. 
 
 *** =instructions
 
