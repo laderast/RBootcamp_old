@@ -185,10 +185,40 @@ head(spreadData)
 success_msg("Great! Now you know how to spread!")
 test_object("spreadData", incorrect_msg = "Almost, but not quite")
 ```
+--- type:NormalExercise lang:r xp:100 skills:1 key:fbd075070a
+## dplyr::separate()
 
+Have you ever had a table which had a column that actually consisted of bunch of other columns together,
+separated by something? Something like this?
 
+```{r}
+"value1;value2;value3"
+```
+`separate()` is made to make this one column into many other columns.
 
+*** =instructions
 
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:3d8e137017
 ## Wide Versus Long Data
 
