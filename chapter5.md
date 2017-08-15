@@ -219,6 +219,7 @@ We've built two models:
 
 *** =sct
 ```{r}
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
 ## Visualizing proportions of fishpart by fisherman status
