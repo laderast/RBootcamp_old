@@ -135,8 +135,8 @@ ggplot(fishdata, aes(x=factor(fisherman), y=MeHg)) + geom_boxplot()
 
 *** =sct
 ```{r}
-test_ggplot(1, check_aes=TRUE)
-test_ggplot(2, check_aes=TRUE)
+test_ggplot(1)
+test_ggplot(2)
 ```
 
 
