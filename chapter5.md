@@ -129,7 +129,7 @@ ggplot(fishdata, aes(x=factor(fisherman), y=TotHg)) + geom_boxplot()
 
 *** =sct
 ```{r}
-test_ggplot(1)
+test_ggplot()
 ```
 
 
