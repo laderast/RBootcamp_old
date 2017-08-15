@@ -120,23 +120,16 @@ fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/cou
 ```{r}
 #plot totHg here
 ggplot(fishdata,aes()) + geom_boxplot()
-
-#plot MeHg
-ggplot(fishdata, aes()) + geom_boxplot()
 ```
 
 *** =solution
 ```{r}
 ggplot(fishdata, aes(x=factor(fisherman), y=TotHg)) + geom_boxplot()
-
-ggplot(fishdata, aes(x=factor(fisherman), y=MeHg)) + geom_boxplot()
-
 ```
 
 *** =sct
 ```{r}
-#test_ggplot(1)
-#test_ggplot(2)
+test_ggplot(1)
 ```
 
 
@@ -241,12 +234,6 @@ of `fishpart` versus `fisherman`.
 
 *** =pre_exercise_code
 ```{r}
-#library(readr)
-#library(dplyr)
-#library(ggplot2)
-#library(broom)
-
-#fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
 ```
 
 *** =sample_code
