@@ -1,12 +1,11 @@
 title: RBootcamp
 instructors:
 - tedladeras@gmail.com
-- minnier@ohsu.edu
 description: Self-directed bootcamp for learning R-programming basics. We start with
   visualization and ask fun questions of the data.
 university: Oregon Health & Science University
 difficulty_level: 1
-time_needed: 10 hours
+time_needed: 5 hours
 datasets:
   excelFile.xlsx: Excelfile
   healthExample.csv: Healthexample
