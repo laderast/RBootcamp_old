@@ -10,11 +10,10 @@ description : Why we need tidy data and using `tidyr` to make messy data tidy
 + How to make messy data tidy using `tidyr`
 + Long vs. Wide data
 + The tidy manifesto
++ Loading Data
 + Joining tables on a common identifier
 
-After this chapter, you will be able to handle about 90% of your data visualization,
-data manipulation, and data cleaning problems. Hopefully you'll have gained enough
-confidence to start going beyond this Bootcamp and learn some more.
+After this chapter, you will be able to handle about 90% of your data visualization, data manipulation, and data cleaning problems. Hopefully you'll have gained enough confidence to start going beyond this Bootcamp and learn some more.
 
 *** =instructions
 Just move on to the next exercise. (CTRL+K)
@@ -246,7 +245,8 @@ patients410
 
 *** =sct
 ```{r}
-
+test_object("health_code_separated", incorrect_msg="Did you set up your `separate()` statement correctly?")
+test_object("patients410", incorrect_msg="Not quite. Make Sure your filter statement was correct")
 ```
 --- type:NormalExercise lang:r xp:300 skills:1 key:3d8e137017
 ## Wide Versus Long Data
@@ -426,6 +426,10 @@ The functions in these packages will make a guess as to the formatting of the co
 Let's try the `readr` package. For `.csv` (Comma Separated Value) files, we can use the `read_csv` function. For this exercise, we have to use files that are available online. But if you have data on your disk, you can load it into R if you know the path (location) of the data file.
 
 If you have a tab-separated file, you can use the general file reader, `read_delim`, supplying the argument `delim="\t"`. `"\t"` is the programmatic way of specifying a tab.
+
+For way more about loading data, please read this: https://www.datacamp.com/community/tutorials/r-data-import-tutorial
+
+And there is a nifty loading datacamp tutorial here: https://www.datacamp.com/courses/importing-data-in-r-part-1/
 
 ```{r}
 library(readr)
