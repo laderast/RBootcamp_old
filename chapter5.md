@@ -39,8 +39,15 @@ a simple data story given our data.
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3e59cb838f
-## Let's explore the fi
+## Let's explore the fisherman mercury dataset
 
+We are going to explore a dataset called the fisherman mercury dataset, which consists of factors 
+related to mercury exposure among two groups of fishermen. 
+
+Take a look at the readme for this dataset first: http://www.stat.ufl.edu/~winner/data/fishermen_mercury.txt
+
+Then use `glimpse` to take a look at the structure of the data and try `table()` on both `fishpart` and 
+`fisherman`. 
 
 *** =instructions
 
@@ -48,15 +55,45 @@ a simple data story given our data.
 
 *** =pre_exercise_code
 ```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
 
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
 ```
 
 *** =sample_code
 ```{r}
+glimpse(fishdata)
 
+table(fishdata$fishpart)
+table(fishdata$fisherman)
 ```
 
 *** =solution
+```{r}
+glimpse(fishdata)
+
+table(fishdata$fishpart)
+table(fishdata$fisherman)
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:b9ac8f4738
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
 ```{r}
 
 ```
