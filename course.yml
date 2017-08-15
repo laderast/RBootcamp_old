@@ -1,8 +1,7 @@
 title: RBootcamp
 instructors:
 - tedladeras@gmail.com
-description: Self-directed bootcamp for learning R-programming basics. We start with
-  visualization and ask fun questions of the data.
+description: Self-directed bootcamp for learning the basics of data manipulation with the tidyverse. We start with visualization and ask fun questions of the data.
 university: Oregon Health & Science University
 difficulty_level: 1
 time_needed: 5 hours
