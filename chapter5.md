@@ -211,6 +211,38 @@ test_ggplot(2, check_aes=TRUE)
 --- type:NormalExercise lang:r xp:100 skills:1 key:a8e91afadb
 ## Let's delve deeper into the data
 
+We have other covariates in our data. We want to see whether we can use these covariates to
+predict the level of Mercury Exposure.
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
+## Compare our models
+
+We've built two models: 
 
 *** =instructions
 
