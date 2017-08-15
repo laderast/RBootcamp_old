@@ -94,44 +94,6 @@ table(fishdata$fisherman)
 ```
 
 
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
-## Visualizing proportions of fishpart by fisherman status
-
-Let's try and answer the question of fishpart eating by fisherman status. 
-
-Produce a proportional barplot ([Here's how if you forgot](https://campus.datacamp.com/courses/rbootcamp/ggplot2-and-categorical-data?ex=5))
-of `fishpart` versus `fisherman`. 
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(broom)
-
-fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
-```
-
-*** =sample_code
-```{r}
-```
-
-*** =solution
-```{r}
-```
-
-*** =sct
-```{r}
-
-```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:80227d57fb
 ## Visualize Mean of Total Mercury by Fisherman Status
 
@@ -265,5 +227,41 @@ We've built two models:
 
 *** =sct
 ```{r}
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
+## Visualizing proportions of fishpart by fisherman status
+
+Let's try and answer the question of fishpart eating by fisherman status. 
+
+Produce a proportional barplot ([Here's how if you forgot](https://campus.datacamp.com/courses/rbootcamp/ggplot2-and-categorical-data?ex=5))
+of `fishpart` versus `fisherman`. 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
+```
+
+*** =sample_code
+```{r}
+```
+
+*** =solution
+```{r}
+```
+
+*** =sct
+```{r}
+
+```
+
 
 ```
