@@ -96,13 +96,15 @@ table(fishdata$fisherman)
 --- type:NormalExercise lang:r xp:100 skills:1 key:80227d57fb
 ## Visualize Mean of Total Mercury by Fisherman Status
 
-Let's visualize both mean `TotHg` (total mercury) and `MeHg` by `fisherman` status to 
+Let's visualize mean `TotHg` (total mercury) by `fisherman` status to 
 see whether there is a difference between them.
 
 *** =instructions
 
-Use `geom_boxplot()` to visualize the means of of both `TotHg` and `MeHg` by
-`fisherman` status. Make sure to cast `fisherman` as a factor.
+Use `geom_boxplot()` to visualize the mean of `TotHg` conditioned on
+`fisherman` status (if you can't remember, 
+[here's the exercise](https://campus.datacamp.com/courses/rbootcamp/ggplot2-and-categorical-data?ex=11)). 
+Make sure to cast `fisherman` as a factor.
 
 *** =hint
 
@@ -133,7 +135,33 @@ test_ggplot()
 ```
 
 
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6e3730d99d
+## Is there a difference?
 
+Is there a difference between the two groups: fishermen and non-fishermen?
+
+*** =instructions
+
+- No, there isn't. The means are too close.
+- Yes, there is. The intervals overlap but there is a clear difference in means
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
+ggplot(fishdata, aes(x=factor(fisherman), y=TotHg)) + geom_boxplot()
+```
+
+*** =sct
+```{r}
+test_mc(correct=2)
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:556d3ae28b
 ## T-test of means for fisherman status
 
@@ -219,6 +247,7 @@ We've built two models:
 
 *** =sct
 ```{r}
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
@@ -250,5 +279,3 @@ of `fishpart` versus `fisherman`.
 
 ```
 
-
-```
