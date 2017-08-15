@@ -54,7 +54,7 @@ Take a look at the readme for this dataset first: http://www.stat.ufl.edu/~winne
 Then use `glimpse` to take a look at the structure of the data and try `table()` on both `fishpart` and 
 `fisherman`. What are the different categories of `fishpart` and `fisherman`? 
 
-Are fishermen more likely to eat more fish than non-fishermen?
+Are fishermen more likely to eat more whole fish than non-fishermen?
 
 *** =instructions
 
