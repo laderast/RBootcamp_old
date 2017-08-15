@@ -93,7 +93,6 @@ table(fishdata$fisherman)
 
 ```
 
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:80227d57fb
 ## Visualize Mean of Total Mercury by Fisherman Status
 
