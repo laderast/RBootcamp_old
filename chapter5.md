@@ -15,8 +15,8 @@ a simple data story given our data.
 
 Our questions of interest are the following:
 
-+ Is mercury exposure greater within people who are fishermen versus those who are not?
-+ What are the best predictors of mercury exposure?
++ Is mercury exposure greater within people who are fishermen versus those who are not? (t-test)
++ What are the best predictors of mercury exposure? (multiple linear regression)
 
 *** =instructions
 
@@ -134,6 +134,82 @@ fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/cou
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:80227d57fb
 ## Visualize Mean of Total Mercury by Fisherman Status
+
+Let's visualize both mean `TotHg` (total mercury) and `MeHg` by `fisherman` status to 
+see whether there is a difference between them.
+
+*** =instructions
+
+Use `geom_boxplot()` to visualize the means of of both `TotHg` and `MeHg` by
+`fisherman` status. Make sure to cast `fisherman` as a factor.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fishermen_mercury.csv")
+```
+
+*** =sample_code
+```{r}
+#plot totHg here
+ggplot(fishdata,aes()) + geom_boxplot()
+
+#plot MeHg
+ggplot(fishdata, aes()) + geom_boxplot()
+```
+
+*** =solution
+```{r}
+ggplot(fishdata, aes(x=factor(fisherman), y=TotHg)) + geom_boxplot()
+
+ggplot(fishdata, aes(x=factor(fisherman), y=MeHg)) + geom_boxplot()
+
+```
+
+*** =sct
+```{r}
+test_ggplot(1, check_aes=TRUE)
+test_ggplot(2, check_aes=TRUE)
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:556d3ae28b
+## T-test of means for fisherman status
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a8e91afadb
+## Let's delve deeper into the data
 
 
 *** =instructions
