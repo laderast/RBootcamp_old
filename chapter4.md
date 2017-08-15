@@ -445,7 +445,7 @@ Load this file as `dem_score`. Show the number of rows in `dem_score`.
 
 *** =pre_exercise_code
 ```{r}
-library(tidyverse)
+library(readr)
 
 dem_score <- read.csv()
 nrow(dem_score)
