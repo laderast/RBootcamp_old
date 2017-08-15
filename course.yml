@@ -2,11 +2,13 @@ title: RBootcamp
 instructors:
 - tedladeras@gmail.com
 - jessica.minnier@gmail.com
-description: Self-directed bootcamp for learning the basics of data manipulation with the tidyverse. We start with visualization and ask fun questions of the data.
+description: Self-directed bootcamp for learning the basics of data manipulation with
+  the tidyverse. We start with visualization and ask fun questions of the data.
 university: Oregon Health & Science University
 difficulty_level: 1
 time_needed: 5 hours
 datasets:
+  fishermen_mercury.csv: Fishermen mercury
   excelFile.xlsx: Excelfile
   healthExample.csv: Healthexample
   module4.RData: Module4
