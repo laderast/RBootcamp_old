@@ -274,45 +274,269 @@ success_msg("So fresh and so clean clean!")
 ## Let's delve deeper into the data
 
 We have other covariates in our data. We want to see whether we can use these covariates to
-predict the level of Mercury Exposure.
+predict the level of Mercury Exposure. Could another covariate be confounding the relationship between fisherman and total mercury?
+
+Let's first look at the scatter plots of `weight` and number of fish meals per week `fishmlwk` vs `total_mercury`. Do there seem to be any associations?
 
 *** =instructions
+
+Use `geom_point` to make scatterplots of the two variables.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
 
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
 ```
 
 *** =sample_code
 ```{r}
+# draw a scatterplot of weight (x-axis) vs total_mercury (y axis) and color by fisherman category
+ggplot(fishdata,aes(___,___,color=factor(___)))+___
+
+# draw a scatterplot of fishmlwk (x-axis) vs total_mercury (y axis) and color by fisherman category
+ggplot(fishdata,aes(___,___,color=factor(___)))+___
 
 ```
 
 *** =solution
 ```{r}
+ggplot(fishdata,aes(x=weight,y=total_mercury,color=factor(fisherman)))+geom_point()
 
+ggplot(fishdata,aes(x=fishmlwk,y=total_mercury,color=factor(fisherman)))+geom_point()
 ```
 
 *** =sct
 ```{r}
-
+test_ggplot(index=1)
+test_ggplot(index=2)
+success_msg("Beautiful plots!")
 ```
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
-## Compare our models
 
-We've built two models: 
+--- type:NormalExercise lang:r xp:100 skills:1 key:d5e745c9f5
+## Linear Regression
+
+It looks like both weight and number of fish meals per week are associated with total mercurcy. They also appear to be associated with fisherman status. We saw earlier from our cross-table output that fisherman tend to eat more fish (surprised?).
+
+We can use linear regression to adjust for these possible confounders. We first build a univariate linear regression with just fisherman as a predictor. Then we compare it to a multiple linear regression with the three indepedent variables.
+
+Note: the p-value from the linear regression is similar but not exactly the same as the t-test since the t-test assumed equal variances between groups (argument `var.equal=TRUE` by default in `t.test()`).
 
 *** =instructions
+
+Fit a linear regression with `fisherman` as the indepedent variable and `total_mercury` as the dependent variable. Save this as `fit_univariate`. Then, fit a multiple linear regression with `fisherman`, `weight`, `fishmlwk` as dependent variables. Save this as `fit_multiple`.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
 
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+```
+
+*** =sample_code
+```{r}
+
+# fit the univariate model
+fit_univariate <- lm(~,data=fishdata)
+
+# fit the multiple predictor model with fisherman, weight, fishmlwk
+fit_multiple <- lm(~,data=fishdata)
+
+# let's look at the output
+summary(fit_univariate)
+summary(fit_multiple)
+```
+
+*** =solution
+```{r}
+fit_univariate <- lm(total_mercury~fisherman,data=fishdata)
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# let's look at the output
+summary(fit_univariate)
+summary(fit_multiple)
+```
+
+*** =sct
+```{r}
+ex() %>% check_object('fit_univariate') %>% check_equal()
+ex() %>% check_object('fit_multiple') %>% check_equal()
+success_msg("Now we're regressing!")
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7e98c03571
+## Broom with linear regression
+
+Did you notice we have more ugly output? It's not really so bad to look at (the stars are pretty afterall) but when you try to grab model information out of it things get messy and complicated quickly.
+
+For illustration, let's try to get the p-value for fisherman from the multiple regression model the normal way, then lets try the broom way. We can get covariate information from `tidy()`.
+
+*** =instructions
+
+Use the output from `summary` to obtain a p-value for fisherman from `fit_multiple`. Then, use `broom::tidy`.
+
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+```
+
+*** =sample_code
+```{r}
+# here is our model
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# what is in summary(fit_multiple)?
+str(summary(___))
+# yikes, right? well at least it's a list
+
+# summary()$coef gives you a numerical matrix, extract fisherman's p-value
+summary(fit_multiple)$coefficients[___,___]
+
+# or use broom's tidy to see the covariate estimates and p-values--look, a tibble!
+tidy()
+
+# we can use dplyr on this to obtain our p.value
+tidy() %>% filter() %>% select()
+```
+
+*** =solution
+```{r}
+# here is our model
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# what is in summary(fit_multiple)?
+str(summary(fit_multiple))
+# yikes, right? well at least it's a list
+
+# summary()$coef gives you a numerical matrix, extract fisherman's p-value
+summary(fit_multiple)$coefficients[2,4]
+
+# or use broom's tidy to see the covariate estimates and p-values--look, a tibble!
+tidy(fit_multiple)
+
+# we can use dplyr on this to obtain our p.value
+tidy(fit_multiple) %>% filter(term=="fisherman") %>% select(p.value)
+
+```
+
+*** =sct
+```{r}
+test_output_contains("summary(fit_multiple)$coefficients[2,4]",
+	                     incorrect_msg = "Have you extracted the correct p.value row and column using summary(fit_multiple)$coefficients?")
+ex() %>% check_function('tidy') %>% check_result() %>% check_equal()
+ex() %>% check_function('filter') %>% check_result() %>% check_equal()
+ex() %>% check_function('select') %>% check_result() %>% check_equal()
+success_msg("Tidy all the things!")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:395ea60755
+## Broom with linear regression: glance
+
+Now let's do something similar with the $R^2 $ summary measure which is a measure of model fit in that it quantifies the amount of variance explained in the outcome (total mercury) explained by the predictors. Using broom, we get model summary level information from the function `glance()`. While `tidy()` returned a tibble/data_frame of covariate information with one row for each model term, `glance()` will return a tibble with just one row with all the pertinent single value model information.
+
+*** =instructions
+
+Use the output from `summary` to obtain an $R^2 $ for fisherman from `fit_multiple`. Then, use `broom::glance`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+```
+
+*** =sample_code
+```{r}
+# here is our model
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# ok where is that R^2? look at the names of the summary list again
+names(summary(fit_multiple))
+
+# call the name we need
+___$___
+
+# or we can use glance
+glance()
+
+# and select that R^2
+glance() %>% select()
+
+```
+
+*** =solution
+```{r}
+# here is our model
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# ok where is that R^2? look at the names of the summary list again
+names(summary(fit_multiple))
+
+# call the name we need
+summary(fit_multiple)$r.squared
+
+# or we can use glance
+glance(fit_multiple)
+
+# and select that R^2
+glance(fit_multiple)%>%select(r.squared)
+```
+
+*** =sct
+```{r}
+test_output_contains("summary(fit_multiple)$r.squared",
+	                     incorrect_msg = "Have you extracted the R^2 using summary()$?")
+ex() %>% check_function('glance') %>% check_result() %>% check_equal()
+ex() %>% check_function('select') %>% check_result() %>% check_equal()
+success_msg("I see you did a great job!")
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
+## Compare our models
+
+We've built two models: `fit_univariate` and `fit_multiple`. The first only contains fisherman as a predictor, and the second contains fisherman as well as weight and number of fish meals per week. Which fits the data better, and how does the association of fisherman with total mercury change when we adjust for weight and number of fish meals per week?
+
+*** =instructions
+
+Extract the covariate information using `tidy` from the two models and bind them together into one data frame with `bind_rows` in the dplyr package. Do the same with the model summary information using `glance`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
 ```
 
 *** =sample_code
