@@ -10,7 +10,7 @@ time_needed: 5 hours
 datasets:
   dem_score.csv: Dem score
   excelFile.xlsx: Excelfile
-  fishermen_mercury.csv: Fishermen mercury
+  fishermen_mercury_modified.csv: Fishermen mercury
   healthExample.csv: Healthexample
   module4.RData: Module4
   pets.csv: Pets
