@@ -20,6 +20,7 @@ Our questions of interest are the following:
 
 *** =instructions
 
+
 *** =hint
 
 *** =pre_exercise_code
@@ -57,6 +58,8 @@ Then use `glimpse` to take a look at the structure of the data and try `table()`
 Now use `table()` as part of a pipe to look at the cross-table of `fisherman` and `fishpart`. Are fishermen more likely to eat more whole fish than non-fishermen?
 
 *** =instructions
+
+`glimpse()` the data, create a tables for `fishpart` and `fisherman` and a crosstable of `fisherman`x`fishpart`.
 
 *** =hint
 
