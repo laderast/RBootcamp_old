@@ -770,3 +770,48 @@ ex() %>% check_function('tidy') %>% check_result() %>% check_equal()
 
 success_msg("Super! Now you're ready to use broom with lots of models!")
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7d6b139aac
+## What you learned in this chapter
+
+- T.tests and linear regression in R
+- `broom` functions to make model output `tidy`
+- How to put it together with `dplyr` and `ggplot2` to assess model fit and visualize results
+
+*** =instructions
+
+Need help with statistics/biostatistics at OHSU? There are some groups on campus that are there for you (they even have drop in hours):
+
+- [Biostatistics & Design Program](http://www.ohsu.edu/xd/research/centers-institutes/octri/
+resources/octri-research-services/evaluating-data.cfm)
+- [Knight Biostatistics Shared Resource](https://bridge.ohsu.edu/research/knight/resources/BSR/ SitePages/Home.aspx) for Knight Cancer Members
+
+Also take some classes!
+
+- Biostatistics classes in School of Public Health
+- Computational Biology classes in DMICE
+- Probabiliy and Statistical Inference class in CS/EE
+- Biostatistics classes in the Human Investigator Program
+
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
