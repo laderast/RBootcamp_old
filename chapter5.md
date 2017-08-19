@@ -624,38 +624,6 @@ How confident are you that being a fisherman is associated with higher levels of
 test_mc(correct=2)
 success_msg("That's right, total fish intake seems to be more associated with mercury levels, and after adjusting for this in the multiple regression, fisherman status is no longer significantly associated with total mercury.")
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
-## Visualizing proportions of fishpart by fisherman status - NEEDS UPDATE, SHOULD WE KEEP?
-
-Let's try and answer the question of fishpart eating by fisherman status. 
-
-Produce a proportional barplot ([Here's how if you forgot](https://campus.datacamp.com/courses/rbootcamp/ggplot2-and-categorical-data?ex=5))
-of `fishpart` versus `fisherman`. 
-
-*** =instructions
-
-Be sure to cast `fisherman` as a factor.
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-```
-
-*** =sample_code
-```{r}
-```
-
-*** =solution
-```{r}
-ggplot(fishdata, aes(x=fishpart,fill=factor(fisherman))) + 
-  geom_bar(position= "fill", color="black")
-```
-
-*** =sct
-```{r}
-
-```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4543850c9f
@@ -733,4 +701,72 @@ ex() %>% check_function('bind_rows') %>% check_result() %>% check_equal()
 test_ggplot()
 success_msg("Super! You're really assessing that model fit, now!")
 
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:78cd02eef9
+## Challenge 2: Proportions of fishpart by fisherman status 
+
+Let's try and examine fishpart eating by fisherman status. 
+
+Produce a proportional barplot ([Here's how if you forgot](https://campus.datacamp.com/courses/rbootcamp/ggplot2-and-categorical-data?ex=5))
+of `fishpart` versus `fisherman`.
+
+Then, use the `chisq.test` function to test for the association of `fishpart` with `fisherman`. Use broom to tidy up the result into a data frame.
+
+Note: When we have simple tests with no covariate information like `t.test` and `chisq.test`, the `tidy` function just gives us all the model information just as `glance` does, and `augment` is not used.
+
+
+*** =instructions
+
+Use `geom_bar` to make a proportional barplot. Be sure to cast `fisherman` as a factor in ggplot `aes`. Then run a Chi-square test with `chisq.test` and look at the output with `tidy`.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+```
+
+*** =sample_code
+```{r}
+# Use ggplot to create a proportional barplot
+ggplot(fishdata, aes(x=,fill=)) + 
+  geom_bar(position= "", color="black")
+  
+# Run a chi-square test for the association of these two categorical variables
+# Hint, it's easiest if you use the table() function inside chisq.test()
+chisq_fish <- chisq.test()
+chisq_fish
+
+# Tidy with tidy
+
+```
+
+*** =solution
+```{r}
+# Use ggplot to create a proportional barplot
+ggplot(fishdata, aes(x=fishpart,fill=factor(fisherman))) + 
+  geom_bar(position= "fill", color="black")
+  
+# Run a chi-square test for the association of these two categorical variables
+# Hint, it's easiest if you use the table() function inside chisq.test()
+chisq_fish <- chisq.test(with(fishdata,table(fishpart,fisherman)))
+chisq_fish
+
+# Tidy with tidy
+tidy(chisq_fish)
+```
+
+*** =sct
+```{r}
+test_ggplot()
+# ex() %>% check_function('chisq.test') %>% check_result() %>% check_equal()
+# how to check chisq.test when there are lots of ways to get same answer?
+ex() %>% check_function('tidy') %>% check_result() %>% check_equal()
+
+success_msg("Super! Now you're ready to use broom with lots of models!")
 ```
