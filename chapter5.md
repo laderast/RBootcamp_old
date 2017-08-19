@@ -521,11 +521,13 @@ success_msg("I see you did a great job!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
 ## Compare our models
 
-We've built two models: `fit_univariate` and `fit_multiple`. The first only contains fisherman as a predictor, and the second contains fisherman as well as weight and number of fish meals per week. Which fits the data better, and how does the association of fisherman with total mercury change when we adjust for weight and number of fish meals per week?
+We've built two models: `fit_univariate` and `fit_multiple`. The first only contains fisherman as a predictor, and the second contains fisherman as well as weight and number of fish meals per week.
+
+Which model fits the data better, and how does the association of fisherman with total mercury change when we adjust for weight and number of fish meals per week? Are the other covariates significantly associated with total mercury?
 
 *** =instructions
 
-Extract the covariate information using `tidy` from the two models and bind them together into one data frame with `bind_rows` in the dplyr package. Do the same with the model summary information using `glance`.
+Extract the covariate information using `tidy` from the two models and bind them together into one data frame with `bind_rows` in the dplyr package. Do the same with the model summary information using `glance`. Then, use a dplyr function to look at just the fisherman covariate results from both models.
 
 *** =hint
 
@@ -541,21 +543,89 @@ fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/cou
 
 *** =sample_code
 ```{r}
+# Here are our two models
+fit_univariate <- lm(total_mercury~fisherman,data=fishdata)
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
 
+# Tidy 'em up
+fit_univariate_tidy <- 
+fit_multiple_tidy <- 
+
+# Bind them
+both_tidy <- bind_rows( "univariate"=___,
+                        "multiple"=___,
+                        .id="model")
+both_tidy
+
+# Same with glance (we can try doing this in one line)
+both_glance <- bind_rows(   "univariate"=glance(___),
+                            "multiple"=glance(___),
+                            .id="model")
+both_glance
+
+# Show just fisherman's covariate information
+both_tidy%>%___(term=="fisherman")
 ```
 
 *** =solution
 ```{r}
+# Here are our two models
+fit_univariate <- lm(total_mercury~fisherman,data=fishdata)
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# Tidy 'em up
+fit_univariate_tidy <- tidy(fit_univariate)
+fit_multiple_tidy <- tidy(fit_multiple)
+
+# Bind them
+both_tidy <- bind_rows("univariate"=fit_univariate_tidy,
+"multiple"=fit_multiple_tidy,.id="model")
+both_tidy
+
+# Same with glance
+both_glance <- bind_rows("univariate"=glance(fit_univariate),
+"multiple"=glance(fit_multiple),.id="model")
+both_glance
+
+# Show just fisherman's covariate information
+both_tidy%>%filter(term=="fisherman")
 
 ```
 
 *** =sct
 ```{r}
 
+ex() %>% check_function('bind_rows',index=1) %>% check_result() %>% check_equal()
+ex() %>% check_function('bind_rows',index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function('filter') %>% check_result() %>% check_equal()
+success_msg("Now we're doing statistics!")
 ```
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3c97529ff5
+## Prediction of mercurcy
+
+How confident are you that being a fisherman is associated with higher levels of mercury?
+
+*** =instructions
+
+- So confident, I don't want to be a fisherman!
+- Not confident, there are other confounding factors at play here, maybe they should just eat less fish?
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sct
+```{r}
+test_mc(correct=2)
+success_msg("That's right, total fish intake seems to be more associated with mercury levels, and after adjusting for this in the multiple regression, fisherman status is no longer significantly associated with total mercury.")
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9ac8f4738
-## Visualizing proportions of fishpart by fisherman status
+## Visualizing proportions of fishpart by fisherman status - NEEDS UPDATE, SHOULD WE KEEP?
 
 Let's try and answer the question of fishpart eating by fisherman status. 
 
@@ -563,6 +633,8 @@ Produce a proportional barplot ([Here's how if you forgot](https://campus.dataca
 of `fishpart` versus `fisherman`. 
 
 *** =instructions
+
+Be sure to cast `fisherman` as a factor.
 
 *** =hint
 
@@ -576,6 +648,8 @@ of `fishpart` versus `fisherman`.
 
 *** =solution
 ```{r}
+ggplot(fishdata, aes(x=fishpart,fill=factor(fisherman))) + 
+  geom_bar(position= "fill", color="black")
 ```
 
 *** =sct
@@ -583,3 +657,80 @@ of `fishpart` versus `fisherman`.
 
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4543850c9f
+## Challenge 1: augment + ggplot2
+
+We have some models and with models comes predictions, or fitted values. That is, we've fit a linear regression to predict our "y" which is `total_mercury`, and we can obtain fitted values based on the model. We can compare these fitted values to the true value of `total_mercury`.
+
+The broom function `augment` will give us our fitted values. Plot these fitted values against the true values of `total_mercury` using ggplot.
+
+For a reference while you work, you can use the `ggplot2` cheatsheet here:
+[ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+
+*** =instructions
+For both models, use `augment` to obtain fitted values of `total_mercury` and save these to new data frames `fit_univariate_augment` and `fit_multiple_augment`. Use `bind_rows` to bind these data frames into one long tidy data frame. Then use `ggplot2` to make a scatterplot of fitted values and true values of `total_mercury`, colored by `fishmlwk` and let shape correspond to `fisherman` as a factor. Use `facet_wrap` to look at both models side by side. Add a diagonal line for good measure, so we can see how close the fitted values correlate.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+```
+
+*** =sample_code
+```{r}
+# Here are our models again
+fit_univariate <- lm(total_mercury~fisherman,data=fishdata)
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# save augmented data here
+fit_multiple_augment <- 
+fit_univariate_augment <- 
+
+# bind rows
+augmented_data <- bind_rows("univariate"=,
+                            "multiple"=,
+                            .id="model")
+
+ggplot(augmented_data,aes())+
+    geom_point()+
+    geom_abline()+
+    facet_wrap()
+```
+
+*** =solution
+```{r}
+# Here are our models again
+fit_univariate <- lm(total_mercury~fisherman,data=fishdata)
+fit_multiple <- lm(total_mercury~fisherman+weight+fishmlwk,data=fishdata)
+
+# save augmented data here
+fit_multiple_augment <- augment(fit_multiple)
+fit_univariate_augment <- augment(fit_univariate)
+
+# bind rows
+augmented_data <- bind_rows("univariate"=fit_univariate_augment,
+                            "multiple"=fit_multiple_augment,.id="model")
+
+ggplot(augmented_data,aes(x=total_mercury,y=.fitted,color=fishmlwk,shape=factor(fisherman)))+
+    geom_point()+
+    geom_abline(intercept=0,slope=1)+
+    facet_wrap(~model)
+```
+
+*** =sct
+```{r}
+# should we add more tests for the ggplot?
+ex() %>% check_function('augment',index=1) %>% check_result() %>% check_equal()
+ex() %>% check_function('augment',index=2) %>% check_result() %>% check_equal()
+ex() %>% check_function('bind_rows') %>% check_result() %>% check_equal()
+test_ggplot()
+success_msg("Super! You're really assessing that model fit, now!")
+
+```
