@@ -13,6 +13,9 @@ We're going to use `broom`, which is another package available in the `tidyverse
 and results of statistical models tidy, and easy to extract. We'll try to leverage all our skills to put together
 a simple data story given our data.
 
+Note that we can't cover all of statistics in this unit. But we can show you some of the basic operations. Remember,
+if you don't completely understand the statistics, it's best to consult with a Biostatistician.
+
 Our questions of interest are the following:
 
 + Is mercury exposure greater within people who are fishermen versus those who are not? (t-test)
