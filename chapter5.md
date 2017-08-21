@@ -9,7 +9,7 @@ description : Now we have tidy data, let's start doing some statistics!
 About 80-90% of any data analysis project is doing the data cleaning. Once you've confirmed that your data is
 cleaned properly and is tidy, now you can start trying some simple statistics on your data.
 
-We're going to use `broom`, which is another package available in the `tidyverse`. `broom` make the output
+We're going to use `broom`, which is another package available in the `tidyverse`. `broom` makes the output
 and results of statistical models tidy, and easy to extract. We'll try to leverage all our skills to put together
 a simple data story given our data.
 
@@ -59,7 +59,7 @@ Now use `table()` as part of a pipe to look at the cross-table of `fisherman` an
 
 *** =instructions
 
-`glimpse()` the data, create a tables for `fishpart` and `fisherman` and a crosstable of `fisherman`x`fishpart`.
+`glimpse()` the data, create a table for `fisherman` and a crosstable of `fisherman`x`fishpart`.
 
 *** =hint
 
@@ -326,9 +326,9 @@ success_msg("Beautiful plots!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:d5e745c9f5
 ## Linear Regression
 
-It looks like both weight and number of fish meals per week are associated with total mercurcy. They also appear to be associated with fisherman status. We saw earlier from our cross-table output that fisherman tend to eat more fish (surprised?).
+It looks like both `weight` and number of fish meals per week (`fishmlweek`) are associated with `total_mercury`. They also appear to be associated with `fisherman` status. We saw earlier from our cross-table output that fisherman tend to eat more fish (surprised?).
 
-We can use linear regression to adjust for these possible confounders. We first build a univariate linear regression with just fisherman as a predictor. Then we compare it to a multiple linear regression with the three indepedent variables.
+We can use linear regression to adjust for these possible confounders. We first build a univariate linear regression with just `fisherman` as a predictor of `total_mercury`. Then we compare it to a multiple linear regression with the three independent variables.
 
 Note: the p-value from the linear regression is similar but not exactly the same as the t-test since the t-test assumed equal variances between groups (argument `var.equal=TRUE` by default in `t.test()`).
 
@@ -524,7 +524,7 @@ success_msg("I see you did a great job!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
 ## Compare our models
 
-We've built two models: `fit_univariate` and `fit_multiple`. The first only contains fisherman as a predictor, and the second contains fisherman as well as weight and number of fish meals per week.
+We've built two models: `fit_univariate` and `fit_multiple`. The first only contains `fisherman` as a predictor, and the second contains `fisherman` as well as `weight` and number of `fishmealwk`.
 
 Which model fits the data better, and how does the association of fisherman with total mercury change when we adjust for weight and number of fish meals per week? Are the other covariates significantly associated with total mercury?
 
@@ -606,7 +606,7 @@ success_msg("Now we're doing statistics!")
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3c97529ff5
-## Prediction of mercurcy
+## Prediction of mercury
 
 How confident are you that being a fisherman is associated with higher levels of mercury?
 
@@ -793,7 +793,7 @@ Also take some classes!
 
 - Biostatistics classes in School of Public Health
 - Computational Biology classes in DMICE
-- Probabiliy and Statistical Inference class in CS/EE
+- Probability and Statistical Inference class in CS/EE
 - Biostatistics classes in the Human Investigator Program
 
 
