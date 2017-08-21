@@ -783,8 +783,15 @@ success_msg("Super! Now you're ready to use broom with lots of models!")
 - T.tests and linear regression in R
 - `broom` functions to make model output `tidy`
 - How to put it together with `dplyr` and `ggplot2` to assess model fit and visualize results
+- How the `tidyverse` comes together to make data manipulation and statistics easier
 
 *** =instructions
+
+There are so many directions you can go in now that you know the basics of the `tidyverse`. Here are some
+important links for going further.
+
++ [R for Data Science](http://r4ds.had.co.nz) - This is the foundational text and will take you further in data manipulation
++ [Modern Dive](http://www.moderndive.com) - Chester and Albert's short but sweet book on foundational data science skills in R.
 
 Need help with statistics/biostatistics at OHSU? There are some groups on campus that are there for you (they even have drop in hours):
 
