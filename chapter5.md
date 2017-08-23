@@ -149,6 +149,48 @@ success_msg("Beautiful plot!")
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:296da9c0f4
+## Compute Means with group_by
+
+We can also use `group_by` and `summarize` to explicitly compute the means and standard deviations for each `fisherman` group.
+
+*** =instructions
+
+Use `group_by` in the `dplyr` package to group the data frame by `fisherman` status, and use `summarize` to obtain the mean and standard deviation of `total_mercury` for each group. 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(broom)
+
+fishdata <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/fisherman_mercury_modified.csv")
+
+```
+
+*** =sample_code
+```{r}
+fishdata%>%
+    group_by()%>%
+    summarize(  mean_total_mercury = , 
+                sd_total_mercury = )
+```
+
+*** =solution
+```{r}
+fishdata%>%group_by(fisherman)%>%summarize(mean_total_mercury = mean(total_mercury), sd_total_mercury = sd(total_mercury))
+```
+
+*** =sct
+```{r}
+ex() %>% check_function('group_by') %>% check_result() %>% check_equal()
+ex() %>% check_function('summarize') %>% check_result() %>% check_equal()
+success_msg("Excellent summarization!")
+```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6e3730d99d
 ## Is there a difference?
 
