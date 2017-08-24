@@ -11,7 +11,7 @@ cleaned properly and is tidy, now you can start trying some simple statistics on
 
 We're going to use `broom`, which is another package available in the `tidyverse`. `broom` makes the output
 and results of statistical models tidy, and easy to extract. We'll try to leverage all our skills to put together
-a simple data story given our data.
+a simple data story given our data. 
 
 Note that we can't cover all of statistics in this unit. But we can show you some of the basic operations. Remember,
 if you don't completely understand the statistics, it's best to consult with a Biostatistician.
