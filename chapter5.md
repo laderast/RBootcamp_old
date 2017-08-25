@@ -81,7 +81,7 @@ fishdata$fisherman <- factor(fishdata$fisherman)
 ```{r}
 glimpse(fishdata)
 
-table()
+fishdata %>% select(___) %>% table()
 
 fishdata %>% select(___,___) %>% table()
 ```
@@ -90,14 +90,14 @@ fishdata %>% select(___,___) %>% table()
 ```{r}
 glimpse(fishdata)
 
-table(fishdata$fisherman)
+fishdata %>% select(fisherman) %>% table()
 
 fishdata %>% select(fisherman,fishpart) %>% table()
 ```
 
 *** =sct
 ```{r}
-ex() %>% check_function('table',index=1) %>% check_result() %>% check_equal()
+ex() %>% check_function('table',index=2) %>% check_result() %>% check_equal()
 ex() %>% check_function('select') %>% check_result() %>% check_equal()
 
 success_msg("Nice tabling!")
@@ -350,18 +350,18 @@ fishdata$fisherman <- factor(fishdata$fisherman)
 *** =sample_code
 ```{r}
 # draw a scatterplot of weight (x-axis) vs total_mercury (y axis) and color by fisherman category
-ggplot(fishdata,aes(___,___,color=factor(___)))+___
+ggplot(fishdata,aes(___,___,color=___))+___
 
 # draw a scatterplot of fishmlwk (x-axis) vs total_mercury (y axis) and color by fisherman category
-ggplot(fishdata,aes(___,___,color=factor(___)))+___
+ggplot(fishdata,aes(___,___,color=___))+___
 
 ```
 
 *** =solution
 ```{r}
-ggplot(fishdata,aes(x=weight,y=total_mercury,color=factor(fisherman)))+geom_point()
+ggplot(fishdata,aes(x=weight,y=total_mercury,color=fisherman))+geom_point()
 
-ggplot(fishdata,aes(x=fishmlwk,y=total_mercury,color=factor(fisherman)))+geom_point()
+ggplot(fishdata,aes(x=fishmlwk,y=total_mercury,color=fisherman))+geom_point()
 ```
 
 *** =sct
