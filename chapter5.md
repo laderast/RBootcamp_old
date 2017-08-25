@@ -854,7 +854,7 @@ Need help with statistics/biostatistics at OHSU? There are some groups on campus
 
 Also take some classes!
 
-- Biostatistics classes in School of Public Health
+- Biostatistics classes in OHSU-PSU School of Public Health
 - Computational Biology classes in DMICE
 - Probability and Statistical Inference class in CS/EE
 - Biostatistics classes in the Human Investigator Program
