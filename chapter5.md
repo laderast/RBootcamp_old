@@ -724,6 +724,7 @@ augmented_data <- bind_rows("univariate"=,
                             "multiple"=,
                             .id="model")
 
+# scatterplot of total mercury (x-axis) vs fitted values (y-axis), color fishmlwk and shape fisherman
 ggplot(augmented_data,aes())+
     geom_point()+
     geom_abline()+
@@ -744,7 +745,7 @@ fit_univariate_augment <- augment(fit_univariate)
 augmented_data <- bind_rows("univariate"=fit_univariate_augment,
                             "multiple"=fit_multiple_augment,.id="model")
 
-ggplot(augmented_data,aes(x=total_mercury,y=.fitted,color=fishmlwk,shape=factor(fisherman)))+
+ggplot(augmented_data,aes(x=total_mercury,y=.fitted,color=fishmlwk,shape=fisherman))+
     geom_point()+
     geom_abline(intercept=0,slope=1)+
     facet_wrap(~model)
