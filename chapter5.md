@@ -809,7 +809,7 @@ chisq_fish
 *** =solution
 ```{r}
 # Use ggplot to create a proportional barplot
-ggplot(fishdata, aes(x=fishpart,fill=factor(fisherman))) + 
+ggplot(fishdata, aes(x=fishpart,fill=fisherman)) + 
   geom_bar(position= "fill", color="black")
   
 # Run a chi-square test for the association of these two categorical variables
