@@ -492,7 +492,7 @@ summary(fit_multiple)$coefficients[2,4]
 tidy(fit_multiple)
 
 # we can use dplyr on this to obtain our p.value
-tidy(fit_multiple) %>% filter(term=="fisherman") %>% select(p.value)
+tidy(fit_multiple) %>% filter(term=="fisherman1") %>% select(p.value)
 
 ```
 
