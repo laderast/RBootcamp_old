@@ -621,7 +621,7 @@ both_glance <- bind_rows(   "univariate"=glance(___),
 both_glance
 
 # Show just fisherman's covariate information
-both_tidy%>%___(term=="fisherman")
+both_tidy%>%___(term=="fisherman1")
 ```
 
 *** =solution
@@ -645,7 +645,7 @@ both_glance <- bind_rows("univariate"=glance(fit_univariate),
 both_glance
 
 # Show just fisherman's covariate information
-both_tidy%>%filter(term=="fisherman")
+both_tidy%>%filter(term=="fisherman1")
 
 ```
 
