@@ -850,7 +850,7 @@ important links for going further.
 Need help with statistics/biostatistics at OHSU? There are some groups on campus that are there for you (they even have drop in hours):
 
 - [Biostatistics & Design Program](http://www.ohsu.edu/xd/research/centers-institutes/octri/resources/octri-research-services/evaluating-data.cfm)
-- [Knight Biostatistics Shared Resource](https://bridge.ohsu.edu/research/knight/resources/BSR/ SitePages/Home.aspx) for Knight Cancer Members
+- [Knight Biostatistics Shared Resource](https://bridge.ohsu.edu/research/knight/resources/BSR/SitePages/Project%20Requests.aspx) for Knight Cancer Members
 
 Also take some classes!
 
