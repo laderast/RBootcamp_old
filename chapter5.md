@@ -694,7 +694,7 @@ For a reference while you work, you can use the `ggplot2` cheatsheet here:
 [ggplot2 cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
 
 *** =instructions
-For both models, use `augment` to obtain fitted values of `total_mercury` and save these to new data frames `fit_univariate_augment` and `fit_multiple_augment`. Use `bind_rows` to bind these data frames into one long tidy data frame. Then use `ggplot2` to make a scatterplot of fitted values and true values of `total_mercury`, colored by `fishmlwk` and let shape correspond to `fisherman` as a factor. Use `facet_wrap` to look at both models side by side. Add a diagonal line for good measure, so we can see how close the fitted values correlate.
+For both models, use `augment` to obtain fitted values of `total_mercury` and save these to new data frames `fit_univariate_augment` and `fit_multiple_augment`. Use `bind_rows` to bind these data frames into one long tidy data frame. Then use `ggplot2` to make a scatterplot of fitted values and true values of `total_mercury`, colored by `fishmlwk` and let shape correspond to `fisherman`. Use `facet_wrap` to look at both models side by side. Add a diagonal line for good measure, so we can see how close the fitted values correlate.
 
 *** =hint
 
