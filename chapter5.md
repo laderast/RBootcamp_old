@@ -140,7 +140,7 @@ ggplot(fishdata,aes(x=___,y=___)) + geom_boxplot() +
 
 *** =solution
 ```{r}
-ggplot(fishdata, aes(x=factor(fisherman), y=total_mercury)) + geom_boxplot() +
+ggplot(fishdata, aes(x=fisherman, y=total_mercury)) + geom_boxplot() +
   stat_summary(fun.y="mean",geom="point",pch=3,color="red")
 ```
 
