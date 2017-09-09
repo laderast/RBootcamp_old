@@ -25,7 +25,7 @@ Our questions of interest are the following:
 - [Just press Submit Answer to head to the next exercise!]
 
 *** =feedbacks
-
+- Keep on going!
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3e59cb838f
