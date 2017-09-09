@@ -445,15 +445,15 @@ Load this file as `dem_score`. Show the number of rows in `dem_score`.
 
 *** =pre_exercise_code
 ```{r}
-library(readr)
 
-dem_score <- read.csv()
-nrow(dem_score)
 ```
 
 *** =sample_code
 ```{r}
 library(readr)
+dem_score <- read.csv(____)
+
+nrow(_____)
 ```
 
 *** =solution
