@@ -225,7 +225,7 @@ success_msg("That's right, fisherman seem to have higher total mercury")
 --- type:NormalExercise lang:r xp:100 skills:1 key:556d3ae28b
 ## T-test of means for fisherman status
 
-A common and very useful test used to compare two means for Normally distributed data is the Student's T Test. The null hypothesis is that two means from two independent groups are indentical, and the alternative hypothesis is that the two means are not identical (two-sided test).
+A common and very useful test used to compare two means for Normally distributed data is the Student's T Test. The null hypothesis is that two means from two independent groups are identical, and the alternative hypothesis is that the two means are not identical (two-sided test).
 
 In our case, we want to test whether the mean total mercury in fishermen is the same or different than the mean total mercurcy for non-fishermen. What is the p-value from this test?
 
