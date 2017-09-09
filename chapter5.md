@@ -3,7 +3,7 @@ title       : Simple Stats and Modeling with broom
 description : Now we have tidy data, let's start doing some statistics!
 
 
---- type:NormalExercise lang:r xp:100 skills:1 key:e91efd94b6
+--- type:PureMultipleChoiceExercise lang:r xp:0 skills:1 key:e91efd94b6
 ## We've built a foundation. Now to stats!
 
 About 80-90% of any data analysis project is doing the data cleaning. Once you've confirmed that your data is
@@ -21,30 +21,11 @@ Our questions of interest are the following:
 + Is mercury exposure greater within people who are fishermen versus those who are not? (t-test)
 + What are the best predictors of mercury exposure? (multiple linear regression)
 
-*** =instructions
+*** =possible_answers
+- Just press Submit Answer to head to the next exercise!
 
+*** =feedbacks
 
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3e59cb838f
