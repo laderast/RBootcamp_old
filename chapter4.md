@@ -427,17 +427,13 @@ Let's try the `readr` package. For `.csv` (Comma Separated Value) files, we can 
 
 If you have a tab-separated file, you can use the general file reader, `read_delim`, supplying the argument `delim="\t"`. `"\t"` is the programmatic way of specifying a tab.
 
-For way more about loading data, please read this: https://www.datacamp.com/community/tutorials/r-data-import-tutorial
+For way more about loading data, please read this: <https://www.datacamp.com/community/tutorials/r-data-import-tutorial>
 
-And there is a nifty loading datacamp tutorial here: https://www.datacamp.com/courses/importing-data-in-r-part-1/
+And there is a nifty loading datacamp tutorial here: <https://www.datacamp.com/courses/importing-data-in-r-part-1/>
 
-```{r}
-library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
-```
 
 *** =instructions
-Take a look at the the `dem_score.csv` file here: http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv
+Take a look at the the `dem_score.csv` file here: <http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv>
 
 Load this file as `dem_score`. Show the number of rows in `dem_score`.
 
@@ -451,7 +447,7 @@ Load this file as `dem_score`. Show the number of rows in `dem_score`.
 *** =sample_code
 ```{r}
 library(readr)
-dem_score <- read.csv(____)
+dem_score <- read_csv(____)
 
 nrow(_____)
 ```
@@ -459,7 +455,7 @@ nrow(_____)
 *** =solution
 ```{r}
 library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
+dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
 nrow(dem_score)
 ```
 
@@ -468,24 +464,27 @@ nrow(dem_score)
 
 ```
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d458cbbf05
-## header=TRUE
+## col_names
 
-What is the difference between `header=TRUE` and `header=FALSE`? Try it out in the console.
-
-```{r}
-library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", header=TRUE)
-
-head(dem_score)
-```
+What is the difference between `col_names = TRUE` (the default for `read_csv()`) and `col_names = FALSE`? Try it out in the console.
 
 *** =instructions
 
 - There is no difference.
-- `header=TRUE` is faster
-- `header=TRUE` assumes the first row defines the column names, whereas `header=FALSE` assumes there are no column names
+- `col_names = TRUE` is faster.
+- `col_names = TRUE` assumes the first row defines the column names, whereas `col_names = FALSE` assumes there are no column names.
 
 *** =hint
+Remember to use `?read_csv` in the console to get more help on function arguments.
+
+*** =sample_code
+```{r}
+library(readr)
+dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", col_names = TRUE)
+
+head(dem_score)
+```
+```
 
 *** =pre_exercise_code
 ```{r}
