@@ -22,7 +22,7 @@ Our questions of interest are the following:
 + What are the best predictors of mercury exposure? (multiple linear regression)
 
 *** =possible_answers
-- Just press Submit Answer to head to the next exercise!
+- [Just press Submit Answer to head to the next exercise!]
 
 *** =feedbacks
 
