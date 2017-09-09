@@ -384,7 +384,7 @@ Note: the p-value from the linear regression is similar but not exactly the same
 
 *** =instructions
 
-Fit a linear regression with `fisherman` as the indepedent variable and `total_mercury` as the dependent variable. Save this as `fit_univariate`. Then, fit a multiple linear regression with `fisherman`, `weight`, `fishmlwk` as dependent variables. Save this as `fit_multiple`.
+Fit a linear regression with `fisherman` as the independent variable and `total_mercury` as the dependent variable. Save this as `fit_univariate`. Then, fit a multiple linear regression with `fisherman`, `weight`, `fishmlwk` as dependent variables. Save this as `fit_multiple`.
 
 *** =hint
 
