@@ -91,8 +91,9 @@ This is the bare basics of assignment. We'll use it in the next exercises to eva
 of our `dplyr` cleaning.
 
 *** =instructions
-Assign `newValue` the value of `10`. Then use `newValue` to calculate the value of `multValue` by
-calculating `newValue * 5`. Show `multValue`.
++ Assign `newValue` the value of `10`. 
++ Then use `newValue` to calculate the value of `multValue` by calculating `newValue * 5`. 
++ Show `multValue`.
 
 *** =hint
 
@@ -150,7 +151,8 @@ biopics$country <- factor(biopics$country)
 ```
 
 *** =instructions
-Run a `summary` on the `biopics` dataset. It's already loaded up for you. How many categories are in the `country` variable?
++ Run a `summary` on the `biopics` dataset. It's already loaded up for you. 
++ How many categories are in the `country` variable?
 
 *** =hint
 Use the `levels()` function.
@@ -199,7 +201,8 @@ Three things to note here:
 + Our filter statement uses `==`. Remember that `==` is an equality test, and `=` is to assign something. (confusing the two will happen to you from time to time.)
 
 *** =instructions
-Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. Show how many rows are left using `nrow(crimeMovies)`.
++ Filter `biopics` so that it only shows `Criminal` movies (you'll have to use the `type_of_subject` variable in `biopics`. 
++ Show how many rows are left using `nrow(crimeMovies)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -264,7 +267,9 @@ options(tibble.width = Inf)
 ```
 
 *** =instructions
-Add another comparison to the chain using `&`. Use `person_of_color == FALSE`. Show how many rows are left from your filter statement.
++ Add another comparison to the chain using `&`. 
++ Use `person_of_color == FALSE`. 
++ Show how many rows are left from your filter statement.
 
 *** =sample_code
 ```{r}
@@ -334,8 +339,8 @@ biopicsUSUK <- biopics %>% filter(country %in% c("US", "UK"))
 ```
 
 *** =instructions
-Pick out the `Musician`, `Artist` and `Singer` movies from `type_of_subject`. Assign
-the output to `biopicsArt`.
++ Pick out the `Musician`, `Artist` and `Singer` movies from `type_of_subject`. 
++ Assign the output to `biopicsArt`.
 
 *** =hint
 
@@ -381,8 +386,9 @@ and everything `FALSE` into `TRUE`. We want to keep everything that is not `NA`,
 we use the `!`. 
 
 *** =instructions
-Filter `biopics` to remove the NAs, and assign the output to `filteredBiopics`. Compare the number
-of rows in `biopics` to `filteredBiopics`. How many missing values did we remove?
++ Filter `biopics` to remove the NAs, and assign the output to `filteredBiopics`. 
++ Compare the number of rows in `biopics` to `filteredBiopics`. 
++ How many missing values did we remove?
 
 *** =hint
 
@@ -438,9 +444,9 @@ What did we do here? First, we used the `mutate()` function to add a new column 
 `box_office` by `number_of_subjects`.
 
 *** =instructions
-Try defining a new variable `race_and_gender` by pasting together `subject_race` and `subject_sex`
-into a new `data_frame` called `biopics2`. Show the first few rows using `head()` so you can
-confirm that you added this new variable correctly.
++ Try defining a new variable `race_and_gender` by pasting together `subject_race` and `subject_sex`
+into a new `data_frame` called `biopics2`. 
++ Show the first few rows using `head()` so you can confirm that you added this new variable correctly.
 
 Remember, you can use the `paste()` function to paste two strings together.
 
@@ -497,8 +503,8 @@ Notice that we first defined `box_office_year` in the first part of the `mutate(
 and then used it right away to define a new variable, `box_office_subject`. 
 
 *** =instructions
-Define another variable called `box_office_y_s_num` in the same `mutate()` statement by taking 
-`box_office_year` and dividing it by `number_of_subjects`. Assign the output to `mutatedBiopics`.
++ Define another variable called `box_office_y_s_num` in the same `mutate()` statement by taking  `box_office_year` and dividing it by `number_of_subjects`. 
++ Assign the output to `mutatedBiopics`.
 
 *** =hint
 Add `box_office_y_s_num=box_office_year/number_of_subjects` to the statement below.
@@ -601,8 +607,49 @@ msg3 = "It is a little confusing, but think it out."
 test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3))
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:c66f0675f2
-## The pipe character: `%>%`
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:5de4a51bf7
+## `str_detect`: find entries that match a string
+
+This is one command from the `stringr` package (built in the tidyverse) that is really 
+useful: `str_detect`. `str_detect` can be put into a `filter()` statement to return
+all rows that return a string:
+
+```
+filter(biopics,  
+```
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+--- type:TabExercise lang:r xp:100 key:02924208d4
+## The Pipe Operator: %>%
 
 We're going to introduce another bit of `dplyr` syntax, the `%>%` operator. `%>%` is called a `pipe` operator. 
 You can think of it as being similar to the `+` in a `ggplot2` statement.
@@ -624,55 +671,65 @@ Note that `filter()` doesn't have a `data` argument, because the `data` is `pipe
 having a standardized chain of processing actions is called a **pipeline**. Making pipelines for a data
 format is great, because you can apply that pipeline to incoming data that has the same formatting and have it output in a `ggplot2` friendly format.
 
-*** =instructions
-Use `%>%` to chain a `filter` command (`country=="US"`) with another `filter` 
-command (`grepl("Richard",lead_actor_actress)`). Assign the output to `richardUS`. 
-
-In this second `filter`, we search for any instances of `"Richard"` in 
-`lead_actor_actress` using `grepl`. `grepl` returns a TRUE if there is a match
-for `"Richard"` in the entry, and returns FALSE when it doesn't match. Hence,
-we can use it in a `filter` statement.
-
-How many instances of US Richards are there? 
-
-*** =hint
-
 *** =pre_exercise_code
 ```{r}
 library(fivethirtyeight)
-library(dplyr)
+library(tidyverse)
+library(stringr)
 
 data(biopics)
 options(tibble.width = Inf)
 ```
 
-*** =sample_code
-```{r}
+*** =sample_code```{r}
 richardUS <- 
     biopics %>%
-    
-#show number of rows in richardUS
-
 ```
 
-*** =solution
+*** =type1:NormalExercise
+*** =key1: e0b8c4068c
+*** =xp1: 30
+
+*** =instructions1
++ Use `%>%` to chain `biopics` into a `filter` to select (`country=="US"`) 
+
+*** =solution1
 ```{r}
 richardUS <- 
-    biopics %>% filter(country=="US") %>% 
-        filter(grepl("Richard",lead_actor_actress))
-
-#show number of rows in richardUS    
-nrow(richardUS)
+    biopics %>% filter(country=="US")
 ```
 
-*** =sct
+*** =sct1
 ```{r}
-success_msg("Great! Now you know how to chain actions into a pipeline. Use `%>%` wisely.")
-test_function("filter", incorrect_msg = "did you use `filter()`?")
-test_object("richardUS", incorrect_msg = "Not quite. Go back and look at your `dplyr` statement.")
-test_function("nrow", incorrect_msg = "Be sure to use `nrow(richardUS)`")
+test_object("richardUS", incorrect_msg="Not quite. Use %>% filter()")
 ```
 
+*** =type2:NormalExercise
+*** =key2: 7a97ffb1f6
+*** =xp2: 30
+
+*** =instructions2
+Let's put another verb into `filter`: `str_detect()` If you use this in a `filter` statement, you
+can use it to search for a string within a variable. 
+
+Add this to your dplyr statement (don't forget the `%>%`):
+
+```
+filter(str_detect(lead_actor_actress, "Richard"))
+```
+
+*** =solution2
+```{r}
+richardUS <- 
+    biopics %>% filter(country=="US") %>%
+     filter(str_detect(lead_actor_actress, "Richard"))
+
+```
+
+*** =sct2
+```{r}
+# no sct yet
+```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
 ## group_by()/summarize()
@@ -736,8 +793,6 @@ head(gender_box_office)
 success_msg("Yes! You're summarizing like crazy! Let's move on.")
 test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct.")
 ```
-
-
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:915110e4a5
 ## Counting Stuff
@@ -880,6 +935,104 @@ msg1 <- "Nope. Both of these verbs don't care what data type you use."
 msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
 test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3))
+```
+
+--- type:TabExercise lang:r xp:100 key:7d73050cc1
+## Putting it all together: Challenge 1
+
+Now here comes the fun part. Chaining `dplyr` verbs together to accomplish some
+data cleaning and transformation.
+
+For a reference while you work, you can use the `dplyr` cheatsheet here: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+*** =pre_exercise_code
+```{r}
+library(fivethirtyeight)
+library(dplyr)
+
+data(biopics)
+biopics$country <- factor(biopics$country)
+options(tibble.width = Inf)
+```
+
+*** =sample_code
+```{r}
+biopics_by_country <- biopics %>%
+```
+
+*** =type1:NormalExercise
+*** =key1: e453083e3c
+*** =key1: 
+
+*** =xp1: 30
+
+*** =instructions1
+For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
+use `mutate()` to code a new variable, `box_office_per_subject`. 
+
+*** =solution1
+```{r}
+biopics_by_country <- biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) 
+```
+
+*** =sct1
+```{r}
+test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `filter()` and your `mutate()` statement?")
+```
+
+*** =type2:NormalExercise
+*** =key2: 5a8228cb3c
+*** =key2: 
+
+*** =xp2: 30
+
+*** =instructions2
+Now `filter` to remove the NA values in`box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject` by `country` as `bops_by_country`.
+
+*** =solution2
+```{r}
+biopics_by_country <- biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
+    filter(!is.na(box_office_per_subject)) %>%
+    group_by(country) %>%
+    summarize(bops_by_country = mean(box_office_per_subject))
+```
+
+*** =sct2
+```{r}
+# no sct yet
+```
+
+*** =type3:NormalExercise
+*** =key3: d017afe283
+*** =key3: 
+
+*** =xp3: 30
+
+*** =instructions3
+
+Finally, arrange `biopics_by_country` by your new `bops_by_country` variable.
+
+*** =solution3
+
+```{r}
+biopics_by_country <- biopics %>%
+    filter(year_release >= 2000 & year_release <= 2014) %>%
+    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
+    filter(!is.na(box_office_per_subject)) %>%
+    group_by(country) %>%
+    summarize(bops_by_country = mean(box_office_per_subject)) %>%
+    arrange(bops_by_country)
+```
+
+*** =sct3
+```{r}
+success_msg("Wow! You've really come really far. I bestow upon you the title of `dplyr` ninja!")
+test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
+
 ```
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b

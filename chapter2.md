@@ -17,8 +17,9 @@ We'll manipulate our barplots and add more information using factors.
 Here's the simple dataset we'll use to investigate how to work with factors in `ggplot2`.
 
 *** =instructions
-Using the console, look at the `pets` dataset. Show the categories for `shotsCurrent` and `ageCategory` using `levels()`. 
-Remember, you'll need to use the `$` operator to access the variables in the `data.frame` (example: `pets$animal`).
++ Using the console, look at the `pets` dataset. 
++ Show the categories for `shotsCurrent` and `ageCategory` using `levels()`. 
++ Remember, you'll need to use the `$` operator to access the variables in the `data.frame` (example: `pets$animal`).
 
 *** =pre_exercise_code
 ```{r}
@@ -323,8 +324,9 @@ test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 Now you'll put everything you've learned together into a single barplot.
 
 *** =instructions
-Given the `pets` `data.frame`, plot a stacked proportional barchart that shows the `ageCategory` 
-counts by `animal` type. Facet this plot by `shotsCurrent`. 
+Given the `pets` `data.frame`:
++ plot a stacked proportional barchart that shows the `ageCategory`  counts by `animal` type. 
++ Facet this plot by `shotsCurrent`. 
 
 Is the proportion of animals receiving shots the same across each age category?
 
@@ -432,7 +434,9 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 ```
 
 *** =instructions
-Add `geom_violin()` to the ggplot statement. How does the violin plot compare to the boxplot? Does it show less or more information?
++ Add `geom_violin()` to the ggplot statement. 
++ How does the violin plot compare to the boxplot? 
++ Does it show less or more information?
 
 *** =sample_code
 ```{r}
@@ -449,8 +453,9 @@ ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 
 
 *** =instructions
-Visualize `weight` by `animal` type. Plot both boxplots and a violin plot on the same graph.
-What do you conclude? Which kind of animal weighs more on average than the other? 
++ Visualize `weight` by `animal` type. 
++ Plot both boxplots and a violin plot on the same graph.
++ What do you conclude? Which kind of animal weighs more on average than the other? 
 
 *** =hint
 
