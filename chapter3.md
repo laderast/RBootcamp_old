@@ -962,7 +962,7 @@ biopics_by_country <- biopics %>%
 
 *** =type1:NormalExercise
 *** =key1: e453083e3c
-*** =key1: 27742176d5
+*** =key1: 
 
 *** =xp1: 30
 
@@ -984,7 +984,7 @@ test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `f
 
 *** =type2:NormalExercise
 *** =key2: 5a8228cb3c
-*** =key2: 7f182171ac
+*** =key2: 
 
 *** =xp2: 30
 
@@ -1008,7 +1008,7 @@ biopics_by_country <- biopics %>%
 
 *** =type3:NormalExercise
 *** =key3: d017afe283
-*** =key3: 8650737bc4
+*** =key3: 
 
 *** =xp3: 30
 
@@ -1035,63 +1035,6 @@ test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 
 ```
 
---- type:NormalExercise lang:r xp:300 skills:1 key:5bbc97ed1b
-## Putting it all together: Challenge 1
-
-Now here comes the fun part. Chaining `dplyr` verbs together to accomplish some
-data cleaning and transformation.
-
-For a reference while you work, you can use the `dplyr` cheatsheet here: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
-
-*** =instructions
-For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
-use `mutate()` to code a new variable, `box_office_per_subject`. `filter` to remove the NA values in
-`box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject`
-by `country` as `bops_by_country`. Use `arrange()` to sort by `bops_by_country`.  
-Assign the output of this chain to `biopics_by_country`.
-
-*** =hint
-Remember you can debug a `dplyr` chain by running each step incrementally.
-
-*** =pre_exercise_code
-```{r}
-library(fivethirtyeight)
-library(dplyr)
-
-data(biopics)
-biopics$country <- factor(biopics$country)
-options(tibble.width = Inf)
-```
-
-*** =sample_code
-```{r}
-biopics_by_country <- biopics %>%
-    filter() %>%
-    mutate() %>%
-    filter() %>%
-    group_by() %>%
-    summarize() %>%
-    arrange()
-```
-
-*** =solution
-```{r}
-biopics_by_country <- biopics %>%
-    filter(year_release >= 2000 & year_release <= 2014) %>%
-    mutate(box_office_per_subject = box_office / number_of_subjects) %>%
-    filter(!is.na(box_office_per_subject)) %>%
-    group_by(country) %>%
-    summarize(bops_by_country = mean(box_office_per_subject)) %>%
-    arrange(bops_by_country)
-```
-
-*** =sct
-```{r}
-success_msg("Wow! You've really come really far. I bestow upon you the title of `dplyr` ninja!")
-test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
-```
-
-
 --- type:NormalExercise lang:r xp:300 skills:1 key:a4c8d46d41
 ## Challenge 2: Show your stuff
 
@@ -1100,11 +1043,11 @@ money than movies where the race is not known (`race_known`== FALSE) grouped by 
 Which `race_known`/`country` combination made the highest amount of money?
 
 *** =instructions
-You'll need to do a `filter` step first to remove `NA` values from `box_office` before you do 
-anything. Then think of what variables you need to `group_by`. Finally, what do you need to
-`summarize` (assign the value to `mean_box_office`) and `arrange` on (don't forget to use `desc`!)? 
-
-Assign the output to `race_country_box_office`.
++ You'll need to do a `filter` step first to remove `NA` values from `box_office` before you do  anything. 
++ Then think of what variables you need to `group_by`. 
++ Finally, figure out what do you need to `summarize` (assign the value to `mean_box_office`) 
+and `arrange` on (don't forget to use `desc`!)? 
++ Assign the output to `race_country_box_office`.
 
 *** =hint
 You can do this!
