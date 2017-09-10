@@ -920,7 +920,7 @@ biopics_by_country <- biopics %>%
 
 *** =type1:NormalExercise
 *** =key1: e453083e3c
-*** =key1: b5a2cc9f6b
+*** =key1: 
 
 *** =xp1: 100
 
@@ -942,7 +942,7 @@ test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `f
 
 *** =type2:NormalExercise
 *** =key2: 5a8228cb3c
-*** =key2: 3aa0a62f73
+*** =key2: 
 
 *** =xp2: 100
 
@@ -966,7 +966,7 @@ biopics_by_country <- biopics %>%
 
 *** =type3:NormalExercise
 *** =key3: d017afe283
-*** =key3: 0abce880cb
+*** =key3: 
 
 *** =xp3: 100
 
@@ -1068,8 +1068,7 @@ Are you sick of `biopics` yet? I promise this is the last time we use this datas
 
 + First, filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
 + Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
-(use `geom_point()`) where `x=year_release` and 
-`y=log(box_office)`. 
+(use `geom_point()`) where `x=year_release` and `y=log(box_office)`. 
 + Color the points by `person_of_color`. 
 + Assign the output to `bPlot` and print it to the screen using `print(bPlot)`.
 
