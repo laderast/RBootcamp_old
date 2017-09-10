@@ -607,47 +607,6 @@ msg3 = "It is a little confusing, but think it out."
 test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3))
 ```
 
-
-
---- type:NormalExercise lang:r xp:100 skills:1 key:5de4a51bf7
-## `str_detect`: find entries that match a string
-
-This is one command from the `stringr` package (built in the tidyverse) that is really 
-useful: `str_detect`. `str_detect` can be put into a `filter()` statement to return
-all rows that return a string:
-
-```
-filter(biopics,  
-```
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-library(fivethirtyeight)
-library(dplyr)
-
-data(biopics)
-biopics$country <- factor(biopics$country)
-options(tibble.width = Inf)
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
-```
 --- type:TabExercise lang:r xp:100 key:02924208d4
 ## The Pipe Operator: %>%
 
@@ -962,7 +921,7 @@ biopics_by_country <- biopics %>%
 
 *** =type1:NormalExercise
 *** =key1: e453083e3c
-*** =key1: c12ef7c476
+*** =key1: 
 
 *** =xp1: 30
 
@@ -984,7 +943,7 @@ test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `f
 
 *** =type2:NormalExercise
 *** =key2: 5a8228cb3c
-*** =key2: 32e7553ae3
+*** =key2: 
 
 *** =xp2: 30
 
@@ -1008,7 +967,7 @@ biopics_by_country <- biopics %>%
 
 *** =type3:NormalExercise
 *** =key3: d017afe283
-*** =key3: 6b1fbff6f3
+*** =key3: 
 
 *** =xp3: 30
 
