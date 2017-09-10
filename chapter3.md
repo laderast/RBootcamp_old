@@ -920,7 +920,7 @@ biopics_by_country <- biopics %>%
 
 *** =type1:NormalExercise
 *** =key1: e453083e3c
-*** =key1: 
+*** =key1: b5a2cc9f6b
 
 *** =xp1: 100
 
@@ -942,7 +942,7 @@ test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `f
 
 *** =type2:NormalExercise
 *** =key2: 5a8228cb3c
-*** =key2: 
+*** =key2: 3aa0a62f73
 
 *** =xp2: 100
 
@@ -966,7 +966,7 @@ biopics_by_country <- biopics %>%
 
 *** =type3:NormalExercise
 *** =key3: d017afe283
-*** =key3: 
+*** =key3: 0abce880cb
 
 *** =xp3: 100
 
