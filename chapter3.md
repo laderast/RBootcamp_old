@@ -647,7 +647,7 @@ richardUS <-
 
 *** =type1:NormalExercise
 *** =key1: e0b8c4068c
-*** =xp1: 30
+*** =xp1: 100
 
 *** =instructions1
 + Use `%>%` to chain `biopics` into a `filter` to select (`country=="US"`) 
@@ -665,7 +665,7 @@ test_object("richardUS", incorrect_msg="Not quite. Use %>% filter()")
 
 *** =type2:NormalExercise
 *** =key2: 7a97ffb1f6
-*** =xp2: 30
+*** =xp2: 100
 
 *** =instructions2
 Let's put another verb into `filter`: `str_detect()` If you use this in a `filter` statement, you
@@ -687,7 +687,8 @@ richardUS <-
 
 *** =sct2
 ```{r}
-# no sct yet
+test_object("richardUS", incorrect_msg="Not quite. Add the above filter() statement")
+
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
@@ -921,9 +922,9 @@ biopics_by_country <- biopics %>%
 
 *** =type1:NormalExercise
 *** =key1: e453083e3c
-*** =key1: b8eaefbdc9
+*** =key1: 
 
-*** =xp1: 30
+*** =xp1: 100
 
 *** =instructions1
 For the `biopics` data, `filter()` the data so that we only cover movies from 2000 to 2014. Then 
@@ -943,9 +944,9 @@ test_object("biopics_by_country", incorrect_msg="Almost - did you set up your `f
 
 *** =type2:NormalExercise
 *** =key2: 5a8228cb3c
-*** =key2: 4b71f75a4a
+*** =key2: 
 
-*** =xp2: 30
+*** =xp2: 100
 
 *** =instructions2
 Now `filter` to remove the NA values in`box_office_per_subject` and `group_by()` `country` and `summarize()` the mean `box_office_per_subject` by `country` as `bops_by_country`.
@@ -967,9 +968,9 @@ biopics_by_country <- biopics %>%
 
 *** =type3:NormalExercise
 *** =key3: d017afe283
-*** =key3: c715d30b98
+*** =key3: 
 
-*** =xp3: 30
+*** =xp3: 100
 
 *** =instructions3
 
@@ -1067,11 +1068,12 @@ in the data.
 *** =instructions
 Are you sick of `biopics` yet? I promise this is the last time we use this dataset.
 
-First filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
-Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
++ First, filter `biopics` to have `year_release` < 1990 and remove `NA` values. 
++ Then pipe that into a `ggplot()` statement that plots an x-y plot of `box_office` 
 (use `geom_point()`) where `x=year_release` and 
-`y=log(box_office)`. Color the points by `person_of_color`. Assign the output to `bPlot` and
-print it to the screen using `print(bPlot)`.
+`y=log(box_office)`. 
++ Color the points by `person_of_color`. 
++ Assign the output to `bPlot` and print it to the screen using `print(bPlot)`.
 
 *** =pre_exercise_code
 ```{r}

@@ -96,9 +96,9 @@ calling the column names, or the `key` the name of `year`. The second argument, 
 
 *** =instructions
 
-Try out the above `gather` statement. Use a `mutate` expression to remove the `X` in front of `year`. 
-Look up the documentation for `str_replace` to see how to remove the `X` in the mutate statement. Assign the output
-to `gatheredData`.
++ Try out the above `gather` statement. 
++ Use a `mutate` expression to remove the `X` in front of `year`. (Look up the documentation for `str_replace` to see how to remove the `X` in the mutate statement). 
++ Assign the output to `gatheredData`.
 
 *** =hint
 The `mutate` expression to remove the `X` is `mutate(year=str_replace(year, "X", "")`.
@@ -151,8 +151,9 @@ column, which is the variable that contains the values we want to fill with.
 
 *** =instructions
 
-Let's transform our `gatheredData` into a matrix again, but with each column having a 
-`country`. Assign the output to `spreadData`.
++ Let's transform our `gatheredData` into a matrix again, but with each column having a 
+`country`. 
++ Assign the output to `spreadData`.
 
 *** =hint
 
@@ -207,8 +208,9 @@ be any string.
 
 *** =instructions
 
-Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode` for  `health_code_example`, assigning the output to `health_code_separated`. Show
-those patients that had `HealthCode==410`, assigning them to `patients410`. Show `patients410`.
++ Run the above code and `separate` `HealthCodeEncounterCode` into `HealthCode` and `EncounterCode` for  `health_code_example`, assigning the output to `health_code_separated`. 
++ Show those patients that had `HealthCode==410`, assigning them to `patients410`. 
++ Show `patients410`.
 
 *** =hint
 
@@ -264,12 +266,13 @@ original data as `fertilityData`. We'll summarize it in two different ways.
 
 *** =instructions
 
-Look at `fertilityTidy`. Show the average fertility by country to present day 
-by using `dplyr` verbs, calling this variable `meanCountryRate`. Assign the summarized 
-data to `fertilityMeanByCountry`. Show `fertilityMeanByCountry`.
-
-Next, show average fertility by `Year`, using `group_by/summarize()` assigning the
-summarized data to `fertilityMeanByYear`. Show `fertilityMeanByYear`.
++ Look at `fertilityTidy`. Show the average fertility by country to present day 
+by using `dplyr` verbs, calling this variable `meanCountryRate`. 
++ Assign the summarized data to `fertilityMeanByCountry`. 
++ Show `fertilityMeanByCountry`.
++ Next, show average fertility by `Year`, using `group_by/summarize()` assigning the
+summarized data to `fertilityMeanByYear`. 
++ Show `fertilityMeanByYear`.
 
 *** =hint
 You'll have to first use a `filter()` statement, and then a `group_by/summarize` statement.
@@ -330,19 +333,13 @@ Let's put everything we've learned together on a new data.frame called `MouseBal
 
 *** =instructions
 
-Look at the `MouseBalanceTimeSeries` `data.frame`. This is a wide `data.frame` where 
++ Look at the `MouseBalanceTimeSeries` `data.frame`. This is a wide `data.frame` where 
 each column corresponds to the time (in seconds) a mouse stayed on
-a balance beam pre and post treatment. `gather()` the measurements into a single column called 
-`time` with a key called `interventionStatus`. 
-
-Use `separate()` to make `measurementStatus` into 
-two columns (`intervention` and `replicate`) by specifying `sep="Treat"`. 
-
-Remove any observations 
-that are `NA`. Assign the output to `gatheredMouse`. 
-
-Finally, make a boxplot of `gatheredMouse`, plotting 
-`time` versus `intervention` using `geom_boxplot`.
+a balance beam pre and post treatment. 
++ `gather()` the measurements into a single column called `time` with a key called `interventionStatus`. 
++ Use `separate()` to make `measurementStatus` into  two columns (`intervention` and `replicate`) by specifying `sep="Treat"`. 
++ Remove any observations that are `NA`. Assign the output to `gatheredMouse`. 
++ Finally, make a boxplot of `gatheredMouse`, plotting `time` versus `intervention` using `geom_boxplot`.
 
 *** =hint
 
@@ -410,32 +407,17 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 ```{r}
 test_mc(correct=2)
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:24146e724e
-## Loading data
 
-We've been hiding some of the complexity of the analysis procedure from you until now. One of the most confusing parts about R to learn is how to load data. We'll take it step by step.
+--- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5945f330d7
+## What you learned in this Chapter
 
-There are three main formats we'll have to deal with:
-
-+ Comma Separated Values (`.csv` files) - use the `readr` package
-+ Tab Delimited Files (`.tsv` or `.txt` files) - use the `readr` package
-+ Excel Spreadsheets (`.xls` and `.xlsx` files) - use the `readxl` package
-
-The functions in these packages will make a guess as to the formatting of the columns, but sometimes you will have to fix these. We'll show you how to do that in the next section.
-
-Let's try the `readr` package. For `.csv` (Comma Separated Value) files, we can use the `read_csv` function. For this exercise, we have to use files that are available online. But if you have data on your disk, you can load it into R if you know the path (location) of the data file.
-
-If you have a tab-separated file, you can use the general file reader, `read_delim`, supplying the argument `delim="\t"`. `"\t"` is the programmatic way of specifying a tab.
-
-For way more about loading data, please read this: <https://www.datacamp.com/community/tutorials/r-data-import-tutorial>
-
-And there is a nifty loading datacamp tutorial here: <https://www.datacamp.com/courses/importing-data-in-r-part-1/>
++ The tidy manifesto
++ `gather()`
++ `spread()`
++ Joining data
 
 
 *** =instructions
-Take a look at the the `dem_score.csv` file here: <http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv>
-
-Load this file as `dem_score`. Show the number of rows in `dem_score`.
 
 *** =hint
 
@@ -444,55 +426,7 @@ Load this file as `dem_score`. Show the number of rows in `dem_score`.
 
 ```
 
-*** =sample_code
-```{r}
-library(readr)
-dem_score <- read_csv(____)
-
-nrow(_____)
-```
-
-*** =solution
-```{r}
-library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv")
-nrow(dem_score)
-```
-
 *** =sct
 ```{r}
 
 ```
---- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:d458cbbf05
-## col_names
-
-What is the difference between `col_names = TRUE` (the default for `read_csv()`) and `col_names = FALSE`? Try it out in the console.
-
-*** =instructions
-
-- There is no difference.
-- `col_names = TRUE` is faster.
-- `col_names = TRUE` assumes the first row defines the column names, whereas `col_names = FALSE` assumes there are no column names.
-
-*** =hint
-Remember to use `?read_csv` in the console to get more help on function arguments.
-
-*** =sample_code
-```{r}
-library(readr)
-dem_score <- read_csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3864/datasets/dem_score.csv", col_names = TRUE)
-
-head(dem_score)
-```
-```
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sct
-```{r}
-test_mc(correct=3)
-```
-
