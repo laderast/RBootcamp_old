@@ -10,9 +10,12 @@ group of non-fishermen.
 
 Variables/names
 
-Fisherman indicator  (fisherman)
-Weight in kg    (weight)
-Fish meals per week    ((fishmlwk)
-Parts of fish consumed: 0=none, 1=muscle tissue only, 2=mt and sometimes
-              whole fish, 3=whole fish  (fishpart)
-Total Mercury in mg/g     (total_mercury)
+Fisherman indicator     (fisherman)
+Weight in kg            (weight)
+Fish meals per week     (fishmlwk)
+Parts of fish consumed: (fishpart)
+    0=none,
+    1=muscle tissue only,
+    2=mt and sometimes whole fish,
+    3=whole fish
+Total Mercury in mg/g   (total_mercury)
