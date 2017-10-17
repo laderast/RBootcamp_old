@@ -198,7 +198,7 @@ Instead of x-y points, we can plot the data as a line graph by swapping `geom_li
 for `geom_point()`.
 
 *** =instructions
-Change the `geom_point()` in the following graph to `geom_line()`. What happened? 
+First run the code to see the plot with points. Change the `geom_point()` in the following graph to `geom_line()`. What happened?
 How did the visual presentation of the data change?
 
 *** =pre_exercise_code
