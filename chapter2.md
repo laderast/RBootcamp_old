@@ -1,6 +1,8 @@
 ---
 title       : ggplot2 and categorical data
 description : More on plotting using ggplot2
+---
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6b1d7abb63
 ## Review of factors
@@ -39,6 +41,7 @@ levels()
 
 ```
 
+
 *** =solution
 ```{r}
 ##look at the pets data
@@ -56,6 +59,7 @@ test_function("levels", index=1, incorrect_msg = "did you call levels() on pets$
 test_function("levels", index=2, incorrect_msg = "did you call levels() on pets$ageCategory?")
 
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8102f92bcd
 ## A Basic Barplot using `geom_bar()`
@@ -80,8 +84,8 @@ pets <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_
 ##Show a barplot and count by name and fill by animal
 ##theme() allows us to angle the text labels so that we can read them
 ggplot(pets, aes(x=   )) + geom_bar() + 
-    ## We make the x axis text angled 
-    ## for better legibility
+    ##We make the x axis text angled 
+    ##for better legibility
     theme(axis.text.x = element_text(angle=45))
 ```
 
@@ -89,7 +93,7 @@ ggplot(pets, aes(x=   )) + geom_bar() +
 ```{r}
 ##show a barplot and count by name and fill by animal
 ggplot(pets, aes(x=name)) + geom_bar() + 
-    ## we make the x axis text angled for better legibility
+    ##we make the x axis text angled for better legibility
     theme(axis.text.x = element_text(angle=45))
 
 ```
@@ -98,6 +102,8 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 success_msg("Great! You made your first barplot! Now we'll learn how to modify it.")
 test_ggplot(check_aes = TRUE, aes_fail_msg = "did you map the `x` aesthetic to the right variable?")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:b2586607f1
 ##  Stacked Bars
 
@@ -134,6 +140,7 @@ success_msg("Great! Now you know how to make stacked bar plots by mapping a vari
 test_ggplot(check_aes = TRUE,aes_fail_msg = "Make sure that you're mapping `shotsCurrent` to the right aesthetic")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:2723146f59
 ## Quick Quiz
 
@@ -166,6 +173,8 @@ msg1 = "Not quite. Look at the graph. What is being mapped to `black`?"
 msg3 = "Good! Yes, we are outlining the bars in `black`."
 test_mc(correct = 3, feedback_msgs = c(msg1, msg1, msg3))
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:942f00b085
 ## Proportional Barchart
 
@@ -202,6 +211,7 @@ success_msg("Great! Now you know how to make a proportional stacked bar plot! Le
 test_function("geom_bar", args = "position", incorrect_msg = "Did you add a position argument to `geom_bar()`?")
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:5a8192a589
 ## Dodge those bars!
 
@@ -235,6 +245,8 @@ ggplot(pets, aes(x=animal,fill=shotsCurrent)) +
 success_msg("Great! Now you know how to make a dodged bar plot! Let's move on")
 test_function("geom_bar", args = "position", incorrect_msg = "Did you add a position argument to `geom_bar()`?")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:3a6ee29fbc
 ## Faceting a graph
 
@@ -243,9 +255,9 @@ You can do that by supplying the name of that variable as a facet. Here, we face
 
 ```{r}
 ggplot(data=pets, mapping=aes(x=name)) + geom_bar() + 
-  ## have to specify facets using "~" notation
+  ##have to specify facets using "~" notation
   facet_wrap(facets=~shotsCurrent) + 
-  ## we make the x axis x angled for better legibility
+  ##we make the x axis x angled for better legibility
   theme(axis.text.x = element_text(angle=45))
 ```
 
@@ -279,6 +291,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 #test_function("facet_wrap", args = "scale", incorrect_msg = "Did you add a scale argument to `facet_wrap()`?")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:fa1117cdfb
 ## Super Quick Review
 
@@ -289,6 +302,7 @@ ggplot(pets, aes(x=name)) + geom_bar() +
   facet_wrap(facets=~shotsCurrent, scale="free_x") +
   theme(axis.text.x = element_text(angle=45))
 ```
+
 *** =pre_exercise_code
 ```{r}
 library(ggplot2)
@@ -303,7 +317,6 @@ ggplot(pets, aes(x=name)) + geom_bar() +
 - plot points as pretty gems
 - stratify our graph by another category
 - add another set of categories to the x-axis
-
 
 *** =hint
 Look at the y-axis.
@@ -362,6 +375,7 @@ test_ggplot(check_facet = TRUE, check_aes = TRUE, facet_fail_msg = "You didn't m
 test_function("geom_bar", incorrect_msg = "Did you use `geom_bar()`?")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:a1efb868f1
 ## Boxplots
 
@@ -390,6 +404,7 @@ msg3 = "Probably not true. The interquartile ranges are overlapping, so it's pro
 
 test_mc(correct = 1, feedback_msgs=c(msg1, msg2, msg3))
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:46aedf28cb
 ## Try out geom_boxplot() yourself
@@ -422,6 +437,7 @@ success_msg("Great! Now you know how to set up boxplots!")
 test_ggplot(check_aes = TRUE, aes_fail_msg = "You didn't quite get the variable mapping right. Try again.")
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:76115fda96
 ## Violin Plots
 
@@ -447,6 +463,7 @@ ggplot(pets, aes(x=animal, y=weight, fill=animal)) +
 ```{r}
 ggplot(pets, aes(x=animal, y=weight, fill=animal)) + geom_violin()
 ```
+
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:4b380fad6f
 ## Your task: How heavy are our pets?
@@ -485,6 +502,8 @@ test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Check your mapping")
 test_function("geom_boxplot", incorrect_msg = "I think you're missing a geom here.")
 test_function("geom_violin", incorrect_msg = "I think you're missing a geom.")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:87317d094e
 ## What you learned in this chapter
 
@@ -519,3 +538,6 @@ Just move on to the next chapter! (CTRL+K)
 ```{r}
 
 ```
+
+
+---

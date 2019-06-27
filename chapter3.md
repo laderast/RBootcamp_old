@@ -1,6 +1,8 @@
 ---
 title       : Introduction to dplyr
 description : Learn how to manipulate data into a ggplot2 friendly format
+---
+
 
 --- type:NormalExercise lang:r xp:0 skills:1 key:e0b4f34c19
 ## Introduction to dplyr
@@ -25,8 +27,6 @@ Along the way, we'll do some data manipulation challenges. You'll be a `dplyr` e
 
 You will want to keep this `dplyr` cheat sheet open in a separate window to remind you about the syntax:
 [dplyr cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
-
-###Hints to Help You
 
 Also, remember: if you need to know the variables in a `data.frame` called `biopics` you can always use 
 
@@ -64,7 +64,6 @@ Just move on to the next exercise! (CTRL+K)
 ```{r}
 
 ```
-
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:0643d8c567
@@ -127,6 +126,8 @@ success_msg("Now you know how to assign variables and use them in expressions. W
 test_object("newValue", incorrect_msg = "Not quite. Did you assign `newValue` to 10?")
 test_object("multValue", incorrect_msg = "Not quite. Did you use `newValue` in your expression?")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:cca48c6abd
 ## Let's look at some data and ways to manipulate it.
 
@@ -180,6 +181,8 @@ test_function("summary", incorrect_msg = "you need to use the summary() function
 test_function("levels", incorrect_msg = "you need to use the levels() function on biopics$country")
 
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:1929755973
 ## dplyr::filter()
 
@@ -240,6 +243,7 @@ test_function("nrow", incorrect_msg = "You should use `nrow()` to show the numbe
 
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:119cf149a3
 ## Comparison operators and chaining comparisons
 
@@ -296,6 +300,8 @@ success_msg("Good job! Now you know how to chain comparisons!")
 test_object("crimeFilms", incorrect_msg = "Not quite. Did you add your comparison correctly?")
 test_function("nrow", incorrect_msg = "Show the number of rows in the crimeFilms using `nrow()`")
 ```
+
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e6843338b8
 ## Quick Quiz about Chaining Comparisons
 
@@ -369,6 +375,8 @@ biopicsArt <- biopics %>% filter(type_of_subject %in% c("Musician", "Artist", "S
 success_msg("Now you know how to filter on multiple values! Let's move on.")
 test_object("biopicsArt", incorrect_msg = "Not Quite.")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:7b9a4c4b99
 ## Removing Missing Values
 
@@ -427,6 +435,8 @@ success_msg("Now you know how to filter out missing values! Let's move on.")
 test_object("filteredBiopics", incorrect_msg = "Did you use !is.na() correctly?")
 test_function("nrow", incorrect_msg = "Did you call `nrow()`?")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d9b5ddfe5
 ## dplyr::mutate()
 
@@ -535,6 +545,7 @@ success_msg("You used a variable that was defined in a mutate statement. Great!"
 test_object("mutatedBiopics", incorrect_msg = "Not quite. Did you define a new variable?")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bfd4f10b15
 ## Another Use for `mutate()`
 
@@ -565,6 +576,8 @@ msg1 = "Try it out. Did we add another variable?"
 msg2 = "Correct! We're processing `subject` in place."
 test_mc(correct=2, feedback_msgs = c(msg1, msg2))
 ```
+
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:3b247ce89c
 ## The difference between `filter()` and `mutate()`
 
@@ -604,6 +617,7 @@ msg2 = "Yes, this is correct! We're identifying a new variable that we can use t
 msg3 = "It is a little confusing, but think it out."
 test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3))
 ```
+
 
 --- type:TabExercise lang:r xp:100 key:02924208d4
 ## The Pipe Operator: %>%
@@ -689,6 +703,7 @@ test_object("richardUS", incorrect_msg="Not quite. Add the above filter() statem
 
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:8c5431911a
 ## group_by()/summarize()
 
@@ -752,6 +767,7 @@ success_msg("Yes! You're summarizing like crazy! Let's move on.")
 test_object("gender_box_office", incorrect_msg = "almost, but not quite! Check each dplyr verb to make sure it's correct.")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:915110e4a5
 ## Counting Stuff
 
@@ -784,6 +800,8 @@ resp1 <- "Nope. Try it out and see what it does."
 resp2 <- "Correct! This is a recipe for counting categories."
 test_mc(correct=2, feedback_msgs = c(resp1, resp2))
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:6586c80668
 ## arrange()
 
@@ -826,6 +844,8 @@ biopics_sorted <- biopics %>% arrange(year_release, lead_actor_actress)
 success_msg("Now you know how to sort data using dplyr. Nifty, eh?")
 test_object("biopics_sorted", incorrect_msg = "Not quite. Make sure you are arranging variables in order")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:86c314b14c
 ## select()
 
@@ -871,6 +891,7 @@ success_msg("Great! Now you know how to select columns from your tables.")
 test_object("threeVarTable", incorrect_msg = "Not quite. Remember names and order matters.")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:f9e951b711
 ## Chester Ismay's Mantra
 
@@ -894,6 +915,7 @@ msg2 <- "Not true. You can use `filter()` and `select()` in any order!"
 msg3 <- "Yup. Repeat this 10 times every day so you know the difference."
 test_mc(correct = 3, feedback_msgs = c(msg1, msg2, msg3))
 ```
+
 
 --- type:TabExercise lang:r xp:100 key:7d73050cc1
 ## Putting it all together: Challenge 1
@@ -993,6 +1015,7 @@ test_object("biopics_by_country", incorrect_msg = "Not quite. Check your code.")
 
 ```
 
+
 --- type:NormalExercise lang:r xp:300 skills:1 key:a4c8d46d41
 ## Challenge 2: Show your stuff
 
@@ -1041,6 +1064,7 @@ success_msg("Your `dplyr` skills are ever improving!")
 test_object("race_country_box_office", incorrect_msg = 
     "Not quite. Think about the order in which you need to do these operations.")
 ```
+
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:b7b6b449de
 ## Challenge 3: Putting together what we know about ggplot2 and dplyr
@@ -1105,6 +1129,8 @@ success_msg("Now you know how to chain dplyr statements straight into a ggplot!"
 #test_ggplot(index = 0, check_aes = TRUE, aes_fail_msg = "Make sure you're mapping the right variables")
 #test_ggplot(index=0, check_data = TRUE, data_fail_msg = "Did you do the filter step correctly?")
 ```
+
+
 --- type:NormalExercise lang:r xp:0 skills:1 key:749b2485e7
 ## What you learned in this chapter
 
@@ -1146,3 +1172,6 @@ to becoming a `tidyverse` ninja!
 ```{r}
 
 ```
+
+
+---

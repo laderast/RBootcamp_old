@@ -1,6 +1,7 @@
 ---
 title       : The Magic of ggplot2
 description : Learn how ggplot2 turns variables into statistical graphics
+---
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8323fcbca1
 ## Quick Data Frame Introduction
@@ -30,11 +31,11 @@ gap1992 <- gapminder %>% filter(year == 1992)
 *** =sample_code
 ```{r}
 ##run head on gap1992
-head(gap1992)
+head(----)
 ##run colnames here on gap1992
-colnames()
+colnames(----)
 ##run nrow() on gap1992
-
+nrow(-----)
 ```
 
 *** =solution
@@ -53,6 +54,7 @@ success_msg("Great! You learned some basics about `data.frame`s! Let's move on."
 test_function("colnames", incorrect_msg = "did you use colnames(gap1992)?")
 test_function("nrow", incorrect_msg = "did you use nrow(gap1992)")
 ```
+
 
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:d599f92ec8
 ## Thinking about aesthetics
@@ -90,6 +92,7 @@ msg3 = "Correct! We are displaying lifeExp as our y variable and log(gdpPercap) 
 test_mc(correct = 3, feedback_msgs=c(msg1, msg2, msg3))
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:bfe1375688
 ## Mapping variables to produce geometric plots
 
@@ -120,7 +123,6 @@ Based on the graph, map the appropriate variables to the `x`, and `y` aesthetics
 
 *** =hint
 Look at the graph. If you need the variable names, you can always use `head()` or `colnames()` on the `gap1992` dataset.
-
 
 *** =pre_exercise_code
 ```{r}
@@ -160,6 +162,7 @@ success_msg("Wunderbar! Now you're on your way to recreating that gapminder plot
 test_ggplot(check_aes = TRUE, aes_fail_msg = "Not quite. Make sure you're mapping the right variables to the right aesthetics.")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:e507076f4e
 ## More about aes
 For `geom_point()`, there are lots of other aesthetics. The important thing to know is that
@@ -189,6 +192,7 @@ msg1 = "Nope. This is a mappable aesthetic to `geom_point().`"
 msg3 = "Correct. `linetype` is not mappable to `geom_point()`. Points don't have a `linetype`, do they?"
 test_mc(correct = 3, feedback_msgs=c(msg1, msg1, msg3))
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f0a09d682e
 ## Points versus lines
@@ -226,6 +230,7 @@ ggplot(gap1992, aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
 success_msg("Great! Now you know how to swap representations in ggplot2. Let's move on.")
 test_function("geom_line", incorrect_msg="You need to change the geom.")
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:13ea4fbf3d
 ## Geoms are layers on a ggplot
@@ -265,6 +270,7 @@ test_function("geom_line", incorrect_msg="you need to add geom_line()")
 test_function("geom_point", incorrect_msg="you need to add geom_point()")
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:349a622cb7
 ## Quick review about ggplot2
 
@@ -292,6 +298,7 @@ msg2 = "Correct! This is how we can add data and layer geoms together"
 msg3 = "Look at the ggplot code and see if we are manipulating data or not. Are we?"
 test_mc(correct = 2, feedback_msgs=c(msg1, msg2, msg3))
 ```
+
 
 --- type:NormalExercise lang:r xp:300 skills:1 key:01ef5c54c5
 ## Final Challenge: Recreate this Gapminder Plot
@@ -338,6 +345,7 @@ success_msg("Now you know the basics of ggplot and aesthetics. Congrats!")
 test_ggplot(check_aes=TRUE, aes_fail_msg = "Not quite. Go back and map the variables to the correct aesthetics.")
 ```
 
+
 --- type:NormalExercise lang:r xp:0 skills:1 key:fe7e851b1f
 ## What you learned in this chapter
 
@@ -372,3 +380,6 @@ Just move on to the next chapter! (CTRL+K)
 ```{r}
 
 ```
+
+
+--- 

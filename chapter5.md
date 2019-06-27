@@ -1,9 +1,10 @@
 ---
 title       : Simple Stats and Modeling with broom
 description : Now we have tidy data, let's start doing some statistics!
+---
 
 
---- type:PureMultipleChoiceExercise lang:r xp:0 skills:1 key:e91efd94b6
+--- type:NormalExercise lang:r xp:0 skills:1 key:e91efd94b6
 ## We've built a foundation. Now to stats!
 
 About 80-90% of any data analysis project is doing the data cleaning. Once you've confirmed that your data is
@@ -26,6 +27,7 @@ Our questions of interest are the following:
 
 *** =feedbacks
 - Keep on going!
+
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3e59cb838f
@@ -83,6 +85,7 @@ ex() %>% check_function('select') %>% check_result() %>% check_equal()
 
 success_msg("Nice tabling!")
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:80227d57fb
 ## Visualize Mean of Total Mercury by Fisherman Status
@@ -174,6 +177,8 @@ ex() %>% check_function('group_by') %>% check_result() %>% check_equal()
 ex() %>% check_function('summarize') %>% check_result() %>% check_equal()
 success_msg("Excellent summarization!")
 ```
+
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:6e3730d99d
 ## Is there a difference?
 
@@ -203,6 +208,8 @@ ggplot(fishdata, aes(x=factor(fisherman), y=total_mercury)) + geom_boxplot() +
 test_mc(correct=2)
 success_msg("That's right, fisherman seem to have higher total mercury")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:556d3ae28b
 ## T-test of means for fisherman status
 
@@ -242,6 +249,7 @@ t.test(total_mercury~fisherman,data=fishdata)
 ```{r}
 ex() %>% check_function('t.test') %>% check_result() %>% check_equal(incorrect_msg = "Not quite. Check your inputs.")
 ```
+
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:36a8333264
@@ -303,6 +311,8 @@ test_output_contains("tidyTtest$p.value",
 	                     incorrect_msg = "Have you extracted the p.value column?")
 success_msg("So fresh and so clean clean!")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:a8e91afadb
 ## Let's delve deeper into the data
 
@@ -351,7 +361,6 @@ test_ggplot(index=1)
 test_ggplot(index=2)
 success_msg("Beautiful plots!")
 ```
-
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d5e745c9f5
@@ -410,7 +419,6 @@ ex() %>% check_object('fit_univariate') %>% check_equal()
 ex() %>% check_object('fit_multiple') %>% check_equal()
 success_msg("Now we're regressing!")
 ```
-
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7e98c03571
@@ -555,6 +563,8 @@ ex() %>% check_function('glance') %>% check_result() %>% check_equal()
 ex() %>% check_function('select') %>% check_result() %>% check_equal()
 success_msg("I see you did a great job!")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:abcb19fe03
 ## Compare our models
 
@@ -742,6 +752,8 @@ test_ggplot()
 success_msg("Super! You're really assessing that model fit, now!")
 
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:78cd02eef9
 ## Challenge 2: Proportions of fishpart by fisherman status 
 
@@ -812,6 +824,7 @@ ex() %>% check_function('tidy') %>% check_result() %>% check_equal()
 success_msg("Super! Now you're ready to use broom with lots of models!")
 ```
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:7d6b139aac
 ## What you learned in this chapter
 
@@ -862,3 +875,6 @@ Also take some classes!
 ```{r}
 
 ```
+
+
+---

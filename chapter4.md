@@ -1,6 +1,7 @@
 ---
 title       : The Whys and Hows of Tidy Data
 description : Why we need tidy data and using `tidyr` to make messy data tidy
+---
 
 
 --- type:NormalExercise lang:r xp:0 skills:1 key:2b27344379
@@ -39,6 +40,8 @@ Just move on to the next exercise. (CTRL+K)
 ```{r}
 
 ```
+
+
 --- type:MultipleChoiceExercise lang:r xp:100 skills:1 key:80e373da6a
 ## What is Tidy Data?
 
@@ -81,6 +84,7 @@ total_fertility <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/product
 ```{r}
 test_mc(correct = 2)
 ```
+
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c1c536cd5d
 ## tidyr::gather()
@@ -133,6 +137,8 @@ head(gatheredData)
 ```{r}
 test_object("gatheredData", incorrect_msg = "Not quite. Did you run `gather` and `mutate`?")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:0c7200c72b
 ## tidyr::spread()
 
@@ -185,6 +191,8 @@ head(spreadData)
 success_msg("Great! Now you know how to spread!")
 test_object("spreadData", incorrect_msg = "Almost, but not quite")
 ```
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:fbd075070a
 ## dplyr::separate()
 
@@ -250,6 +258,8 @@ patients410
 test_object("health_code_separated", incorrect_msg="Did you set up your `separate()` statement correctly?")
 test_object("patients410", incorrect_msg="Not quite. Make Sure your filter statement was correct")
 ```
+
+
 --- type:NormalExercise lang:r xp:300 skills:1 key:3d8e137017
 ## Wide Versus Long Data
 
@@ -326,6 +336,8 @@ fertilityMeanByYear
 ```{r}
 
 ```
+
+
 --- type:NormalExercise lang:r xp:500 skills:1 key:651465f93b
 ## Putting  dplyr, tidyr, and ggplot2 all together
 
@@ -375,6 +387,7 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 
 ```
 
+
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:26c910c309
 ## Was there a difference?
 
@@ -408,7 +421,8 @@ ggplot(gatheredMouse, aes(x=intervention, y=time)) + geom_boxplot()
 test_mc(correct=2)
 ```
 
---- type:PlainMultipleChoiceExercise lang:r xp:50 skills:1 key:5945f330d7
+
+--- type:NormalExercise lang:r xp:50 skills:1 key:5945f330d7
 ## What you learned in this Chapter
 
 + The tidy manifesto
@@ -430,3 +444,5 @@ test_mc(correct=2)
 ```{r}
 
 ```
+
+---
